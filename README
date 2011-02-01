@@ -1,0 +1,11 @@
+This is the directory for housing all of our OpenKIM tests
+
+Tests go in the tests folder.
+
+bin houses some parent files and scripts
+
+results contains the results of the test runs
+
+verify contains the results of the verify runs
+
+
