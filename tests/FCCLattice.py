@@ -32,7 +32,7 @@ class FCCLattice(BaseTest):
         x0 = 3.00
         minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
         if not warnflag:
-            return minimum, energyminimum
+            return {'LatticeConstant':minimum[0], 'LatticeEnergy':energyminimum}
         else:
             raise MinimizationError
 

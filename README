@@ -9,3 +9,25 @@ results contains the results of the test runs
 verify contains the results of the verify runs
 
 
+
+So, the Tests will inherit from the BaseTest, which should be able to do most of
+what is required of tests
+
+
+TODO:
+    XML writing
+    argparsing
+    
+    
+As for the XML structure, possible structure
+
+<Test name='FCCLattice'>
+    <Config>
+        <Potential>PotentialName</Potential>
+        <Element> ElementSymbol </Element>
+    </Config>
+    <Results>
+        <LatticeConstant> value </LatticeConstant>
+        <LatticeEnergy>  value </LatticeEnergy>
+    </Results>
+</Test>
