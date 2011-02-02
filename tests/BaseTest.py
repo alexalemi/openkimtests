@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 """This is the baseTest from which all tests inherit. 
 
 For the XML

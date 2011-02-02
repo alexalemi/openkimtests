@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 #import BaseTest and ase
 from BaseTest import *
 

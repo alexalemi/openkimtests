@@ -15,8 +15,11 @@ what is required of tests
 
 
 TODO:
-    XML writing
-    argparsing
+    X  - XML writing
+    O  - argparsing
+    O  - simple pipeline
+    O  - unit test the Tests
+    
     
     
 As for the XML structure, possible structure
