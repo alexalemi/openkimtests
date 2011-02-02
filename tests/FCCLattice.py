@@ -14,9 +14,10 @@ from scipy.optimize import fmin
 
 
 class FCCLattice(BaseTest):
-    """FCCLattice test returns the optimal fcc lattice constant and energy"""
+    """FCCLattice test returns the optimal fcc lattice constant and energy per atom"""
     
     def __init__(self,potentialname,energy,TestDependencies=[],*args,**kwargs):
+        """Pass the initialization arguments to the BaseTest initializer"""
         BaseTest.__init__(self,potentialname,energy,TestDependencies,*args,**kwargs)
         #self.potential = self.getASEPotentialByName(potentialname)
 
@@ -29,17 +30,26 @@ class FCCLattice(BaseTest):
 
 
     def TestResults(self):
-        """FCC Lattice Test Result"""
+        """FCC Lattice Test Result
+        
+        uses scipy fmin (a simplex method minimization tool), to find the optimal
+        lattice constant, and corresponding energy per atom"""
         
         x0 = 3.00
         minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+        
+        #ensure that the minimization performed as expected
         if not warnflag:
-            return {'LatticeConstant':minimum[0], 'LatticeEnergy':energyminimum}
+            return {'FCCLatticeConstant':minimum[0], 'FCCEnergyPerAtom':energyminimum}
         else:
             raise MinimizationError
 
 
     def Verify(self):
+        """Simple verification script.  Creates a plot that shows the 
+        crystal energy in the neighborhood of the computed minimum, along
+        with the computed minimum, as a check """
+        
         print
         print "Verifying minimization with plot... "
         minimum, energyminimum = self.TestResults()
@@ -54,9 +64,10 @@ class FCCLattice(BaseTest):
         py.plot(minimum,energyminimum,'r+')
             
         
-        
+#Ensures the script can be called from the command line
 if __name__ == '__main__':
     test = FCCLattice(sys.argv[1],sys.argv[2],sys.argv[3:])
+    #raises BaseTest.main
     print test.main()
     
         

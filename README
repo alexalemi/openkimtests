@@ -2,16 +2,19 @@ This is the directory for housing all of our OpenKIM tests
 
 Tests go in the tests folder.
 
-bin houses some parent files and scripts
+bin houses some parent files and scripts, as well as future pipeline scripts, and
+    some unittests for the atomic tests.
 
 results contains the results of the test runs
 
 verify contains the results of the verify runs
 
 
-
 So, the Tests will inherit from the BaseTest, which should be able to do most of
-what is required of tests
+what is required of tests.
+
+In order to write your own tests, just copy the NullTest.py file, rename the
+file and the class name as desired, and write the TestResult method.
 
 
 TODO:
@@ -21,16 +24,4 @@ TODO:
     O  - unit test the Tests
     
     
-    
-As for the XML structure, possible structure
 
-<Test name='FCCLattice'>
-    <Config>
-        <Potential>PotentialName</Potential>
-        <Element> ElementSymbol </Element>
-    </Config>
-    <Results>
-        <LatticeConstant> value </LatticeConstant>
-        <LatticeEnergy>  value </LatticeEnergy>
-    </Results>
-</Test>
