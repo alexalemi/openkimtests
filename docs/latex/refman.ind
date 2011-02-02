@@ -1,0 +1,61 @@
+\begin{theindex}
+
+  \item {\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}
+    \subitem {FCCLattice::FCCLattice}, \hyperpage{7}
+
+  \indexspace
+
+  \item {BaseTest::BaseTest}, \hyperpage{5}
+    \subitem {getASEPotentialByName}, \hyperpage{6}
+    \subitem {main}, \hyperpage{6}
+    \subitem {TestResults}, \hyperpage{6}
+    \subitem {Verify}, \hyperpage{6}
+    \subitem {XMLWriter}, \hyperpage{6}
+
+  \indexspace
+
+  \item {FCCEnergy}
+    \subitem {FCCLattice::FCCLattice}, \hyperpage{7}
+  \item {FCCLattice::FCCLattice}, \hyperpage{7}
+    \subitem {\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}, 
+		\hyperpage{7}
+    \subitem {FCCEnergy}, \hyperpage{7}
+    \subitem {TestResults}, \hyperpage{7}
+    \subitem {Verify}, \hyperpage{7}
+
+  \indexspace
+
+  \item {getASEPotentialByName}
+    \subitem {BaseTest::BaseTest}, \hyperpage{6}
+
+  \indexspace
+
+  \item {main}
+    \subitem {BaseTest::BaseTest}, \hyperpage{6}
+
+  \indexspace
+
+  \item {NullTest::NullTest}, \hyperpage{8}
+    \subitem {TestResults}, \hyperpage{8}
+    \subitem {Verify}, \hyperpage{8}
+
+  \indexspace
+
+  \item {TestResults}
+    \subitem {BaseTest::BaseTest}, \hyperpage{6}
+    \subitem {FCCLattice::FCCLattice}, \hyperpage{7}
+    \subitem {NullTest::NullTest}, \hyperpage{8}
+
+  \indexspace
+
+  \item {Verify}
+    \subitem {BaseTest::BaseTest}, \hyperpage{6}
+    \subitem {FCCLattice::FCCLattice}, \hyperpage{7}
+    \subitem {NullTest::NullTest}, \hyperpage{8}
+
+  \indexspace
+
+  \item {XMLWriter}
+    \subitem {BaseTest::BaseTest}, \hyperpage{6}
+
+\end{theindex}
