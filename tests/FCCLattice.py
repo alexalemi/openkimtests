@@ -23,9 +23,16 @@ class FCCLattice(BaseTest):
 
     def FCCEnergy(self,a):
         """This function computes the energy of the crystal formation given 
-        a certain lattice constant"""
+        a certain lattice constant
+        
+        It uses the ase helper function bulk to create a 1 atom periodic boundary
+        condition crystal with a specific structure"""
         slab = bulk(self.element,'fcc',a=a)
+        
+        #set the calculator
         slab.set_calculator(self.potential)
+        
+        #calculate and return the potential energy
         return slab.get_potential_energy()        
 
 
@@ -35,7 +42,10 @@ class FCCLattice(BaseTest):
         uses scipy fmin (a simplex method minimization tool), to find the optimal
         lattice constant, and corresponding energy per atom"""
         
+        #choose a reasonable starting constant
         x0 = 3.00
+        
+        #minimize the energy per atom, using scipy fmin simplex minimizer.
         minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
         
         #ensure that the minimization performed as expected
