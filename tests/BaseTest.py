@@ -9,6 +9,7 @@ The BaseTest handles initialization of the form
 #standard imports
 import sys
 import ase
+import argparse
 
 #import xml library
 import xml.dom.minidom as mini
@@ -17,11 +18,12 @@ import xml.dom.minidom as mini
 class BaseTest:
     """This is the Base Test from which all other Tests inherit."""
     
-    def __init__(self,potentialname,element,TestDependencies=[],verified=False,*args,**kwargs):
+    def __init__(self,potentialname,element,TestDependencies=[],verified=False,verify=False,write=False,*args,**kwargs):
         self.potentialname = potentialname
         self.potential = self.getASEPotentialByName(potentialname)
         self.element = element
-        self.verified = verified
+        self.verify = verify
+        self.write = write
         
         self.TestDependencies = TestDependencies
         
@@ -80,6 +82,13 @@ class BaseTest:
             resultnode.appendChild(doc.createTextNode(str(value)))
             resultsnode.appendChild(resultnode)
         
+        
+        if self.write:
+            resultfile = '../results/' + self.__class__.__name__ + '.' + self.potentialname + '.' + self.element + '.xml'
+            outputfile = open(resultfile,'w')
+            outputfile.write(doc.toprettyxml())
+            outputfile.close()
+            
         #return a pretty xml string.
         return doc.toprettyxml()
         
@@ -89,19 +98,37 @@ class BaseTest:
         
         In the future, to be extended to include KIM potentials"""
         calculatorName = 'ase.calculators.' + name + '()'
+        if name == "GPAW":
+            from gpaw.aseinterface import GPAW
+            return GPAW(h=0.2, kpts = (4,4,4), nbands = 15)
         return eval(calculatorName)
         
     def TestResults(self):
         """The Test Results method, runs the test and packages the result in a dictionary"""
+        raise LackingTestResults
         return {}
 
     def Verify(self):
         """Optional verify method, creates an easy to check visual verification of test results"""
+        raise LackingVerify
         pass
         
     def main(self):
         """Main is called when the Test is run from the command line. currently runs tests
         and passes the dictionary of results to the XMLWriter Method"""
-        if self.verified:
+        if self.verify:
             self.Verify()
         return self.XMLWriter(self.TestResults())
+        
+        
+#Parser specification
+
+parser = argparse.ArgumentParser()
+parser.add_argument('potential',nargs='?', help='The first argument is the potential')
+parser.add_argument('element',nargs='?', help='The second argument is the element')
+parser.add_argument('TestDependencies',nargs='*', help='Remaining nontagged arguments are test dependencies')
+parser.add_argument('-v','--verify', action='store_true', help='runs the verify method')
+parser.add_argument('-w','--write', action='store_true', help='writes the xml file to the results directory')
+
+args = parser.parse_args()
+

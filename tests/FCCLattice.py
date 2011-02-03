@@ -62,8 +62,10 @@ class FCCLattice(BaseTest):
         
         print
         print "Verifying minimization with plot... "
-        minimum, energyminimum = self.TestResults()
-        vals = minimum* sp.linspace(0.9,1.1,100)
+        resultsdict = self.TestResults()
+        minimum = resultsdict['FCCLatticeConstant']
+        energyminimum = resultsdict['FCCEnergyPerAtom']
+        vals = minimum * sp.linspace(0.9,1.1,100)
         ens = map(self.FCCEnergy, vals)
         py.figure(1)
         py.clf()
@@ -72,11 +74,16 @@ class FCCLattice(BaseTest):
         py.ylabel('Energy (eV)')
         py.plot(vals,ens)
         py.plot(minimum,energyminimum,'r+')
+        py.show()
             
         
 #Ensures the script can be called from the command line
 if __name__ == '__main__':
-    test = FCCLattice(sys.argv[1],sys.argv[2],sys.argv[3:])
+    potential = args.potential
+    element = args.element
+    TestDependencies = args.TestDependencies
+    
+    test = FCCLattice(args.potential,args.element,args.TestDependencies,verify=args.verify,write=args.write)
     #raises BaseTest.main
     print test.main()
     

@@ -42,8 +42,9 @@ class NullTest(BaseTest):
         
 #The following ensures that the test can be called from the command line
 if __name__ == '__main__':
-    test = NullTest(sys.argv[1],sys.argv[2],sys.argv[3:])
-    #Uses BaseTest.main to ensure proper execution.
+    #Make sure you change the NullTest in the next line.
+    test = NullTest(args.potential,args.element,args.TestDependencies,verify=args.verify,write=args.write)
+    #raises BaseTest.main
     print test.main()
     
         
