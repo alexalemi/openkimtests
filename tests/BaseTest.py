@@ -101,6 +101,9 @@ class BaseTest:
         if name == "GPAW":
             from gpaw.aseinterface import GPAW
             return GPAW(h=0.2, kpts = (4,4,4), nbands = 15)
+        if name == "ASAP":
+            from asap3 import EMT
+            return EMT()
         return eval(calculatorName)
         
     def TestResults(self):
