@@ -44,9 +44,9 @@
 <a name="l00016"></a><a class="code" href="classFCCLattice_1_1FCCLattice.html">00016</a> <span class="keyword">class </span><a class="code" href="classFCCLattice_1_1FCCLattice.html">FCCLattice</a>(<a class="code" href="classBaseTest_1_1BaseTest.html">BaseTest</a>):
 <a name="l00017"></a>00017     <span class="stringliteral">&quot;&quot;&quot;FCCLattice test returns the optimal fcc lattice constant and energy per atom&quot;&quot;&quot;</span>
 <a name="l00018"></a>00018     
-<a name="l00019"></a><a class="code" href="classFCCLattice_1_1FCCLattice.html#a80676c6dd31cab664be82fbdfead9576">00019</a>     <span class="keyword">def </span><a class="code" href="classFCCLattice_1_1FCCLattice.html#a80676c6dd31cab664be82fbdfead9576">__init__</a>(self,potentialname,energy,TestDependencies=[],*args,**kwargs):
+<a name="l00019"></a><a class="code" href="classFCCLattice_1_1FCCLattice.html#a80676c6dd31cab664be82fbdfead9576">00019</a>     <span class="keyword">def </span><a class="code" href="classFCCLattice_1_1FCCLattice.html#a80676c6dd31cab664be82fbdfead9576">__init__</a>(self,potentialname,element,TestDependencies=[],*args,**kwargs):
 <a name="l00020"></a>00020         <span class="stringliteral">&quot;&quot;&quot;Pass the initialization arguments to the BaseTest initializer&quot;&quot;&quot;</span>
-<a name="l00021"></a>00021         BaseTest.__init__(self,potentialname,energy,TestDependencies,*args,**kwargs)
+<a name="l00021"></a>00021         BaseTest.__init__(self,potentialname,element,TestDependencies,*args,**kwargs)
 <a name="l00022"></a>00022         <span class="comment">#self.potential = self.getASEPotentialByName(potentialname)</span>
 <a name="l00023"></a>00023 
 <a name="l00024"></a><a class="code" href="classFCCLattice_1_1FCCLattice.html#a77866f6c592f0c8197833dcfd22e5145">00024</a>     <span class="keyword">def </span><a class="code" href="classFCCLattice_1_1FCCLattice.html#a77866f6c592f0c8197833dcfd22e5145">FCCEnergy</a>(self,a):
@@ -90,28 +90,35 @@
 <a name="l00062"></a>00062         
 <a name="l00063"></a>00063         <span class="keywordflow">print</span>
 <a name="l00064"></a>00064         <span class="keywordflow">print</span> <span class="stringliteral">&quot;Verifying minimization with plot... &quot;</span>
-<a name="l00065"></a>00065         minimum, energyminimum = self.<a class="code" href="classFCCLattice_1_1FCCLattice.html#a609b2ffb13217a24e05f12b1903eaaec">TestResults</a>()
-<a name="l00066"></a>00066         vals = minimum* sp.linspace(0.9,1.1,100)
-<a name="l00067"></a>00067         ens = map(self.<a class="code" href="classFCCLattice_1_1FCCLattice.html#a77866f6c592f0c8197833dcfd22e5145">FCCEnergy</a>, vals)
-<a name="l00068"></a>00068         py.figure(1)
-<a name="l00069"></a>00069         py.clf()
-<a name="l00070"></a>00070         py.title(<span class="stringliteral">&#39;Energy minimization verification&#39;</span>)
-<a name="l00071"></a>00071         py.xlabel(<span class="stringliteral">&#39;Lattice constant (ang)&#39;</span>)
-<a name="l00072"></a>00072         py.ylabel(<span class="stringliteral">&#39;Energy (eV)&#39;</span>)
-<a name="l00073"></a>00073         py.plot(vals,ens)
-<a name="l00074"></a>00074         py.plot(minimum,energyminimum,<span class="stringliteral">&#39;r+&#39;</span>)
-<a name="l00075"></a>00075             
-<a name="l00076"></a>00076         
-<a name="l00077"></a>00077 <span class="comment">#Ensures the script can be called from the command line</span>
-<a name="l00078"></a>00078 <span class="keywordflow">if</span> __name__ == <span class="stringliteral">&#39;__main__&#39;</span>:
-<a name="l00079"></a>00079     test = FCCLattice(sys.argv[1],sys.argv[2],sys.argv[3:])
-<a name="l00080"></a>00080     <span class="comment">#raises BaseTest.main</span>
-<a name="l00081"></a>00081     <span class="keywordflow">print</span> test.main()
-<a name="l00082"></a>00082     
-<a name="l00083"></a>00083         
+<a name="l00065"></a>00065         resultsdict = self.<a class="code" href="classFCCLattice_1_1FCCLattice.html#a609b2ffb13217a24e05f12b1903eaaec">TestResults</a>()
+<a name="l00066"></a>00066         minimum = resultsdict[<span class="stringliteral">&#39;FCCLatticeConstant&#39;</span>]
+<a name="l00067"></a>00067         energyminimum = resultsdict[<span class="stringliteral">&#39;FCCEnergyPerAtom&#39;</span>]
+<a name="l00068"></a>00068         vals = minimum * sp.linspace(0.9,1.1,100)
+<a name="l00069"></a>00069         ens = map(self.<a class="code" href="classFCCLattice_1_1FCCLattice.html#a77866f6c592f0c8197833dcfd22e5145">FCCEnergy</a>, vals)
+<a name="l00070"></a>00070         py.figure(1)
+<a name="l00071"></a>00071         py.clf()
+<a name="l00072"></a>00072         py.title(<span class="stringliteral">&#39;Energy minimization verification&#39;</span>)
+<a name="l00073"></a>00073         py.xlabel(<span class="stringliteral">&#39;Lattice constant (ang)&#39;</span>)
+<a name="l00074"></a>00074         py.ylabel(<span class="stringliteral">&#39;Energy (eV)&#39;</span>)
+<a name="l00075"></a>00075         py.plot(vals,ens)
+<a name="l00076"></a>00076         py.plot(minimum,energyminimum,<span class="stringliteral">&#39;r+&#39;</span>)
+<a name="l00077"></a>00077         py.show()
+<a name="l00078"></a>00078             
+<a name="l00079"></a>00079         
+<a name="l00080"></a>00080 <span class="comment">#Ensures the script can be called from the command line</span>
+<a name="l00081"></a>00081 <span class="keywordflow">if</span> __name__ == <span class="stringliteral">&#39;__main__&#39;</span>:
+<a name="l00082"></a>00082     potential = args.potential
+<a name="l00083"></a>00083     element = args.element
+<a name="l00084"></a>00084     TestDependencies = args.TestDependencies
+<a name="l00085"></a>00085     
+<a name="l00086"></a>00086     test = FCCLattice(args.potential,args.element,args.TestDependencies,verify=args.verify,write=args.write)
+<a name="l00087"></a>00087     <span class="comment">#raises BaseTest.main</span>
+<a name="l00088"></a>00088     <span class="keywordflow">print</span> test.main()
+<a name="l00089"></a>00089     
+<a name="l00090"></a>00090         
 </pre></div></div>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Wed Feb 2 2011 14:06:11 for OpenKIMTests by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Feb 2 2011 21:35:05 for OpenKIMTests by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

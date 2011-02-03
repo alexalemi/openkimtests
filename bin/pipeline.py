@@ -6,6 +6,7 @@ import glob, time, os, sys
 #directory paths
 testdirectory = "../tests/"
 resultsdirectory = "../results/"
+outputdirectory = "../outputs/"
 verifydirectory = "../verify/"
 
 #ase emt support
@@ -15,16 +16,20 @@ potentiallist = ['EMT','GPAW']
 
 def runTest(test,potential,el):
     testname = test[len(testdirectory):-3]
-    print "-------------------------------------"
+    print "=================================================="
     print "Running %s with %s for %s" % ( testname, potential, el)
+    outputfilename = testname + '.' + potential + '.' + el + '.out'
+    outputfilepath = outputdirectory + outputfilename
     resultfilename = testname + '.' + potential + '.' + el + '.xml'
     resultfilepath = resultsdirectory + resultfilename
     print 
     print "File output... "
     start = time.time()
-    outflag = os.system('python ' + test + ' ' + potential + ' ' + el + '| tee ' + resultfilepath)
+    print "EXECUTING: "
+    print 'python ' + test + ' ' + potential + ' ' + el + ' -w ' + '| tee ' + outputfilepath
+    outflag = os.system('python ' + test + ' ' + potential + ' ' + el + ' -w ' + '| tee ' + outputfilepath)
     if outflag:
-        os.system('rm ' + resultfilepath)
+        os.system('rm ' + outputfilepath)
         print "Exception Occured"
     end = time.time()
     print 
@@ -32,6 +37,7 @@ def runTest(test,potential,el):
     print "Results stored in %s" % resultfilename
     
 def runTests(runAll = False):
+    pipelinestart = time.time()
     if runAll:
         print "Running a full pipeline, all tests"
     lstTests = glob.glob(testdirectory + '*.py')
@@ -53,7 +59,10 @@ def runTests(runAll = False):
                         fob = open(resultfilepath)
                         print "Test configuation for %s already exists..." % resultfilename
                     except IOError:
-                        runTest(test,potential,el)                
+                        runTest(test,potential,el)  
+    pipelinestop = time.time()
+    
+    print "Pipeline update finished, took %f seconds " % (pipelinestop-pipelinestart)              
             
             
 if __name__ == '__main__':

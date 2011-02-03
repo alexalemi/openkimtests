@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.10.11)  2 FEB 2011 14:06
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.10.10)  2 FEB 2011 21:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -259,7 +259,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )
-(/etc/texmf/tex/latex/config/hyperref.cfg
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 (/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
@@ -820,15 +820,15 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 14.
 (/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 60.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 65.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 76.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
  [5 <./classBaseTest_1_1BaseTest.pdf>]) (./classFCCLattice_1_1FCCLattice.tex
-<classFCCLattice_1_1FCCLattice.pdf, id=206, 501.875pt x 264.14685pt>
+<classFCCLattice_1_1FCCLattice.pdf, id=207, 501.875pt x 264.14685pt>
 File: classFCCLattice_1_1FCCLattice.pdf Graphic file (type pdf)
 
 <use classFCCLattice_1_1FCCLattice.pdf> [6]
@@ -837,7 +837,7 @@ LaTeX Font Info:    Font shape `T1/pcr/bx/it' in size <10> not available
 LaTeX Font Info:    Font shape `T1/pcr/b/it' in size <10> not available
 (Font)              Font shape `T1/pcr/b/sl' tried instead on input line 45.
  [7 <./classFCCLattice_1_1FCCLattice.pdf>]) (./classNullTest_1_1NullTest.tex
-<classNullTest_1_1NullTest.pdf, id=235, 501.875pt x 313.67188pt>
+<classNullTest_1_1NullTest.pdf, id=236, 501.875pt x 313.67188pt>
 File: classNullTest_1_1NullTest.pdf Graphic file (type pdf)
 
 <use classNullTest_1_1NullTest.pdf> [8 <./classNullTest_1_1NullTest.pdf>])
@@ -846,10 +846,10 @@ File: classNullTest_1_1NullTest.pdf Graphic file (type pdf)
 
 ]) (./refman.aux) ) 
 Here is how much of TeX's memory you used:
- 8379 strings out of 495061
- 116827 string characters out of 1182620
+ 8381 strings out of 495061
+ 116985 string characters out of 1182620
  207828 words of memory out of 3000000
- 11331 multiletter control sequences out of 15000+50000
+ 11332 multiletter control sequences out of 15000+50000
  41490 words of font info for 45 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,11n,58p,290b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -858,9 +858,9 @@ share/texmf-texlive/fonts/type1/urw/courier/ucrbo8a.pfb></usr/share/texmf-texli
 ve/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw
 /times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb><
 /usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-Output written on refman.pdf (14 pages, 117629 bytes).
+Output written on refman.pdf (14 pages, 117375 bytes).
 PDF statistics:
- 319 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
+ 320 PDF objects out of 1000 (max. 8388607)
+ 63 named destinations out of 1000 (max. 500000)
  216 words of extra memory for PDF output out of 10000 (max. 10000000)
 

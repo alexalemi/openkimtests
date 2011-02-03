@@ -16,9 +16,9 @@ from scipy.optimize import fmin
 class FCCLattice(BaseTest):
     """FCCLattice test returns the optimal fcc lattice constant and energy per atom"""
     
-    def __init__(self,potentialname,energy,TestDependencies=[],*args,**kwargs):
+    def __init__(self,potentialname,element,TestDependencies=[],*args,**kwargs):
         """Pass the initialization arguments to the BaseTest initializer"""
-        BaseTest.__init__(self,potentialname,energy,TestDependencies,*args,**kwargs)
+        BaseTest.__init__(self,potentialname,element,TestDependencies,*args,**kwargs)
         #self.potential = self.getASEPotentialByName(potentialname)
 
     def FCCEnergy(self,a):
