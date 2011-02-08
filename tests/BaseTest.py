@@ -129,7 +129,7 @@ class BaseTest:
 parser = argparse.ArgumentParser()
 parser.add_argument('potential',nargs='?', help='The first argument is the potential')
 parser.add_argument('element',nargs='?', help='The second argument is the element')
-parser.add_argument('TestDependencies',nargs='*', help='Remaining nontagged arguments are test dependencies')
+parser.add_argument('optionalargs',nargs='*', help='Remaining nontagged arguments')
 parser.add_argument('-v','--verify', action='store_true', help='runs the verify method')
 parser.add_argument('-w','--write', action='store_true', help='writes the xml file to the results directory')
 

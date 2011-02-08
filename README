@@ -29,12 +29,11 @@ Test Usage:
 
 usage: python NullTest.py [-h] [-v] [-w]
                    [potential] [element]
-                   [TestDependencies [TestDependencies ...]]
 
 positional arguments:
   potential         The first argument is the potential
   element           The second argument is the element
-  TestDependencies  Remaining nontagged arguments are test dependencies
+  optional arguments    The remaining are optional
 
 optional arguments:
   -h, --help        show this help message and exit
@@ -63,4 +62,8 @@ TESTS:
     O  - Vacancy formation energy
     O  - Vacancy displacement field
     O  - hexagonal lattice constants
-    O  - 
+    O  - Elastic Moduli
+    O  - maybe verify the lattice constants (see that force is zero)
+    O  - unit change test.
+    O  - change potential parameters, perhaps make a LennardJones potential
+    
