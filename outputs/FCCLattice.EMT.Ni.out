@@ -1,0 +1,21 @@
+Namespace(TestDependencies=[], element='Ni', potential='EMT', verify=False, write=True)
+<?xml version="1.0" ?>
+<test id="FCCLattice">
+	<config>
+		<potential>
+			EMT
+		</potential>
+		<element>
+			Ni
+		</element>
+	</config>
+	<results>
+		<FCCLatticeConstant>
+			3.49189453125
+		</FCCLatticeConstant>
+		<FCCEnergyPerAtom>
+			-0.00339569158193
+		</FCCEnergyPerAtom>
+	</results>
+</test>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<test id="FCCLattice">
+	<config>
+		<potential>
+			EMT
+		</potential>
+		<element>
+			Au
+		</element>
+	</config>
+	<results>
+		<FCCLatticeConstant>
+			4.05615234375
+		</FCCLatticeConstant>
+		<FCCEnergyPerAtom>
+			-0.000134968560271
+		</FCCEnergyPerAtom>
+	</results>
+</test>

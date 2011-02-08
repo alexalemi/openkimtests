@@ -12,7 +12,7 @@ verifydirectory = "../verify/"
 #ase emt support
 emtlist = ['Ni','C','Pt','Ag','H','Al','O','N','Au','Pd','Cu']
 emtfcclist = ['Ni','Pt','Ag','Al','Au','Pd','Cu']
-potentiallist = ['EMT','GPAW']
+potentiallist = ['EMT']
 
 def runTest(test,potential,el):
     testname = test[len(testdirectory):-3]
@@ -36,10 +36,12 @@ def runTest(test,potential,el):
     print "Test completed successfully in %f seconds" % (end-start)
     print "Results stored in %s" % resultfilename
     
-def runTests(runAll = False):
+def runTests(runAll = False, DFT = False):
     pipelinestart = time.time()
     if runAll:
         print "Running a full pipeline, all tests"
+    if DFT:
+        potentiallist.append('GPAW')
     lstTests = glob.glob(testdirectory + '*.py')
     lstTests.remove(testdirectory + 'BaseTest.py')
     lstTests.remove(testdirectory + 'NullTest.py')
@@ -49,7 +51,7 @@ def runTests(runAll = False):
     for test in lstTests:
         testname = test[len(testdirectory):-3]
         for potential in potentiallist:
-            for el in emtfcclist:
+            for el in emtlist:
                 if runAll:
                     runTest(test,potential,el)
                 else:
@@ -67,10 +69,13 @@ def runTests(runAll = False):
             
 if __name__ == '__main__':
     runAllFlag = False
+    DFTFlag = False
     for opt in sys.argv:
         if opt == '--full':
             runAllFlag = True
-    runTests(runAll = runAllFlag)
+        if opt == '--dft':
+            DFTFlag = True
+    runTests(runAll = runAllFlag, DFT = DFTFlag)
             
             
             

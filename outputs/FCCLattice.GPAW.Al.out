@@ -1,0 +1,142 @@
+
+  ___ ___ ___ _ _ _  
+ |   |   |_  | | | | 
+ | | | | | . | | | | 
+ |__ |  _|___|_____|  0.7.2.6974
+ |___|_|             
+
+User: alemi@Cerebellum
+Date: Thu Feb  3 00:34:51 2011
+Arch: i686
+Pid:  12675
+Dir:  /usr/lib/python2.6/dist-packages/gpaw
+ase:   /home/alemi/ase/ase  version:  3.5.0.1614
+numpy: /usr/lib/python2.6/dist-packages/numpy
+units: Angstrom and eV
+
+Memory estimate
+---------------
+Calculator  128.37 MiB
+    Initial overhead  123.70 MiB
+    Density  2.22 MiB
+        Arrays  0.10 MiB
+        Localized functions  1.81 MiB
+        Mixer  0.02 MiB
+        Interpolator  0.28 MiB
+    Hamiltonian  0.74 MiB
+        Arrays  0.07 MiB
+        Restrictor  0.16 MiB
+        XC 3D grid  0.03 MiB
+        Poisson  0.35 MiB
+        vbar  0.13 MiB
+    Wavefunctions  1.71 MiB
+        Arrays psit_nG  1.17 MiB
+        Eigensolver  0.16 MiB
+        Projectors  0.22 MiB
+        Overlap op  0.12 MiB
+        Kinetic operator  0.04 MiB
+
+Positions:
+  0 Al    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Al       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    1.500000    1.500000     8     0.2652
+  2. axis:    yes    1.500000    0.000000    1.500000     8     0.2652
+  3. axis:    yes    1.500000    1.500000    0.000000     8     0.2652
+
+Al-setup:
+  name   : Aluminium
+  id     : 2e6447feaea722efcff26bf034b25f30
+  Z      : 13
+  valence: 3
+  core   : 10
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Al.LDA.gz
+  cutoffs: 1.08(comp), 1.91(filt), 2.36(core), lmax=2
+  valence states:
+            energy   radius
+    3s(2)   -7.830   1.085
+    3p(1)   -2.783   1.085
+    *s      19.382   1.085
+    *p      24.428   1.085
+    *d       0.000   1.085
+
+Using partial waves for Al as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -6578.423636
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            3
+Memory usage: 134.73 MB
+
+============================================================
+Timing:                               incl.     excl.
+============================================================
+Initialization:                       4.666     1.280  26.9% |----------|
+ Hamiltonian:                         0.100     0.000   0.0% |
+  Atomic:                             0.055     0.003   0.1% |
+   XC Correction:                     0.053     0.053   1.1% |
+  Communicate energies:               0.000     0.000   0.0% |
+  Hartree integrate/restrict:         0.000     0.000   0.0% |
+  Initialize Hamiltonian:             0.004     0.004   0.1% |
+  Poisson:                            0.036     0.036   0.8% |
+  XC 3D grid:                         0.004     0.004   0.1% |
+  vbar:                               0.000     0.000   0.0% |
+ LCAO initialization:                 3.287     0.090   1.9% ||
+  LCAO eigensolver:                   2.439     0.002   0.0% |
+   Atomic Hamiltonian:                0.001     0.001   0.0% |
+   Calculate projections:             0.000     0.000   0.0% |
+   Distribute overlap matrix:         0.000     0.000   0.0% |
+   Orbital Layouts:                   0.002     0.002   0.0% |
+   Potential matrix:                  2.434     2.434  51.1% |-------------------|
+  LCAO to grid:                       0.179     0.179   3.8% |-|
+  Set positions (LCAO WFS):           0.578     0.000   0.0% |
+   Basic WFS set positions:           0.002     0.002   0.0% |
+   Basis functions set positions:     0.000     0.000   0.0% |
+   TCI: Calculate S, T, P:            0.576     0.576  12.1% |----|
+SCF-cycle:                            0.092     0.006   0.1% |
+ Orthonormalize:                      0.085     0.012   0.3% |
+  Band Layouts:                       0.072     0.072   1.5% ||
+   Inverse Cholesky:                  0.000     0.000   0.0% |
+  calc_matrix:                        0.001     0.001   0.0% |
+Other:                                0.002     0.002   0.0% |
+============================================================
+Total:                                          4.760 100.0%
+============================================================
+date: Thu Feb  3 00:34:56 2011

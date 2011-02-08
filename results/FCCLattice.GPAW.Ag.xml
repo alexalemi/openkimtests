@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<test id="FCCLattice">
+	<config>
+		<potential>
+			GPAW
+		</potential>
+		<element>
+			Ag
+		</element>
+	</config>
+	<results>
+		<FCCLatticeConstant>
+			4.05673828125
+		</FCCLatticeConstant>
+		<FCCEnergyPerAtom>
+			-3.75768746238
+		</FCCEnergyPerAtom>
+	</results>
+</test>
