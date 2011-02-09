@@ -12,30 +12,36 @@ verifydirectory = "../verify/"
 #ase emt support
 emtlist = ['Ni','C','Pt','Ag','H','Al','O','N','Au','Pd','Cu']
 emtfcclist = ['Ni','Pt','Ag','Al','Au','Pd','Cu']
-potentiallist = ['EMT','GPAW']
+potentiallist = ['EMT']#,'GPAW']
 
-def runTest(test,potential,el):
+def runTest(test,potential,el,verbose=True):
     testname = test[len(testdirectory):-3]
-    print "=================================================="
-    print "Running %s with %s for %s" % ( testname, potential, el)
+    if verbose:
+        print "=================================================="
+        print "Running %s with %s for %s" % ( testname, potential, el)
     outputfilename = testname + '.' + potential + '.' + el + '.out'
     outputfilepath = outputdirectory + outputfilename
     resultfilename = testname + '.' + potential + '.' + el + '.xml'
     resultfilepath = resultsdirectory + resultfilename
-    print 
-    print "File output... "
+    if verbose:
+        print 
+        print "File output... "
     start = time.time()
-    print "EXECUTING: "
-    print 'python ' + test + ' ' + potential + ' ' + el + ' -w ' + '| tee ' + outputfilepath
+    if verbose:
+        print "EXECUTING: "
+        print 'python ' + test + ' ' + potential + ' ' + el + ' -w ' + '| tee ' + outputfilepath
     outflag = os.system('python ' + test + ' ' + potential + ' ' + el + ' -w ' + '| tee ' + outputfilepath)
     if outflag:
         os.system('rm ' + outputfilepath)
         print "Exception Occured"
+        return -1
     end = time.time()
-    print 
-    print "Test completed successfully in %f seconds" % (end-start)
-    print "Results stored in %s" % resultfilename
-    
+    if verbose:
+        print 
+        print "Test completed successfully in %f seconds" % (end-start)
+        print "Results stored in %s" % resultfilename
+    return 0 
+
 def runTests(runAll = False):
     pipelinestart = time.time()
     if runAll:

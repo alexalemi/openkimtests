@@ -14,6 +14,36 @@ import argparse
 #import xml library
 import xml.dom.minidom as mini
 
+def getContent(node):
+    rc = []
+    for child in node.childNodes:
+        if child.nodeType == child.TEXT_NODE:
+            rc.append(child.data)
+    return ''.join(rc)
+
+def XMLReader(xmltext):
+    """This method unpacks results to a dictionary"""
+    from xml.parsers.expat import ExpatError
+    try:
+        doc = mini.parseString(xmltext)
+    except ExpatError:
+        assert False
+    configs = {}
+    results = {}
+    testnode = doc.documentElement
+    try:
+        confignode = testnode.getElementsByTagName('config')[0]
+        for child in confignode.childNodes:
+            if child.nodeType == child.ELEMENT_NODE:
+                configs[child.tagName] = getContent(child)
+
+        resultnode = testnode.getElementsByTagName('results')[0]
+        for child in resultnode.childNodes:
+            if child.nodeType == child.ELEMENT_NODE:
+                results[child.tagName] = getContent(child)
+    except IndexError:
+        assert False
+    return configs, results
 
 class BaseTest:
     """This is the Base Test from which all other Tests inherit."""
@@ -26,7 +56,16 @@ class BaseTest:
         self.write = write
         
         self.TestDependencies = TestDependencies
-        
+
+    def RequireTest(self,testname):
+        import os
+        requirepath = '../bin/require.py'
+        p = os.popen('python ' + requirepath + ' ' + self.potentialname + ' ' + self.element + ' ' + testname)
+        xml = ''.join(p.readlines())
+        p.close()
+        configs, results = XMLReader(xml)
+        return results
+
     def XMLWriter(self,resultsdict):
         """This method packages the results dictionary into our standard XML 
         Format.  The layout is roughly as follows
@@ -86,11 +125,11 @@ class BaseTest:
         if self.write:
             resultfile = '../results/' + self.__class__.__name__ + '.' + self.potentialname + '.' + self.element + '.xml'
             outputfile = open(resultfile,'w')
-            outputfile.write(doc.toprettyxml())
+            outputfile.write(doc.toxml())
             outputfile.close()
             
         #return a pretty xml string.
-        return doc.toprettyxml()
+        return doc.toxml()
         
 
     def getASEPotentialByName(self,name):
@@ -101,6 +140,9 @@ class BaseTest:
         if name == "GPAW":
             from gpaw.aseinterface import GPAW
             return GPAW(h=0.2, kpts = (4,4,4), nbands = 15)
+        if name == "ASAP":
+            from asap3 import EMT
+            return EMT()
         return eval(calculatorName)
         
     def TestResults(self):
