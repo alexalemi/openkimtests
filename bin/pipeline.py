@@ -12,11 +12,8 @@ verifydirectory = "../verify/"
 #ase emt support
 emtlist = ['Ni','C','Pt','Ag','H','Al','O','N','Au','Pd','Cu']
 emtfcclist = ['Ni','Pt','Ag','Al','Au','Pd','Cu']
-<<<<<<< HEAD
 potentiallist = ['EMT']#,'GPAW']
-=======
 potentiallist = ['EMT']
->>>>>>> 7f7a357dfd92375f1ed7a931ee153cdf61d8a4c0
 
 def runTest(test,potential,el,verbose=True):
     testname = test[len(testdirectory):-3]
@@ -40,7 +37,6 @@ def runTest(test,potential,el,verbose=True):
         print "Exception Occured"
         return -1
     end = time.time()
-<<<<<<< HEAD
     if verbose:
         print 
         print "Test completed successfully in %f seconds" % (end-start)
@@ -48,13 +44,11 @@ def runTest(test,potential,el,verbose=True):
     return 0 
 
 def runTests(runAll = False):
-=======
     print 
     print "Test completed successfully in %f seconds" % (end-start)
     print "Results stored in %s" % resultfilename
     
 def runTests(runAll = False, DFT = False):
->>>>>>> 7f7a357dfd92375f1ed7a931ee153cdf61d8a4c0
     pipelinestart = time.time()
     if runAll:
         print "Running a full pipeline, all tests"

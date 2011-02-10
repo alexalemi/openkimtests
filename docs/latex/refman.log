@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.10.10)  10 FEB 2011 11:13
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.10.10)  10 FEB 2011 11:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -923,7 +923,7 @@ ve/fonts/type1/urw/courier/ucrbo8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
 w/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb
 ></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-
 texlive/fonts/type1/urw/times/utmr8a.pfb>
-Output written on refman.pdf (16 pages, 112891 bytes).
+Output written on refman.pdf (16 pages, 112892 bytes).
 PDF statistics:
  256 PDF objects out of 1000 (max. 8388607)
  99 named destinations out of 1000 (max. 500000)

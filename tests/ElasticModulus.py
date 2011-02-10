@@ -109,9 +109,8 @@ class ElasticModulus(BaseTest):
 if __name__ == '__main__':
     potential = args.potential
     element = args.element
-    TestDependencies = args.TestDependencies
-    
-    test = ElasticModulus(args.potential,args.element,args.TestDependencies,verify=args.verify,write=args.write)
+        
+    test = ElasticModulus(args.potential,args.element,verify=args.verify,write=args.write)
     #raises BaseTest.main
     print test.main()
     

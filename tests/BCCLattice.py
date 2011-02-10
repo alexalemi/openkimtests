@@ -79,7 +79,7 @@ class BCCLattice(BaseTest):
         
 #Ensures the script can be called from the command line
 if __name__ == '__main__':  
-    test = BCCLattice(args.potential,args.element,args.TestDependencies,verify=args.verify,write=args.write)
+    test = BCCLattice(args.potential,args.element,verify=args.verify,write=args.write)
     #raises BaseTest.main
     print test.main()
     

@@ -1,0 +1,4 @@
+Using a= 
+			3.0
+		
+<?xml version="1.0" ?><test id="ElasticModulus"><config><potential>EMT</potential><element>H</element></config><results><BulkModulus>0.0</BulkModulus><PoissonRatio>0.0</PoissonRatio><YoungsModulus>0.0</YoungsModulus></results></test>
