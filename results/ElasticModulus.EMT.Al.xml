@@ -1,0 +1,2 @@
+<?xml version="1.0" ?>
+<test id="ElasticModulus"><config><potential>EMT</potential><element>Al</element></config><results><BulkModulus>40.4869577167</BulkModulus><PoissonRatio>0.37109375</PoissonRatio><YoungsModulus>29.1329341365</YoungsModulus></results></test>

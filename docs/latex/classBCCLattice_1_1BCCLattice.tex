@@ -1,0 +1,116 @@
+\hypertarget{classBCCLattice_1_1BCCLattice}{
+\section{BCCLattice::BCCLattice Class Reference}
+\label{classBCCLattice_1_1BCCLattice}\index{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}}
+}
+Inheritance diagram for BCCLattice::BCCLattice:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBCCLattice_1_1BCCLattice}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classBCCLattice_1_1BCCLattice_a045ea313d64d62d2aa2aabbf80ec0883}{\_\-\_\-init\_\-\_\-}
+\item 
+def \hyperlink{classBCCLattice_1_1BCCLattice_a73cdd5796914d1f3da10eb894789d6f0}{BCCEnergy}
+\item 
+def \hyperlink{classBCCLattice_1_1BCCLattice_af91a4c550d37e5c1d954e3add3a04f09}{TestResults}
+\item 
+def \hyperlink{classBCCLattice_1_1BCCLattice_a8bcd1934ba4c02415e8e0d6264b3e011}{Verify}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}BCCLattice test returns the optimal bcc lattice constant and energy per atom\end{DoxyVerb}
+ 
+
+Definition at line 16 of file BCCLattice.py.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBCCLattice_1_1BCCLattice_a045ea313d64d62d2aa2aabbf80ec0883}{
+\index{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!BCCLattice::BCCLattice@{BCCLattice::BCCLattice}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def BCCLattice::BCCLattice::\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ potentialname, }
+\item[{}]{ element, }
+\item[{}]{ TestDependencies = {\ttfamily \mbox{[}\mbox{]}}, }
+\item[{}]{ args, }
+\item[{}]{ kwargs}
+\end{DoxyParamCaption}
+)}}
+\label{classBCCLattice_1_1BCCLattice_a045ea313d64d62d2aa2aabbf80ec0883}
+\begin{DoxyVerb}Pass the initialization arguments to the BaseTest initializer\end{DoxyVerb}
+ 
+
+Definition at line 19 of file BCCLattice.py.
+
+\hypertarget{classBCCLattice_1_1BCCLattice_a73cdd5796914d1f3da10eb894789d6f0}{
+\index{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}!BCCEnergy@{BCCEnergy}}
+\index{BCCEnergy@{BCCEnergy}!BCCLattice::BCCLattice@{BCCLattice::BCCLattice}}
+\subsubsection[{BCCEnergy}]{\setlength{\rightskip}{0pt plus 5cm}def BCCLattice::BCCLattice::BCCEnergy (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ a}
+\end{DoxyParamCaption}
+)}}
+\label{classBCCLattice_1_1BCCLattice_a73cdd5796914d1f3da10eb894789d6f0}
+\begin{DoxyVerb}This function computes the energy of the crystal formation given 
+a certain lattice constant
+
+It uses the ase helper function bulk to create a 1 atom periodic boundary
+condition crystal with a specific structure\end{DoxyVerb}
+ 
+
+Definition at line 24 of file BCCLattice.py.
+
+\hypertarget{classBCCLattice_1_1BCCLattice_af91a4c550d37e5c1d954e3add3a04f09}{
+\index{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}!TestResults@{TestResults}}
+\index{TestResults@{TestResults}!BCCLattice::BCCLattice@{BCCLattice::BCCLattice}}
+\subsubsection[{TestResults}]{\setlength{\rightskip}{0pt plus 5cm}def BCCLattice::BCCLattice::TestResults (
+\begin{DoxyParamCaption}
+\item[{}]{ self}
+\end{DoxyParamCaption}
+)}}
+\label{classBCCLattice_1_1BCCLattice_af91a4c550d37e5c1d954e3add3a04f09}
+\begin{DoxyVerb}BCC Lattice Test Result
+
+uses scipy fmin (a simplex method minimization tool), to find the optimal
+lattice constant, and corresponding energy per atom\end{DoxyVerb}
+ 
+
+Reimplemented from \hyperlink{classBaseTest_1_1BaseTest_ad7b3f3b61fcb07c94ae62cb12f060819}{BaseTest::BaseTest}.
+
+
+
+Definition at line 39 of file BCCLattice.py.
+
+\hypertarget{classBCCLattice_1_1BCCLattice_a8bcd1934ba4c02415e8e0d6264b3e011}{
+\index{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}!Verify@{Verify}}
+\index{Verify@{Verify}!BCCLattice::BCCLattice@{BCCLattice::BCCLattice}}
+\subsubsection[{Verify}]{\setlength{\rightskip}{0pt plus 5cm}def BCCLattice::BCCLattice::Verify (
+\begin{DoxyParamCaption}
+\item[{}]{ self}
+\end{DoxyParamCaption}
+)}}
+\label{classBCCLattice_1_1BCCLattice_a8bcd1934ba4c02415e8e0d6264b3e011}
+\begin{DoxyVerb}Simple verification script.  Creates a plot that shows the 
+crystal energy in the neighborhood of the computed minimum, along
+with the computed minimum, as a check \end{DoxyVerb}
+ 
+
+Reimplemented from \hyperlink{classBaseTest_1_1BaseTest_a1857df472a65cef53372455376136409}{BaseTest::BaseTest}.
+
+
+
+Definition at line 58 of file BCCLattice.py.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+tests/BCCLattice.py\end{DoxyCompactItemize}

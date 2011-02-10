@@ -1,0 +1,3 @@
+Using a= 3.92182617188
+<?xml version="1.0" ?>
+<test id="ElasticModulus"><config><potential>EMT</potential><element>Pt</element></config><results><BulkModulus>290.920353278</BulkModulus><PoissonRatio>0.439453125</PoissonRatio><YoungsModulus>88.3679869528</YoungsModulus></results></test>
