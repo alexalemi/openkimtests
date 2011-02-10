@@ -45,8 +45,10 @@ Inheritance diagram for BaseTest::BaseTest:</div>
  <div class="center">
   <img src="classBaseTest_1_1BaseTest.png" usemap="#BaseTest::BaseTest_map" alt=""/>
   <map id="BaseTest::BaseTest_map" name="BaseTest::BaseTest_map">
-<area href="classFCCLattice_1_1FCCLattice.html" alt="FCCLattice::FCCLattice" shape="rect" coords="0,56,144,80"/>
-<area href="classNullTest_1_1NullTest.html" alt="NullTest::NullTest" shape="rect" coords="154,56,298,80"/>
+<area href="classBCCLattice_1_1BCCLattice.html" alt="BCCLattice::BCCLattice" shape="rect" coords="0,56,188,80"/>
+<area href="classElasticModulus_1_1ElasticModulus.html" alt="ElasticModulus::ElasticModulus" shape="rect" coords="198,56,386,80"/>
+<area href="classFCCLattice_1_1FCCLattice.html" alt="FCCLattice::FCCLattice" shape="rect" coords="396,56,584,80"/>
+<area href="classNullTest_1_1NullTest.html" alt="NullTest::NullTest" shape="rect" coords="594,56,782,80"/>
 </map>
 </div>
 
@@ -56,6 +58,8 @@ Inheritance diagram for BaseTest::BaseTest:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a217c24e20c2abe8be4647faebac3e6ac"></a><!-- doxytag: member="BaseTest::BaseTest::__init__" ref="a217c24e20c2abe8be4647faebac3e6ac" args="" -->
 def&nbsp;</td><td class="memItemRight" valign="bottom"><b>__init__</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af01324878b37de19b05c1badb64e730b"></a><!-- doxytag: member="BaseTest::BaseTest::RequireTest" ref="af01324878b37de19b05c1badb64e730b" args="" -->
+def&nbsp;</td><td class="memItemRight" valign="bottom"><b>RequireTest</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTest_1_1BaseTest.html#a1deedc89d1061da5e3afbd108af06760">XMLWriter</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTest_1_1BaseTest.html#a69587478d3e6af59228e466411efb626">getASEPotentialByName</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseTest_1_1BaseTest.html#ad7b3f3b61fcb07c94ae62cb12f060819">TestResults</a></td></tr>
@@ -78,7 +82,7 @@ Public Attributes</h2></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="fragment"><pre class="fragment">This is the Base Test from which all other Tests inherit.</pre></div> 
-<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00018">18</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
+<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00048">48</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a69587478d3e6af59228e466411efb626"></a><!-- doxytag: member="BaseTest::BaseTest::getASEPotentialByName" ref="a69587478d3e6af59228e466411efb626" args="" -->
 <div class="memitem">
@@ -107,7 +111,7 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><pre class="fragment">A little helper method to call ASE potentials by name. 
 
 In the future, to be extended to include KIM potentials</pre></div> 
-<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00096">96</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
+<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00135">135</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
 
 </div>
 </div>
@@ -128,7 +132,7 @@ In the future, to be extended to include KIM potentials</pre></div>
 <div class="memdoc">
 <div class="fragment"><pre class="fragment">Main is called when the Test is run from the command line. currently runs tests
 and passes the dictionary of results to the XMLWriter Method</pre></div> 
-<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00116">116</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
+<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00158">158</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
 
 </div>
 </div>
@@ -148,9 +152,9 @@ and passes the dictionary of results to the XMLWriter Method</pre></div>
 </div>
 <div class="memdoc">
 <div class="fragment"><pre class="fragment">The Test Results method, runs the test and packages the result in a dictionary</pre></div> 
-<p>Reimplemented in <a class="el" href="classFCCLattice_1_1FCCLattice.html#a609b2ffb13217a24e05f12b1903eaaec">FCCLattice::FCCLattice</a>, and <a class="el" href="classNullTest_1_1NullTest.html#a7e6be14efc9b8191860c5d6bd62f0088">NullTest::NullTest</a>.</p>
+<p>Reimplemented in <a class="el" href="classBCCLattice_1_1BCCLattice.html#af91a4c550d37e5c1d954e3add3a04f09">BCCLattice::BCCLattice</a>, <a class="el" href="classElasticModulus_1_1ElasticModulus.html#a7bef0cf173069a9bd267b7c034a9089e">ElasticModulus::ElasticModulus</a>, <a class="el" href="classFCCLattice_1_1FCCLattice.html#a609b2ffb13217a24e05f12b1903eaaec">FCCLattice::FCCLattice</a>, and <a class="el" href="classNullTest_1_1NullTest.html#a7e6be14efc9b8191860c5d6bd62f0088">NullTest::NullTest</a>.</p>
 
-<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00106">106</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
+<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00148">148</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
 
 </div>
 </div>
@@ -170,9 +174,9 @@ and passes the dictionary of results to the XMLWriter Method</pre></div>
 </div>
 <div class="memdoc">
 <div class="fragment"><pre class="fragment">Optional verify method, creates an easy to check visual verification of test results</pre></div> 
-<p>Reimplemented in <a class="el" href="classFCCLattice_1_1FCCLattice.html#aabdfdef0bb7ac45194ba57a22dff7ff8">FCCLattice::FCCLattice</a>, and <a class="el" href="classNullTest_1_1NullTest.html#a129b504762a05e76a355e6ef482ac8ab">NullTest::NullTest</a>.</p>
+<p>Reimplemented in <a class="el" href="classBCCLattice_1_1BCCLattice.html#a8bcd1934ba4c02415e8e0d6264b3e011">BCCLattice::BCCLattice</a>, <a class="el" href="classElasticModulus_1_1ElasticModulus.html#af89210a8207272b806643fb55b5e9000">ElasticModulus::ElasticModulus</a>, <a class="el" href="classFCCLattice_1_1FCCLattice.html#aabdfdef0bb7ac45194ba57a22dff7ff8">FCCLattice::FCCLattice</a>, and <a class="el" href="classNullTest_1_1NullTest.html#a129b504762a05e76a355e6ef482ac8ab">NullTest::NullTest</a>.</p>
 
-<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00111">111</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
+<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00153">153</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
 
 </div>
 </div>
@@ -215,7 +219,7 @@ Format.  The layout is roughly as follows
     &lt;/results&gt;
 &lt;/test&gt;
 </pre></div> 
-<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00030">30</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
+<p>Definition at line <a class="el" href="BaseTest_8py_source.html#l00069">69</a> of file <a class="el" href="BaseTest_8py_source.html">BaseTest.py</a>.</p>
 
 </div>
 </div>
@@ -223,7 +227,7 @@ Format.  The layout is roughly as follows
 <li>tests/<a class="el" href="BaseTest_8py_source.html">BaseTest.py</a></li>
 </ul>
 </div>
-<hr class="footer"/><address class="footer"><small>Generated on Wed Feb 2 2011 21:35:05 for OpenKIMTests by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Feb 10 2011 11:13:49 for OpenKIMTests by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

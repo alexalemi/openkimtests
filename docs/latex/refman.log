@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.10.10)  2 FEB 2011 21:35
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.10.10)  10 FEB 2011 11:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -700,7 +700,7 @@ File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 
 
 Writing index file refman.idx
-(./refman.aux)
+No file refman.aux.
 \openout1 = `refman.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -717,7 +717,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 35.
- (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 35.
@@ -755,8 +755,6 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 LaTeX Info: Redefining \ref on input line 35.
 LaTeX Info: Redefining \pageref on input line 35.
- (./refman.out)
-(./refman.out)
 \@outlinefile=\write4
 \openout4 = `refman.out'.
 
@@ -770,15 +768,6 @@ Package hyperref Info: Option `pageanchor' set `false' on input line 36.
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 49.
-
-(./refman.toc
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 2.
-)
 \tf@toc=\write5
 \openout5 = `refman.toc'.
 
@@ -795,6 +784,33 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
 (./hierarchy.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 3.
+
+
+LaTeX Warning: Reference `classBaseTest_1_1BaseTest' on page 1 undefined on inp
+ut line 3.
+
+
+LaTeX Warning: Reference `classBCCLattice_1_1BCCLattice' on page 1 undefined on
+ input line 5.
+
+
+LaTeX Warning: Reference `classElasticModulus_1_1ElasticModulus' on page 1 unde
+fined on input line 6.
+
+
+LaTeX Warning: Reference `classFCCLattice_1_1FCCLattice' on page 1 undefined on
+ input line 7.
+
+
+LaTeX Warning: Reference `classNullTest_1_1NullTest' on page 1 undefined on inp
+ut line 8.
+
 ) [1
 
 ]
@@ -804,12 +820,33 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
 
 ]
 Chapter 2.
-(./annotated.tex) [3] [4
+(./annotated.tex
+
+LaTeX Warning: Reference `classBaseTest_1_1BaseTest' on page 3 undefined on inp
+ut line 3.
+
+
+LaTeX Warning: Reference `classBCCLattice_1_1BCCLattice' on page 3 undefined on
+ input line 4.
+
+
+LaTeX Warning: Reference `classElasticModulus_1_1ElasticModulus' on page 3 unde
+fined on input line 5.
+
+
+LaTeX Warning: Reference `classFCCLattice_1_1FCCLattice' on page 3 undefined on
+ input line 6.
+
+
+LaTeX Warning: Reference `classNullTest_1_1NullTest' on page 3 undefined on inp
+ut line 7.
+
+) [3] [4
 
 ]
 Chapter 3.
 (./classBaseTest_1_1BaseTest.tex
-<classBaseTest_1_1BaseTest.pdf, id=173, 501.875pt x 132.07343pt>
+<classBaseTest_1_1BaseTest.pdf, id=50, 501.875pt x 132.07343pt>
 File: classBaseTest_1_1BaseTest.pdf Graphic file (type pdf)
 
 <use classBaseTest_1_1BaseTest.pdf>
@@ -820,47 +857,75 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 14.
 (/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 65.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 70.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
- [5 <./classBaseTest_1_1BaseTest.pdf>]) (./classFCCLattice_1_1FCCLattice.tex
-<classFCCLattice_1_1FCCLattice.pdf, id=207, 501.875pt x 264.14685pt>
-File: classFCCLattice_1_1FCCLattice.pdf Graphic file (type pdf)
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 86.
+ [5 <./classBaseTest_1_1BaseTest.pdf>]) (./classBCCLattice_1_1BCCLattice.tex
 
-<use classFCCLattice_1_1FCCLattice.pdf> [6]
+! LaTeX Error: File `classBCCLattice_1_1BCCLattice' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 ...=2.000000cm]{classBCCLattice_1_1BCCLattice}
+                                                  
+? 
+[6]
 LaTeX Font Info:    Font shape `T1/pcr/bx/it' in size <10> not available
 (Font)              Font shape `T1/pcr/b/it' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/pcr/b/it' in size <10> not available
 (Font)              Font shape `T1/pcr/b/sl' tried instead on input line 45.
- [7 <./classFCCLattice_1_1FCCLattice.pdf>]) (./classNullTest_1_1NullTest.tex
-<classNullTest_1_1NullTest.pdf, id=236, 501.875pt x 313.67188pt>
+ [7]) (./classElasticModulus_1_1ElasticModulus.tex
+
+! LaTeX Error: File `classElasticModulus_1_1ElasticModulus' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 ...0cm]{classElasticModulus_1_1ElasticModulus}
+                                                  
+? 
+[8]) (./classFCCLattice_1_1FCCLattice.tex
+<classFCCLattice_1_1FCCLattice.pdf, id=156, 501.875pt x 264.14685pt>
+File: classFCCLattice_1_1FCCLattice.pdf Graphic file (type pdf)
+
+<use classFCCLattice_1_1FCCLattice.pdf> [9 <./classFCCLattice_1_1FCCLattice.pdf
+>] [10]) (./classNullTest_1_1NullTest.tex
+<classNullTest_1_1NullTest.pdf, id=191, 501.875pt x 313.67188pt>
 File: classNullTest_1_1NullTest.pdf Graphic file (type pdf)
 
-<use classNullTest_1_1NullTest.pdf> [8 <./classNullTest_1_1NullTest.pdf>])
-(./refman.ind [9] [10
+<use classNullTest_1_1NullTest.pdf> [11 <./classNullTest_1_1NullTest.pdf>])
+No file refman.ind.
+[12] (./refman.aux)
+
+LaTeX Warning: There were undefined references.
 
 
-]) (./refman.aux) ) 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8381 strings out of 495061
- 116985 string characters out of 1182620
- 207828 words of memory out of 3000000
- 11332 multiletter control sequences out of 15000+50000
+ 8412 strings out of 495061
+ 118999 string characters out of 1182620
+ 207830 words of memory out of 3000000
+ 11322 multiletter control sequences out of 15000+50000
  41490 words of font info for 45 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,11n,58p,290b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/
-share/texmf-texlive/fonts/type1/urw/courier/ucrbo8a.pfb></usr/share/texmf-texli
-ve/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw
-/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb><
-/usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-Output written on refman.pdf (14 pages, 117375 bytes).
+ 38i,11n,58p,498b,464s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
+ve/fonts/type1/urw/courier/ucrbo8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
+w/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb
+></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-
+texlive/fonts/type1/urw/times/utmr8a.pfb>
+Output written on refman.pdf (16 pages, 112891 bytes).
 PDF statistics:
- 320 PDF objects out of 1000 (max. 8388607)
- 63 named destinations out of 1000 (max. 500000)
- 216 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 256 PDF objects out of 1000 (max. 8388607)
+ 99 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

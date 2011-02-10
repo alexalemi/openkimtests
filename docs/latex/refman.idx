@@ -9,17 +9,37 @@
 \indexentry{Verify@{Verify}!BaseTest::BaseTest@{BaseTest::BaseTest}|hyperpage}{6}
 \indexentry{BaseTest::BaseTest@{BaseTest::BaseTest}!XMLWriter@{XMLWriter}|hyperpage}{6}
 \indexentry{XMLWriter@{XMLWriter}!BaseTest::BaseTest@{BaseTest::BaseTest}|hyperpage}{6}
-\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{7}
-\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{7}
-\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{7}
-\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}!FCCEnergy@{FCCEnergy}|hyperpage}{7}
-\indexentry{FCCEnergy@{FCCEnergy}!FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{7}
-\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}!TestResults@{TestResults}|hyperpage}{7}
-\indexentry{TestResults@{TestResults}!FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{7}
-\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}!Verify@{Verify}|hyperpage}{7}
-\indexentry{Verify@{Verify}!FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{7}
-\indexentry{NullTest::NullTest@{NullTest::NullTest}|hyperpage}{8}
-\indexentry{NullTest::NullTest@{NullTest::NullTest}!TestResults@{TestResults}|hyperpage}{8}
-\indexentry{TestResults@{TestResults}!NullTest::NullTest@{NullTest::NullTest}|hyperpage}{8}
-\indexentry{NullTest::NullTest@{NullTest::NullTest}!Verify@{Verify}|hyperpage}{8}
-\indexentry{Verify@{Verify}!NullTest::NullTest@{NullTest::NullTest}|hyperpage}{8}
+\indexentry{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}|hyperpage}{7}
+\indexentry{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{7}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!BCCLattice::BCCLattice@{BCCLattice::BCCLattice}|hyperpage}{7}
+\indexentry{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}!BCCEnergy@{BCCEnergy}|hyperpage}{7}
+\indexentry{BCCEnergy@{BCCEnergy}!BCCLattice::BCCLattice@{BCCLattice::BCCLattice}|hyperpage}{7}
+\indexentry{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}!TestResults@{TestResults}|hyperpage}{7}
+\indexentry{TestResults@{TestResults}!BCCLattice::BCCLattice@{BCCLattice::BCCLattice}|hyperpage}{7}
+\indexentry{BCCLattice::BCCLattice@{BCCLattice::BCCLattice}!Verify@{Verify}|hyperpage}{7}
+\indexentry{Verify@{Verify}!BCCLattice::BCCLattice@{BCCLattice::BCCLattice}|hyperpage}{7}
+\indexentry{ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}|hyperpage}{8}
+\indexentry{ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{8}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}|hyperpage}{8}
+\indexentry{ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}!FCCEnergy@{FCCEnergy}|hyperpage}{8}
+\indexentry{FCCEnergy@{FCCEnergy}!ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}|hyperpage}{8}
+\indexentry{ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}!getFCCLattice@{getFCCLattice}|hyperpage}{9}
+\indexentry{getFCCLattice@{getFCCLattice}!ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}|hyperpage}{9}
+\indexentry{ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}!TestResults@{TestResults}|hyperpage}{9}
+\indexentry{TestResults@{TestResults}!ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}|hyperpage}{9}
+\indexentry{ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}!Verify@{Verify}|hyperpage}{9}
+\indexentry{Verify@{Verify}!ElasticModulus::ElasticModulus@{ElasticModulus::ElasticModulus}|hyperpage}{9}
+\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{9}
+\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}!\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{10}
+\indexentry{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{10}
+\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}!FCCEnergy@{FCCEnergy}|hyperpage}{10}
+\indexentry{FCCEnergy@{FCCEnergy}!FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{10}
+\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}!TestResults@{TestResults}|hyperpage}{10}
+\indexentry{TestResults@{TestResults}!FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{10}
+\indexentry{FCCLattice::FCCLattice@{FCCLattice::FCCLattice}!Verify@{Verify}|hyperpage}{10}
+\indexentry{Verify@{Verify}!FCCLattice::FCCLattice@{FCCLattice::FCCLattice}|hyperpage}{10}
+\indexentry{NullTest::NullTest@{NullTest::NullTest}|hyperpage}{11}
+\indexentry{NullTest::NullTest@{NullTest::NullTest}!TestResults@{TestResults}|hyperpage}{11}
+\indexentry{TestResults@{TestResults}!NullTest::NullTest@{NullTest::NullTest}|hyperpage}{11}
+\indexentry{NullTest::NullTest@{NullTest::NullTest}!Verify@{Verify}|hyperpage}{11}
+\indexentry{Verify@{Verify}!NullTest::NullTest@{NullTest::NullTest}|hyperpage}{11}

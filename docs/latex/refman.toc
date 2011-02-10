@@ -11,15 +11,30 @@
 \contentsline {subsubsection}{\numberline {3.1.2.3}TestResults}{6}{subsubsection.3.1.2.3}
 \contentsline {subsubsection}{\numberline {3.1.2.4}Verify}{6}{subsubsection.3.1.2.4}
 \contentsline {subsubsection}{\numberline {3.1.2.5}XMLWriter}{6}{subsubsection.3.1.2.5}
-\contentsline {section}{\numberline {3.2}FCCLattice::FCCLattice Class Reference}{7}{section.3.2}
+\contentsline {section}{\numberline {3.2}BCCLattice::BCCLattice Class Reference}{7}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Detailed Description}{7}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Member Function Documentation}{7}{subsection.3.2.2}
 \contentsline {subsubsection}{\numberline {3.2.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}{7}{subsubsection.3.2.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2.2}FCCEnergy}{7}{subsubsection.3.2.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.2}BCCEnergy}{7}{subsubsection.3.2.2.2}
 \contentsline {subsubsection}{\numberline {3.2.2.3}TestResults}{7}{subsubsection.3.2.2.3}
 \contentsline {subsubsection}{\numberline {3.2.2.4}Verify}{8}{subsubsection.3.2.2.4}
-\contentsline {section}{\numberline {3.3}NullTest::NullTest Class Reference}{8}{section.3.3}
+\contentsline {section}{\numberline {3.3}ElasticModulus::ElasticModulus Class Reference}{8}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Detailed Description}{8}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}Member Function Documentation}{8}{subsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.2.1}TestResults}{8}{subsubsection.3.3.2.1}
-\contentsline {subsubsection}{\numberline {3.3.2.2}Verify}{9}{subsubsection.3.3.2.2}
+\contentsline {subsubsection}{\numberline {3.3.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}{8}{subsubsection.3.3.2.1}
+\contentsline {subsubsection}{\numberline {3.3.2.2}FCCEnergy}{9}{subsubsection.3.3.2.2}
+\contentsline {subsubsection}{\numberline {3.3.2.3}getFCCLattice}{9}{subsubsection.3.3.2.3}
+\contentsline {subsubsection}{\numberline {3.3.2.4}TestResults}{9}{subsubsection.3.3.2.4}
+\contentsline {subsubsection}{\numberline {3.3.2.5}Verify}{9}{subsubsection.3.3.2.5}
+\contentsline {section}{\numberline {3.4}FCCLattice::FCCLattice Class Reference}{9}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Detailed Description}{10}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Member Function Documentation}{10}{subsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.2.1}\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}{10}{subsubsection.3.4.2.1}
+\contentsline {subsubsection}{\numberline {3.4.2.2}FCCEnergy}{10}{subsubsection.3.4.2.2}
+\contentsline {subsubsection}{\numberline {3.4.2.3}TestResults}{10}{subsubsection.3.4.2.3}
+\contentsline {subsubsection}{\numberline {3.4.2.4}Verify}{10}{subsubsection.3.4.2.4}
+\contentsline {section}{\numberline {3.5}NullTest::NullTest Class Reference}{11}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Detailed Description}{11}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Member Function Documentation}{11}{subsection.3.5.2}
+\contentsline {subsubsection}{\numberline {3.5.2.1}TestResults}{11}{subsubsection.3.5.2.1}
+\contentsline {subsubsection}{\numberline {3.5.2.2}Verify}{11}{subsubsection.3.5.2.2}
