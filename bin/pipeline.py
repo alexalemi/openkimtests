@@ -12,8 +12,9 @@ verifydirectory = "../verify/"
 #ase emt support
 emtlist = ['Ni','C','Pt','Ag','H','Al','O','N','Au','Pd','Cu']
 emtfcclist = ['Ni','Pt','Ag','Al','Au','Pd','Cu']
-potentiallist = ['EMT']#,'GPAW']
-potentiallist = ['EMT']
+emtlist = emtfcclist
+potentiallist = ['EMT','ASAP']#,'GPAW']
+#potentiallist = ['EMT']
 
 def runTest(test,potential,el,verbose=True):
     testname = test[len(testdirectory):-3]

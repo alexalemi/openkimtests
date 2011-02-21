@@ -28,6 +28,8 @@ class BCCLattice(BaseTest):
         It uses the ase helper function bulk to create a 1 atom periodic boundary
         condition crystal with a specific structure"""
         slab = bulk(self.element,'bcc',a=a)
+        if self.potentialname == 'ASAP':
+            slab = slab.repeat((10,10,10))
         
         #set the calculator
         slab.set_calculator(self.potential)

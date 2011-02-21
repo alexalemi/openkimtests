@@ -18,6 +18,7 @@ class ElasticModulus(BaseTest):
     
     def __init__(self,potentialname,element,TestDependencies=[],*args,**kwargs):
         """Pass the initialization arguments to the BaseTest initializer"""
+        TestDependencies = ['FCCLattice']
         BaseTest.__init__(self,potentialname,element,TestDependencies,*args,**kwargs)
         #self.potential = self.getASEPotentialByName(potentialname)
 
@@ -38,6 +39,9 @@ class ElasticModulus(BaseTest):
 
     def FCCTensileLoaded(self, side):
         slab = bulk(self.element,'fcc',a=self.a, cubic=True)
+        if self.potentialname == 'ASAP':
+            slab = slab.repeat((10,10,10))
+        
         #set the calculator
         slab.set_calculator(self.potential)
   
@@ -79,7 +83,7 @@ class ElasticModulus(BaseTest):
 
         E = 2.0 * energydiff / self.eps**2 / self.volume
 
-        from ase.units import *
+        from ase.units import GPa
 
         #ensure that the minimization performed as expected
         if not warnflag:

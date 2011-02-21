@@ -1,3 +1,2 @@
 Using a= 3.49189453125
-<?xml version="1.0" ?>
-<test id="ElasticModulus"><config><potential>EMT</potential><element>Ni</element></config><results><BulkModulus>186.969506306</BulkModulus><PoissonRatio>0.37109375</PoissonRatio><YoungsModulus>130.536747977</YoungsModulus></results></test>
+<?xml version="1.0" ?><test id="ElasticModulus"><config><potential>EMT</potential><element>Ni</element><testdependencies/>['FCCLattice']</config><results><BulkModulus>186.969506307</BulkModulus><PoissonRatio>0.37109375</PoissonRatio><YoungsModulus>130.536747976</YoungsModulus></results></test>
