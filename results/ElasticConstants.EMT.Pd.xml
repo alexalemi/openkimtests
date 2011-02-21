@@ -1,0 +1,1 @@
+<?xml version="1.0" ?><test id="ElasticConstants"><config><potential>EMT</potential><element>Pd</element><testdependencies/>['FCCLattice']</config><results><C44>46.9725060566</C44><C66>37.8251674882</C66><BulkModulus>181.09546804</BulkModulus><C13>149.582748095</C13><C12>162.381371038</C12><C11>218.523662044</C11><C33>118.994725032</C33></results></test>

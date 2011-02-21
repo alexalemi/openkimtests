@@ -1,0 +1,1 @@
+<?xml version="1.0" ?><test id="ElasticConstants"><config><potential>ASAP</potential><element>Au</element><testdependencies/>['FCCLattice']</config><results><C44>29.3562750535</C44><C66>23.5062243379</C66><BulkModulus>173.780116745</BulkModulus><C13>91.2947877958</C13><C12>162.468479683</C12><C11>196.403390867</C11><C33>104.017555458</C33></results></test>

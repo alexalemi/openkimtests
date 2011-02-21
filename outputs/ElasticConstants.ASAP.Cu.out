@@ -1,0 +1,17 @@
+Using a= 3.59282226563
+The fit coefficients are: 
+[  1.79957800e+00   2.38392587e-09  -1.37393052e-04]
+The fit coefficients are: 
+[  1.35046187e+00   2.41248877e-09  -1.37393052e-04]
+The fit coefficients are: 
+[  6.08283426e-01   1.81615652e-09  -1.37393052e-04]
+The fit coefficients are: 
+[  3.52057964e-01   5.82275095e-09  -1.37393052e-04]
+The fit coefficients are: 
+[  3.48590012e-01   2.01323068e-09  -1.37393052e-04]
+The fit coefficients are: 
+[  2.79383086e-01   1.19747989e-09  -1.37393052e-04]
+
+ELASTIC CONSTANTS SHOULD BE: 
+[ 1.07581798  0.72376002  0.99200879  0.60828343  0.34859001  0.27938309]
+<?xml version="1.0" ?><test id="ElasticConstants"><config><potential>ASAP</potential><element>Cu</element><testdependencies/>['FCCLattice']</config><results><C44>55.8503015269</C44><C66>44.7621246544</C66><BulkModulus>134.761165612</BulkModulus><C13>158.937399204</C13><C12>115.959189299</C12><C11>172.365118239</C11><C33>97.4577914962</C33></results></test>
