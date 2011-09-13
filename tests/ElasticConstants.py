@@ -153,7 +153,7 @@ class ElasticConstants(BaseTest):
         coeffx2 = fit[0]
         
         #Plot to verify
-        """
+        
         py.figure(1)
         py.plot( xs, ydat, 'r+')
         poly = np.poly1d(fit)
@@ -161,7 +161,7 @@ class ElasticConstants(BaseTest):
         filledx = linspace(0,self.eps,100)
         py.plot(filledx, poly(filledx), 'g--')
         py.show()     
-        """
+        
         
         return coeffx2
 
@@ -187,6 +187,8 @@ class ElasticConstants(BaseTest):
         
         
         return elasticconstants
+
+
 
     def TestResults(self):
         """FCC Lattice Test Result

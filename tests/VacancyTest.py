@@ -10,14 +10,12 @@ import sys
 from ase.structure import bulk
 from ase import FIRE
 from scipy import array
+import scipy as sp
 
 class VacancyTest(BaseTest):
-    """NullTest does nothing, but serves as an example test.
-    
-        It inherits its functionality from BaseTest, and serves as a template for future
-    tests.  
-
-    Simply copy NullTest.py, and rename the file, and class name, and rewrite TestResults
+    """Vacancy Test creates an FCC crystal with the computed lattice constant
+        and then puts a vacancy in it, and returns the atomic positions, displacements
+        and the vacancy formation energy.
     """
     
     def __init__(self,potentialname,energy,TestDependencies=[],*args,**kwargs):
@@ -67,8 +65,102 @@ class VacancyTest(BaseTest):
         
         disp_field = array(disp_final) - array(disp_original)
        
-        return slab, e_original, e_loss, e_final, array(disp_original), disp_field
+        return slab, e_original, e_loss, e_final, array(disp_original), disp_field, slab.cell
         
+    def getElasticConstants(self):
+        """
+        import FCCLattice
+        fcclattice = FCCLattice.FCCLattice(self.potentialname,self.element)
+        results = fcclattice.TestResults()
+        """
+        results = self.RequireTest('ElasticConstants')
+        C11 = results['C11']
+        C12 = results['C12']
+        C44 = results['C44']
+        
+        return float(C11), float(C12), float(C44)
+
+
+    def kspaceLattice(self,cell):
+        
+        S = sum(cell,0)
+        
+        N = 10
+        
+        kspace = sp.mgrid[ 0:N, 0:N, 0:N]
+        
+        kspace = sp.reshape( kspace, (3,  N**3  ) )
+        kspace = kspace.T *  sp.pi/(2.0* S)
+        
+        return kspace
+
+    def doGreenFunctionCalc(self,disp_original,disp_field,cell):
+        
+        C11, C12, C44 = self.getElasticConstants()
+        
+        C0 = 1.0/3 * ( C11 + 2 * C12 )
+        
+        kspace = self.kspaceLattice(cell)
+        
+        print "Inside the green function calc"
+        
+        kx = kspace[:,0]
+        ky = kspace[:,1]
+        kz = kspace[:,2]
+        
+        Q1,Q2,Q3,Q4,Q5,Q6 = [1,1,1,1,1,1]
+        
+        denom = 1.0/C0 * (C12*kx*kz + C44*kx*kz)*((C12*kx*ky + C44*kx*ky)*(C12*ky*kz + C44*ky*kz) - \
+            (C12*kx*kz + C44*kx*kz)*(C44*kx**2 + C11*ky**2 + C44*kz**2)) - \
+            (C12*ky*kz + C44*ky*kz)*(-((C12*kx*ky + C44*kx*ky)*(C12*kx*kz + C44*kx*kz)) + \
+            (C12*ky*kz + C44*ky*kz)*(C11*kx**2 + C44*ky**2 + C44*kz**2)) + \
+            (C44*kx**2 + C44*ky**2 + C11*kz**2)*(-(C12*kx*ky + C44*kx*ky)**2 + \
+            (C44*kx**2 + C11*ky**2 + C44*kz**2)*(C11*kx**2 + C44*ky**2 + C44*kz**2))
+        
+        xval = 1.0/denom * -1j*(kx*(-(C12*ky*kz + C44*ky*kz)**2 + (C44*kx**2 + C44*ky**2 + C11*kz**2)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*Q1 + \
+            ky*((C12*kx*kz + C44*kx*kz)*(C12*ky*kz + C44*ky*kz) - (C12*kx*ky + C44*kx*ky)*(C44*kx**2 + C44*ky**2 + C11*kz**2))*\
+            Q2 + kz*((C12*kx*ky + C44*kx*ky)*(C12*ky*kz + C44*ky*kz) - \
+            (C12*kx*kz + C44*kx*kz)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*Q3 + \
+            kz*((C12*kx*kz + C44*kx*kz)*(C12*ky*kz + C44*ky*kz) - (C12*kx*ky + C44*kx*ky)*(C44*kx**2 + C44*ky**2 + C11*kz**2))*\
+            Q4 + ky*((C12*kx*ky + C44*kx*ky)*(C12*ky*kz + C44*ky*kz) -\
+            (C12*kx*kz + C44*kx*kz)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*Q4 + \
+            kx*((C12*kx*ky + C44*kx*ky)*(C12*ky*kz + C44*ky*kz) - (C12*kx*kz + C44*kx*kz)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*\
+            Q5 + kz*(-(C12*ky*kz + C44*ky*kz)**2 + (C44*kx**2 + C44*ky**2 + C11*kz**2)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*Q5 + \
+            kx*((C12*kx*kz + C44*kx*kz)*(C12*ky*kz + C44*ky*kz) - (C12*kx*ky + C44*kx*ky)*(C44*kx**2 + C44*ky**2 + C11*kz**2))*\
+            Q6 + ky*(-(C12*ky*kz + C44*ky*kz)**2 + (C44*kx**2 + C44*ky**2 + C11*kz**2)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*Q6)
+       
+        yval =  -1j*(kx*((C12*kx*kz + C44*kx*kz)*(C12*ky*kz + C44*ky*kz) - \
+            (C12*kx*ky + C44*kx*ky)*(C44*kx**2 + C44*ky**2 + C11*kz**2))*Q1 + \
+            ky*(-(C12*kx*kz + C44*kx*kz)**2 + (C44*kx**2 + C44*ky**2 + C11*kz**2)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q2 + \
+            kz*((C12*kx*ky + C44*kx*ky)*(C12*kx*kz + C44*kx*kz) - (C12*ky*kz + C44*ky*kz)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*\
+            Q3 + ky*((C12*kx*ky + C44*kx*ky)*(C12*kx*kz + C44*kx*kz) -\
+            (C12*ky*kz + C44*ky*kz)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q4 + \
+            kz*(-(C12*kx*kz + C44*kx*kz)**2 + (C44*kx**2 + C44*ky**2 + C11*kz**2)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q4 + \
+            kz*((C12*kx*kz + C44*kx*kz)*(C12*ky*kz + C44*ky*kz) - (C12*kx*ky + C44*kx*ky)*(C44*kx**2 + C44*ky**2 + C11*kz**2))*\
+            Q5 + kx*((C12*kx*ky + C44*kx*ky)*(C12*kx*kz + C44*kx*kz) -\
+            (C12*ky*kz + C44*ky*kz)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q5 + \
+            ky*((C12*kx*kz + C44*kx*kz)*(C12*ky*kz + C44*ky*kz) - (C12*kx*ky + C44*kx*ky)*(C44*kx**2 + C44*ky**2 + C11*kz**2))*\
+            Q6 + kx*(-(C12*kx*kz + C44*kx*kz)**2 + (C44*kx**2 + C44*ky**2 + C11*kz**2)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q6)
+              
+        zval = -1j*(kx*((C12*kx*ky + C44*kx*ky)*(C12*ky*kz + C44*ky*kz) - \
+            (C12*kx*kz + C44*kx*kz)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*Q1 + \
+            ky*((C12*kx*ky + C44*kx*ky)*(C12*kx*kz + C44*kx*kz) - (C12*ky*kz + C44*ky*kz)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*\
+            Q2 + kz*(-(C12*kx*ky + C44*kx*ky)**2 + (C44*kx**2 + C11*ky**2 + C44*kz**2)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q3 + \
+            kz*((C12*kx*ky + C44*kx*ky)*(C12*kx*kz + C44*kx*kz) - (C12*ky*kz + C44*ky*kz)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*\
+            Q4 + ky*(-(C12*kx*ky + C44*kx*ky)**2 + (C44*kx**2 + C11*ky**2 + C44*kz**2)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q4 + \
+            kz*((C12*kx*ky + C44*kx*ky)*(C12*ky*kz + C44*ky*kz) - (C12*kx*kz + C44*kx*kz)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*\
+            Q5 + kx*(-(C12*kx*ky + C44*kx*ky)**2 + (C44*kx**2 + C11*ky**2 + C44*kz**2)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q5 + \
+            ky*((C12*kx*ky + C44*kx*ky)*(C12*ky*kz + C44*ky*kz) - (C12*kx*kz + C44*kx*kz)*(C44*kx**2 + C11*ky**2 + C44*kz**2))*\
+            Q6 + kx*((C12*kx*ky + C44*kx*ky)*(C12*kx*kz + C44*kx*kz) -\
+            (C12*ky*kz + C44*ky*kz)*(C11*kx**2 + C44*ky**2 + C44*kz**2))*Q6)
+            
+        kdisp = array([ xval, yval, zval ] ).T
+               
+        
+        disp = sp.dot(   kdisp.T ,  sp.exp(  1j * sp.dot( kspace , disp_field.T ) ) ) 
+        
+               
+        return disp
         
     def TestResults(self):
         """Required module, the TestResults Module returns a dictionary of result. 
@@ -82,11 +174,14 @@ class VacancyTest(BaseTest):
             print "Not recommended to use EMT for this Test, takes too long, use ASAP instead"
             raise "PotentialError"
         
-        slab, e_original, e_loss, e_final, disp_original, disp_field = self.createLattice()
+        slab, e_original, e_loss, e_final, disp_original, disp_field, cell = self.createLattice()
         
         vacancyformation = e_final - e_original
         
         results = {'VacancyFormationEnergy': vacancyformation, "AtomPositions": disp_original.tolist(), 'DisplacementField': disp_field.tolist() } 
+        
+        self.doGreenFunctionCalc(disp_original, disp_field, cell) 
+        
 
         return results
 
