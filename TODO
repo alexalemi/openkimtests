@@ -1,0 +1,9 @@
+Here I will collect my thoughts for changes I can make.
+
+O - change the database up
+	maybe XML? mayble SQL?
+O - implement logging and write to a log file
+O - integrate an easy to use LAMMPS calculator
+O - integrate KIM
+O - make the test result access easy. (maybe compute if not done? )
+
