@@ -11,6 +11,8 @@ import sys
 import ase
 import argparse
 
+import logging
+
 #import xml library
 import xml.dom.minidom as mini
 
@@ -147,12 +149,12 @@ class BaseTest:
         
     def TestResults(self):
         """The Test Results method, runs the test and packages the result in a dictionary"""
-        raise LackingTestResults
+        raise LackingTestResultsError
         return {}
 
     def Verify(self):
         """Optional verify method, creates an easy to check visual verification of test results"""
-        raise LackingVerify
+        raise LackingVerifyError
         pass
         
     def main(self):

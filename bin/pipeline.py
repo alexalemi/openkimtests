@@ -44,10 +44,6 @@ def runTest(test,potential,el,verbose=True):
         print "Results stored in %s" % resultfilename
     return 0 
 
-def runTests(runAll = False):
-    print 
-    print "Test completed successfully in %f seconds" % (end-start)
-    print "Results stored in %s" % resultfilename
     
 def runTests(runAll = False, DFT = False):
     pipelinestart = time.time()

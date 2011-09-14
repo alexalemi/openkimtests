@@ -172,8 +172,8 @@ class VacancyTest(BaseTest):
         
         if self.potentialname == 'EMT':
             print "Not recommended to use EMT for this Test, takes too long, use ASAP instead"
-            raise "PotentialError"
-        
+            raise Exception("PotentialError")
+
         slab, e_original, e_loss, e_final, disp_original, disp_field, cell = self.createLattice()
         
         vacancyformation = e_final - e_original
