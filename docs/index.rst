@@ -11,6 +11,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   tests
+   pipeline
+   database
+   todo
+
 Indices and tables
 ==================
 
