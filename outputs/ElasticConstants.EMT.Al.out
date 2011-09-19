@@ -1,0 +1,17 @@
+Using a= 3.99448242188
+The fit coefficients are: 
+[  5.41753798e-01   5.74935789e-11  -3.05676499e-04]
+The fit coefficients are: 
+[  4.99743577e-01  -7.93641152e-10  -3.05676499e-04]
+The fit coefficients are: 
+[  1.97225846e-01  -1.80289117e-09  -3.05676499e-04]
+The fit coefficients are: 
+[  1.30401751e-01  -1.43464461e-09  -3.05676499e-04]
+The fit coefficients are: 
+[  1.42215826e-01  -2.10480924e-10  -3.05676499e-04]
+The fit coefficients are: 
+[  1.14338504e-01  -1.07986092e-09  -3.05676499e-04]
+
+ELASTIC CONSTANTS SHOULD BE: 
+[ 0.33607777  0.20567602  0.37344658  0.19722585  0.14221583  0.1143385 ]
+<?xml version="1.0" ?><test id="ElasticConstants"><config><potential>EMT</potential><element>Al</element><testdependencies/>['FCCLattice']</config><results><C44>22.7854972058</C44><C66>18.3190558456</C66><BulkModulus>39.9171705445</BulkModulus><C13>59.8327648094</C13><C12>32.952946246</C12><C11>53.8456191414</C11><C33>31.5990780069</C33></results></test>

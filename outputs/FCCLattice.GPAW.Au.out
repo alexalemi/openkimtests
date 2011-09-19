@@ -1,0 +1,4573 @@
+
+  ___ ___ ___ _ _ _  
+ |   |   |_  | | | | 
+ | | | | | . | | | | 
+ |__ |  _|___|_____|  0.7.2.6974
+ |___|_|             
+
+User: alemi@Cerebellum
+Date: Thu Feb  3 00:34:57 2011
+Arch: i686
+Pid:  12685
+Dir:  /usr/lib/python2.6/dist-packages/gpaw
+ase:   /home/alemi/ase/ase  version:  3.5.0.1614
+numpy: /usr/lib/python2.6/dist-packages/numpy
+units: Angstrom and eV
+
+Memory estimate
+---------------
+Calculator  130.29 MiB
+    Initial overhead  123.70 MiB
+    Density  3.70 MiB
+        Arrays  0.10 MiB
+        Localized functions  3.29 MiB
+        Mixer  0.02 MiB
+        Interpolator  0.28 MiB
+    Hamiltonian  0.85 MiB
+        Arrays  0.07 MiB
+        Restrictor  0.16 MiB
+        XC 3D grid  0.03 MiB
+        Poisson  0.35 MiB
+        vbar  0.24 MiB
+    Wavefunctions  2.04 MiB
+        Arrays psit_nG  1.17 MiB
+        Eigensolver  0.16 MiB
+        Projectors  0.55 MiB
+        Overlap op  0.12 MiB
+        Kinetic operator  0.04 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    1.500000    1.500000     8     0.2652
+  2. axis:    yes    1.500000    0.000000    1.500000     8     0.2652
+  3. axis:    yes    1.500000    1.500000    0.000000     8     0.2652
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:35:09  +2.2             21.77089    28     12     
+iter:   2  00:35:11  -1.5             20.56856    4             
+iter:   3  00:35:13  -2.2             20.42259    3             
+iter:   4  00:35:14  -2.7   -2.2      20.81443    5      5      
+iter:   5  00:35:16  -2.9   -2.2      21.19833    4      5      
+iter:   6  00:35:18  -3.4   -2.2      20.73170    5      5      
+iter:   7  00:35:20  -2.4   -2.2      21.93547    10     7      
+iter:   8  00:35:22  -2.4   -2.0      22.21091    7      7      
+iter:   9  00:35:23  -2.9   -2.5      22.18124    3      5      
+iter:  10  00:35:25  -3.2   -2.6      22.16443    3      4      
+iter:  11  00:35:27  -3.3   -2.4      22.20684    3      4      
+iter:  12  00:35:29  -3.4   -2.4      22.22449    4      5      
+iter:  13  00:35:30  -3.8   -2.5      22.14669    4      5      
+iter:  14  00:35:32  -3.2   -2.6      22.24145    6      6      
+iter:  15  00:35:34  -3.1   -3.0      22.24371    5      4      
+iter:  16  00:35:36  -3.5   -2.8      22.24199    3      4      
+iter:  17  00:35:38  -3.2   -2.8      22.19116    6      7      
+iter:  18  00:35:39  -3.6   -2.1      22.17931    3      5      
+iter:  19  00:35:41  -3.7   -2.1      22.22185    4      7      
+iter:  20  00:35:43  -4.3   -2.8      22.22017    3      5      
+iter:  21  00:35:45  -3.7   -3.1      22.24124    5      6      
+iter:  22  00:35:47  -3.6   -2.6      22.22271    4      5      
+iter:  23  00:35:48  -4.5   -3.1      22.23506    4      5      
+iter:  24  00:35:50  -5.0   -3.5      22.23840    3      4      
+iter:  25  00:35:52  -5.7   -3.9      22.23877    2      2      
+iter:  26  00:35:54  -5.6   -4.0      22.23961    3      3      
+iter:  27  00:35:56  -6.6   -3.9      22.23946    3      2      
+iter:  28  00:35:57  -6.9   -4.0      22.23921    2      1      
+iter:  29  00:35:59  -7.0   -4.0      22.23936    2      4      
+iter:  30  00:36:01  -6.6   -3.6      22.23913    3      3      
+iter:  31  00:36:03  -7.3   -3.9      22.23906    2      3      
+iter:  32  00:36:04  -6.9   -4.0      22.23887    2      1      
+iter:  33  00:36:06  -7.5   -4.0      22.23887    2      2      
+iter:  34  00:36:08  -6.7   -4.0      22.23918    3      2      
+iter:  35  00:36:10  -6.1   -4.0      22.23993    3      3      
+iter:  36  00:36:12  -5.9   -4.1      22.24002    3      2      
+iter:  37  00:36:13  -5.8   -4.3      22.24058    3      2      
+iter:  38  00:36:15  -5.9   -4.4      22.24075    3      2      
+iter:  39  00:36:17  -5.8   -4.5      22.24075    3      2      
+iter:  40  00:36:19  -6.2   -4.5      22.24075    2      2      
+iter:  41  00:36:20  -6.7   -4.2      22.24050    2      2      
+iter:  42  00:36:22  -6.3   -3.9      22.24080    3      2      
+iter:  43  00:36:24  -6.8   -4.1      22.24084    2      2      
+iter:  44  00:36:26  -6.0   -4.1      22.24066    3      3      
+iter:  45  00:36:28  -6.4   -4.5      22.24070    2      2      
+iter:  46  00:36:29  -6.5   -4.4      22.24064    2      2      
+iter:  47  00:36:31  -6.9   -4.6      22.24048    2      1      
+iter:  48  00:36:33  -7.2   -4.3      22.24074    2      1      
+iter:  49  00:36:35  -7.5   -4.3      22.24090    2      1      
+iter:  50  00:36:36  -7.7   -4.3      22.24069    2      3      
+iter:  51  00:36:38  -8.0   -4.5      22.24057    2      1      
+iter:  52  00:36:40  -7.0   -4.6      22.24074    3      2      
+iter:  53  00:36:42  -7.3   -4.4      22.24060    2      2      
+iter:  54  00:36:44  -7.9   -4.6      22.24058    2      2      
+iter:  55  00:36:45  -8.2   -4.9      22.24061    2      1      
+iter:  56  00:36:47  -8.2   -4.9      22.24057    2      1      
+iter:  57  00:36:49  -8.1   -5.0      22.24060    2      1      
+iter:  58  00:36:51  -7.4   -5.0      22.24078    2      1      
+iter:  59  00:36:52  -7.6   -5.3      22.24078    2      1      
+iter:  60  00:36:54  -7.9   -5.1      22.24069    2      1      
+iter:  61  00:36:56  -7.9   -4.9      22.24078    2      1      
+iter:  62  00:36:58  -8.1   -4.8      22.24074    2      1      
+iter:  63  00:37:00  -8.4   -4.7      22.24061    2      1      
+iter:  64  00:37:01  -8.4   -4.7      22.24050    2      2      
+iter:  65  00:37:03  -8.8   -4.5      22.24085    2      2      
+iter:  66  00:37:05  -8.6   -4.7      22.24061    2      2      
+iter:  67  00:37:07  -9.6   -5.1      22.24075    2      1      
+------------------------------------
+Converged After 67 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:       +473.39440
+Potential:     -410.94258
+External:        +0.00000
+XC:             -41.60339
+Entropy (-ST):   -0.02387
+Local:           +1.40426
+-------------------------
+Free Energy:    +22.22882
+Zero Kelvin:    +22.24075
+
+Fermi Level: 39.41805
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-0.84211291 -0.84211291 -0.84211291]
+
+Memory estimate
+---------------
+Calculator  159.62 MiB
+    Initial overhead  153.59 MiB
+    Density  3.25 MiB
+        Arrays  0.10 MiB
+        Localized functions  2.84 MiB
+        Mixer  0.02 MiB
+        Interpolator  0.28 MiB
+    Hamiltonian  0.81 MiB
+        Arrays  0.07 MiB
+        Restrictor  0.16 MiB
+        XC 3D grid  0.03 MiB
+        Poisson  0.35 MiB
+        vbar  0.21 MiB
+    Wavefunctions  1.97 MiB
+        Arrays psit_nG  1.17 MiB
+        Eigensolver  0.16 MiB
+        Projectors  0.48 MiB
+        Overlap op  0.12 MiB
+        Kinetic operator  0.04 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    1.575000    1.575000     8     0.2784
+  2. axis:    yes    1.575000    0.000000    1.575000     8     0.2784
+  3. axis:    yes    1.575000    1.575000    0.000000     8     0.2784
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:37:17  +2.0             11.49947    23     12     
+iter:   2  00:37:18  -1.7             10.57218    4             
+iter:   3  00:37:19  -2.3             10.45053    3             
+iter:   4  00:37:21  -2.8   -1.8      10.64234    4      5      
+iter:   5  00:37:22  -2.6   -1.8      11.34304    8      7      
+iter:   6  00:37:24  -2.9   -2.1      11.37662    4      5      
+iter:   7  00:37:25  -3.5   -2.2      11.31805    3      7      
+iter:   8  00:37:27  -2.7   -1.8      11.41176    7      8      
+iter:   9  00:37:29  -3.2   -2.8      11.40064    3      5      
+iter:  10  00:37:30  -3.5   -3.0      11.39576    3      4      
+iter:  11  00:37:32  -3.7   -2.9      11.39162    3      4      
+iter:  12  00:37:33  -4.1   -2.7      11.39247    3      4      
+iter:  13  00:37:35  -4.2   -2.6      11.38974    3      5      
+iter:  14  00:37:36  -4.3   -2.8      11.38628    3      5      
+iter:  15  00:37:38  -4.6   -3.0      11.38847    3      5      
+iter:  16  00:37:39  -4.9   -3.1      11.39053    3      3      
+iter:  17  00:37:41  -3.9   -3.2      11.39314    4      5      
+iter:  18  00:37:42  -4.7   -3.1      11.39416    4      5      
+iter:  19  00:37:44  -5.2   -3.3      11.39546    3      4      
+iter:  20  00:37:45  -5.6   -3.7      11.39528    2      3      
+iter:  21  00:37:47  -5.9   -3.9      11.39534    2      2      
+iter:  22  00:37:48  -6.1   -4.0      11.39538    3      3      
+iter:  23  00:37:50  -6.7   -4.7      11.39507    2      1      
+iter:  24  00:37:51  -6.9   -4.8      11.39523    2      1      
+iter:  25  00:37:53  -7.1   -4.7      11.39533    2      2      
+iter:  26  00:37:54  -7.4   -4.6      11.39528    2      1      
+iter:  27  00:37:56  -7.4   -4.6      11.39520    2      2      
+iter:  28  00:37:57  -7.8   -4.8      11.39526    2      1      
+iter:  29  00:37:59  -7.7   -4.8      11.39519    2      2      
+iter:  30  00:38:01  -8.1   -4.5      11.39555    2      1      
+iter:  31  00:38:02  -8.4   -5.3      11.39544    2      1      
+iter:  32  00:38:04  -8.6   -5.5      11.39532    2      1      
+iter:  33  00:38:05  -8.8   -5.7      11.39528    1      1      
+iter:  34  00:38:07  -9.1   -5.7      11.39526    2      1      
+------------------------------------
+Converged After 34 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:       +316.79035
+Potential:     -275.25072
+External:        +0.00000
+XC:             -30.96204
+Entropy (-ST):   -0.02388
+Local:           +0.82961
+-------------------------
+Free Energy:    +11.38332
+Zero Kelvin:    +11.39526
+
+Fermi Level: 32.38706
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-0.95485173 -0.95485173 -0.95485173]
+
+Memory estimate
+---------------
+Calculator  168.63 MiB
+    Initial overhead  163.06 MiB
+    Density  2.88 MiB
+        Arrays  0.10 MiB
+        Localized functions  2.47 MiB
+        Mixer  0.02 MiB
+        Interpolator  0.28 MiB
+    Hamiltonian  0.79 MiB
+        Arrays  0.07 MiB
+        Restrictor  0.16 MiB
+        XC 3D grid  0.03 MiB
+        Poisson  0.35 MiB
+        vbar  0.18 MiB
+    Wavefunctions  1.90 MiB
+        Arrays psit_nG  1.17 MiB
+        Eigensolver  0.16 MiB
+        Projectors  0.41 MiB
+        Overlap op  0.12 MiB
+        Kinetic operator  0.04 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    1.650000    1.650000     8     0.2917
+  2. axis:    yes    1.650000    0.000000    1.650000     8     0.2917
+  3. axis:    yes    1.650000    1.650000    0.000000     8     0.2917
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:38:15  +1.9             4.76855     18     12     
+iter:   2  00:38:16  -1.8             4.03926     4             
+iter:   3  00:38:17  -2.5             3.93864     3             
+iter:   4  00:38:18  -3.0   -1.6      4.04508     3      6      
+iter:   5  00:38:20  -2.7   -1.6      4.47965     4      8      
+iter:   6  00:38:21  -3.3   -2.4      4.46740     3      5      
+iter:   7  00:38:22  -3.1   -2.3      4.28512     5      7      
+iter:   8  00:38:24  -2.9   -1.9      4.49337     7      7      
+iter:   9  00:38:25  -3.3   -2.8      4.47800     4      6      
+iter:  10  00:38:26  -3.8   -3.1      4.47880     3      5      
+iter:  11  00:38:28  -4.0   -2.6      4.47736     2      5      
+iter:  12  00:38:29  -4.0   -2.7      4.46960     3      5      
+iter:  13  00:38:30  -4.1   -2.9      4.46168     3      6      
+iter:  14  00:38:32  -4.4   -3.1      4.47489     3      5      
+iter:  15  00:38:33  -4.8   -3.3      4.47647     3      5      
+iter:  16  00:38:34  -4.9   -3.4      4.47846     3      3      
+iter:  17  00:38:36  -5.0   -3.6      4.47888     3      3      
+iter:  18  00:38:37  -5.3   -3.7      4.47860     3      3      
+iter:  19  00:38:38  -5.7   -3.7      4.47848     2      2      
+iter:  20  00:38:40  -6.1   -3.7      4.47834     2      1      
+iter:  21  00:38:41  -5.9   -3.7      4.47826     3      3      
+iter:  22  00:38:42  -6.3   -3.8      4.47824     2      1      
+iter:  23  00:38:43  -6.6   -3.8      4.47829     2      2      
+iter:  24  00:38:45  -6.9   -3.8      4.47834     2      1      
+iter:  25  00:38:46  -5.8   -3.7      4.47856     3      3      
+iter:  26  00:38:47  -6.1   -3.9      4.47862     3      3      
+iter:  27  00:38:49  -6.8   -4.1      4.47868     2      2      
+iter:  28  00:38:50  -6.9   -4.1      4.47889     2      1      
+iter:  29  00:38:51  -7.1   -4.2      4.47881     2      1      
+iter:  30  00:38:53  -7.7   -4.2      4.47865     2      1      
+iter:  31  00:38:54  -8.1   -4.2      4.47890     2      1      
+iter:  32  00:38:55  -8.0   -4.2      4.47856     2      2      
+iter:  33  00:38:57  -6.6   -4.2      4.47851     3      2      
+iter:  34  00:38:58  -7.5   -4.3      4.47876     2      1      
+iter:  35  00:38:59  -7.5   -4.3      4.47872     2      2      
+iter:  36  00:39:00  -8.2   -4.5      4.47873     2      1      
+iter:  37  00:39:02  -8.5   -4.5      4.47871     2      1      
+iter:  38  00:39:03  -8.9   -4.5      4.47865     2      1      
+iter:  39  00:39:04  -8.8   -4.5      4.47842     2      1      
+iter:  40  00:39:06  -7.8   -4.6      4.47860     2      2      
+iter:  41  00:39:07  -7.8   -4.8      4.47851     2      1      
+iter:  42  00:39:08  -7.7   -5.0      4.47845     2      1      
+iter:  43  00:39:10  -8.3   -5.2      4.47860     2      1      
+iter:  44  00:39:11  -8.5   -5.2      4.47868     2      1      
+iter:  45  00:39:12  -8.7   -5.3      4.47869     2      1      
+iter:  46  00:39:13  -8.9   -5.2      4.47869     1      1      
+iter:  47  00:39:15  -9.2   -5.1      4.47868     2      1      
+------------------------------------
+Converged After 47 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:       +203.73660
+Potential:     -177.12659
+External:        +0.00000
+XC:             -22.69807
+Entropy (-ST):   -0.02421
+Local:           +0.57885
+-------------------------
+Free Energy:     +4.46658
+Zero Kelvin:     +4.47868
+
+Fermi Level: 26.64174
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.06934326 -1.06934326 -1.06934326]
+
+Memory estimate
+---------------
+Calculator  177.22 MiB
+    Initial overhead  172.03 MiB
+    Density  2.57 MiB
+        Arrays  0.10 MiB
+        Localized functions  2.16 MiB
+        Mixer  0.02 MiB
+        Interpolator  0.28 MiB
+    Hamiltonian  0.76 MiB
+        Arrays  0.07 MiB
+        Restrictor  0.16 MiB
+        XC 3D grid  0.03 MiB
+        Poisson  0.35 MiB
+        vbar  0.16 MiB
+    Wavefunctions  1.85 MiB
+        Arrays psit_nG  1.17 MiB
+        Eigensolver  0.16 MiB
+        Projectors  0.36 MiB
+        Overlap op  0.12 MiB
+        Kinetic operator  0.04 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    1.725000    1.725000     8     0.3049
+  2. axis:    yes    1.725000    0.000000    1.725000     8     0.3049
+  3. axis:    yes    1.725000    1.725000    0.000000     8     0.3049
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:39:22  +1.8             0.47488     15     13     
+iter:   2  00:39:23  -2.0            -0.11767     3             
+iter:   3  00:39:24  -2.6            -0.20373     3             
+iter:   4  00:39:25  -3.1   -1.5     -0.12264     3      6      
+iter:   5  00:39:26  -2.3   -1.5      0.18412     5      8      
+iter:   6  00:39:27  -3.4   -2.4      0.16063     4      6      
+iter:   7  00:39:29  -3.2   -2.2      0.03539     5      7      
+iter:   8  00:39:30  -3.1   -2.0      0.18357     6      7      
+iter:   9  00:39:31  -3.6   -3.0      0.17557     3      5      
+iter:  10  00:39:32  -4.1   -3.0      0.17679     3      5      
+iter:  11  00:39:33  -4.4   -2.7      0.17598     2      5      
+iter:  12  00:39:35  -4.2   -2.7      0.17088     3      5      
+iter:  13  00:39:36  -4.4   -3.0      0.16794     3      5      
+iter:  14  00:39:37  -4.7   -3.0      0.16996     3      4      
+iter:  15  00:39:38  -4.8   -3.0      0.17339     3      4      
+iter:  16  00:39:39  -5.5   -3.2      0.17316     2      3      
+iter:  17  00:39:41  -5.1   -3.2      0.17505     3      5      
+iter:  18  00:39:42  -5.9   -3.0      0.17429     3      5      
+iter:  19  00:39:43  -5.7   -3.3      0.17500     3      4      
+iter:  20  00:39:44  -5.7   -3.5      0.17515     3      3      
+iter:  21  00:39:45  -5.9   -3.6      0.17508     3      3      
+iter:  22  00:39:47  -6.6   -4.0      0.17505     2      2      
+iter:  23  00:39:48  -6.8   -4.1      0.17522     2      2      
+iter:  24  00:39:49  -7.1   -4.2      0.17531     2      1      
+iter:  25  00:39:50  -7.4   -4.2      0.17497     2      1      
+iter:  26  00:39:51  -7.0   -4.3      0.17466     2      2      
+iter:  27  00:39:53  -7.9   -4.7      0.17522     2      1      
+iter:  28  00:39:54  -8.2   -4.8      0.17506     1      2      
+iter:  29  00:39:55  -8.4   -5.2      0.17484     2      1      
+iter:  30  00:39:56  -8.0   -5.3      0.17499     2      1      
+iter:  31  00:39:57  -8.9   -5.4      0.17497     2      1      
+iter:  32  00:39:59  -8.9   -5.4      0.17499     1      1      
+iter:  33  00:40:00  -9.4   -5.5      0.17501     1      1      
+------------------------------------
+Converged After 33 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:       +124.51148
+Potential:     -108.37475
+External:        +0.00000
+XC:             -16.39886
+Entropy (-ST):   -0.02720
+Local:           +0.45076
+-------------------------
+Free Energy:     +0.16141
+Zero Kelvin:     +0.17501
+
+Fermi Level: 21.92867
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.18516001 -1.18516001 -1.18516001]
+
+Memory estimate
+---------------
+Calculator  189.44 MiB
+    Initial overhead  174.62 MiB
+    Density  6.74 MiB
+        Arrays  0.34 MiB
+        Localized functions  5.68 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.16 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.42 MiB
+    Wavefunctions  5.92 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.95 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    1.875000    1.875000    12     0.2210
+  2. axis:    yes    1.875000    0.000000    1.875000    12     0.2210
+  3. axis:    yes    1.875000    1.875000    0.000000    12     0.2210
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:40:12  +2.5            -3.26041     11     11     
+iter:   2  00:40:14  -1.8            -3.73674     3             
+iter:   3  00:40:16  -2.5            -3.80767     2             
+iter:   4  00:40:19  -2.6   -1.4     -3.69981     4      6      
+iter:   5  00:40:22  -1.6   -1.4     -3.43383     8      7      
+iter:   6  00:40:24  -3.0   -2.2     -3.47210     3      5      
+iter:   7  00:40:27  -3.5   -2.2     -3.46566     3      5      
+iter:   8  00:40:29  -3.9   -3.0     -3.46623     3      4      
+iter:   9  00:40:32  -4.3   -3.2     -3.46661     2      3      
+iter:  10  00:40:34  -4.5   -3.1     -3.46694     3      4      
+iter:  11  00:40:37  -4.9   -2.9     -3.46701     2      4      
+iter:  12  00:40:39  -4.8   -3.0     -3.46727     3      4      
+iter:  13  00:40:42  -5.3   -3.1     -3.46737     2      3      
+iter:  14  00:40:44  -5.1   -3.1     -3.46715     3      4      
+iter:  15  00:40:47  -5.9   -3.1     -3.46726     2      4      
+iter:  16  00:40:49  -6.0   -3.1     -3.46708     2      4      
+iter:  17  00:40:52  -6.3   -3.5     -3.46702     2      3      
+iter:  18  00:40:54  -6.8   -3.6     -3.46707     1      3      
+iter:  19  00:40:57  -6.1   -3.7     -3.46706     2      3      
+iter:  20  00:40:59  -7.2   -4.0     -3.46718     1      1      
+iter:  21  00:41:02  -7.0   -4.1     -3.46704     2      2      
+iter:  22  00:41:04  -7.5   -4.5     -3.46683     2      1      
+iter:  23  00:41:07  -7.8   -4.6     -3.46714     2      1      
+iter:  24  00:41:09  -7.8   -4.6     -3.46704     2      2      
+iter:  25  00:41:12  -7.7   -4.1     -3.46711     2      2      
+iter:  26  00:41:14  -8.5   -4.6     -3.46716     2      1      
+iter:  27  00:41:17  -8.5   -5.1     -3.46708     2      1      
+iter:  28  00:41:19  -9.1   -5.2     -3.46713     1      1      
+------------------------------------
+Converged After 28 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:        +33.92728
+Potential:      -29.51691
+External:        +0.00000
+XC:              -8.11043
+Entropy (-ST):   -0.03829
+Local:           +0.25208
+-------------------------
+Free Energy:     -3.48627
+Zero Kelvin:     -3.46713
+
+Fermi Level: 14.93034
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-0.94690224 -0.94690224 -0.94690224]
+
+Memory estimate
+---------------
+Calculator  236.88 MiB
+    Initial overhead  223.52 MiB
+    Density  5.57 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.51 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.07 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.34 MiB
+    Wavefunctions  5.73 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.76 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.025000    2.025000    12     0.2386
+  2. axis:    yes    2.025000    0.000000    2.025000    12     0.2386
+  3. axis:    yes    2.025000    2.025000    0.000000    12     0.2386
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:41:28  +2.3            -4.39243     10     11     
+iter:   2  00:41:30  -2.1            -4.69561     3             
+iter:   3  00:41:32  -2.9            -4.73783     2             
+iter:   4  00:41:34  -2.7   -1.3     -4.60588     4      6      
+iter:   5  00:41:36  -1.7   -1.4     -4.36379     8      7      
+iter:   6  00:41:38  -3.1   -2.1     -4.40435     4      5      
+iter:   7  00:41:41  -3.8   -2.3     -4.40430     3      5      
+iter:   8  00:41:43  -4.4   -3.1     -4.40493     3      4      
+iter:   9  00:41:45  -4.9   -3.5     -4.40487     2      3      
+iter:  10  00:41:47  -5.1   -3.5     -4.40528     2      3      
+iter:  11  00:41:49  -5.5   -3.3     -4.40496     2      3      
+iter:  12  00:41:51  -5.5   -3.5     -4.40492     2      3      
+iter:  13  00:41:53  -5.8   -3.7     -4.40532     2      3      
+iter:  14  00:41:55  -6.2   -3.7     -4.40505     2      3      
+iter:  15  00:41:58  -6.4   -4.0     -4.40478     2      1      
+iter:  16  00:42:00  -6.7   -4.1     -4.40498     2      2      
+iter:  17  00:42:02  -7.1   -4.1     -4.40477     2      1      
+iter:  18  00:42:04  -7.3   -4.2     -4.40502     2      2      
+iter:  19  00:42:06  -7.4   -4.5     -4.40523     2      2      
+iter:  20  00:42:08  -7.9   -4.9     -4.40510     2      1      
+iter:  21  00:42:10  -8.0   -4.9     -4.40507     2      1      
+iter:  22  00:42:12  -8.5   -5.1     -4.40515     1      1      
+iter:  23  00:42:15  -8.3   -5.2     -4.40516     2      1      
+iter:  24  00:42:17  -9.2   -5.7     -4.40515     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -5.26415
+Potential:       +4.24297
+External:        +0.00000
+XC:              -3.57644
+Entropy (-ST):   -0.02365
+Local:           +0.20429
+-------------------------
+Free Energy:     -4.41698
+Zero Kelvin:     -4.40515
+
+Fermi Level: 10.07111
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.10789603 -1.10789603 -1.10789603]
+
+Memory estimate
+---------------
+Calculator  234.98 MiB
+    Initial overhead  223.52 MiB
+    Density  4.04 MiB
+        Arrays  0.34 MiB
+        Localized functions  2.98 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  1.95 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.22 MiB
+    Wavefunctions  5.47 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.50 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.325000    2.325000    12     0.2740
+  2. axis:    yes    2.325000    0.000000    2.325000    12     0.2740
+  3. axis:    yes    2.325000    2.325000    0.000000    12     0.2740
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:42:22  +1.8            -3.72183     10     12     
+iter:   2  00:42:24  -2.8            -3.84723     3             
+iter:   3  00:42:25  -3.4            -3.85982     2             
+iter:   4  00:42:27  -3.0   -1.3     -3.74970     5      6      
+iter:   5  00:42:29  -2.1   -1.4     -3.59312     8      7      
+iter:   6  00:42:30  -3.3   -2.0     -3.62383     4      6      
+iter:   7  00:42:32  -3.6   -2.4     -3.62377     4      6      
+iter:   8  00:42:34  -5.0   -3.2     -3.62447     2      3      
+iter:   9  00:42:35  -5.5   -3.3     -3.62467     2      3      
+iter:  10  00:42:37  -5.8   -3.5     -3.62484     2      3      
+iter:  11  00:42:39  -6.0   -3.7     -3.62447     2      2      
+iter:  12  00:42:40  -6.1   -3.7     -3.62428     2      2      
+iter:  13  00:42:42  -6.6   -4.2     -3.62484     1      1      
+iter:  14  00:42:44  -6.9   -4.3     -3.62484     2      2      
+iter:  15  00:42:45  -6.7   -4.5     -3.62478     2      1      
+iter:  16  00:42:47  -7.2   -4.6     -3.62426     2      1      
+iter:  17  00:42:49  -7.5   -4.7     -3.62462     2      1      
+iter:  18  00:42:50  -8.1   -4.8     -3.62489     2      1      
+iter:  19  00:42:52  -8.4   -4.9     -3.62478     2      1      
+iter:  20  00:42:53  -8.7   -4.9     -3.62460     1      1      
+iter:  21  00:42:55  -8.5   -5.1     -3.62472     2      1      
+iter:  22  00:42:57  -9.1   -5.2     -3.62470     1      1      
+------------------------------------
+Converged After 22 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:        -23.10653
+Potential:      +19.22641
+External:        +0.00000
+XC:              +0.09503
+Entropy (-ST):   -0.01715
+Local:           +0.16897
+-------------------------
+Free Energy:     -3.63328
+Zero Kelvin:     -3.62470
+
+Fermi Level: 3.99281
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.4535171 -1.4535171 -1.4535171]
+
+Memory estimate
+---------------
+Calculator  235.80 MiB
+    Initial overhead  223.52 MiB
+    Density  4.70 MiB
+        Arrays  0.34 MiB
+        Localized functions  3.64 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.00 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.27 MiB
+    Wavefunctions  5.58 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.61 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.175000    2.175000    12     0.2563
+  2. axis:    yes    2.175000    0.000000    2.175000    12     0.2563
+  3. axis:    yes    2.175000    2.175000    0.000000    12     0.2563
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:43:04  +2.0            -4.26095     10     12     
+iter:   2  00:43:05  -2.5            -4.44857     3             
+iter:   3  00:43:07  -3.2            -4.47232     2             
+iter:   4  00:43:09  -2.8   -1.3     -4.34154     5      6      
+iter:   5  00:43:11  -1.8   -1.4     -4.13424     9      7      
+iter:   6  00:43:13  -3.2   -2.0     -4.17216     3      5      
+iter:   7  00:43:15  -3.5   -2.4     -4.17350     4      5      
+iter:   8  00:43:17  -4.9   -3.2     -4.17464     3      3      
+iter:   9  00:43:19  -5.2   -3.5     -4.17454     2      3      
+iter:  10  00:43:20  -5.6   -3.5     -4.17431     2      2      
+iter:  11  00:43:22  -5.2   -3.6     -4.17443     2      2      
+iter:  12  00:43:24  -6.4   -3.6     -4.17445     2      3      
+iter:  13  00:43:26  -6.7   -4.2     -4.17448     2      2      
+iter:  14  00:43:28  -7.0   -4.4     -4.17452     2      1      
+iter:  15  00:43:30  -7.1   -4.4     -4.17438     2      1      
+iter:  16  00:43:32  -7.2   -4.3     -4.17453     2      2      
+iter:  17  00:43:33  -7.9   -4.7     -4.17443     1      1      
+iter:  18  00:43:35  -7.9   -4.7     -4.17455     2      1      
+iter:  19  00:43:37  -8.5   -4.6     -4.17437     2      1      
+iter:  20  00:43:39  -8.5   -4.7     -4.17427     2      1      
+iter:  21  00:43:41  -8.7   -4.8     -4.17438     2      2      
+iter:  22  00:43:43  -9.0   -5.1     -4.17451     1      1      
+------------------------------------
+Converged After 22 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:        -19.66108
+Potential:      +16.47268
+External:        +0.00000
+XC:              -1.14809
+Entropy (-ST):   -0.01779
+Local:           +0.17088
+-------------------------
+Free Energy:     -4.18340
+Zero Kelvin:     -4.17451
+
+Fermi Level: 6.55805
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.27625229 -1.27625229 -1.27625229]
+
+Memory estimate
+---------------
+Calculator  238.33 MiB
+    Initial overhead  223.52 MiB
+    Density  6.74 MiB
+        Arrays  0.34 MiB
+        Localized functions  5.68 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.16 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.42 MiB
+    Wavefunctions  5.92 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.95 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    1.875000    1.875000    12     0.2210
+  2. axis:    yes    1.875000    0.000000    1.875000    12     0.2210
+  3. axis:    yes    1.875000    1.875000    0.000000    12     0.2210
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:43:55  +2.5            -3.26041     11     11     
+iter:   2  00:43:57  -1.8            -3.73674     3             
+iter:   3  00:43:59  -2.5            -3.80767     2             
+iter:   4  00:44:02  -2.6   -1.4     -3.69981     4      6      
+iter:   5  00:44:04  -1.6   -1.4     -3.43383     8      7      
+iter:   6  00:44:07  -3.0   -2.2     -3.47210     3      5      
+iter:   7  00:44:10  -3.5   -2.2     -3.46566     3      5      
+iter:   8  00:44:12  -3.9   -3.0     -3.46623     3      4      
+iter:   9  00:44:15  -4.3   -3.2     -3.46661     2      3      
+iter:  10  00:44:17  -4.5   -3.1     -3.46694     3      4      
+iter:  11  00:44:20  -4.9   -2.9     -3.46701     2      4      
+iter:  12  00:44:22  -4.8   -3.0     -3.46727     3      4      
+iter:  13  00:44:25  -5.3   -3.1     -3.46737     2      3      
+iter:  14  00:44:27  -5.1   -3.1     -3.46715     3      4      
+iter:  15  00:44:30  -5.9   -3.1     -3.46726     2      4      
+iter:  16  00:44:32  -6.0   -3.1     -3.46708     2      4      
+iter:  17  00:44:35  -6.3   -3.5     -3.46702     2      3      
+iter:  18  00:44:37  -6.8   -3.6     -3.46707     1      3      
+iter:  19  00:44:40  -6.1   -3.7     -3.46706     2      3      
+iter:  20  00:44:42  -7.2   -4.0     -3.46718     1      1      
+iter:  21  00:44:45  -7.0   -4.1     -3.46704     2      2      
+iter:  22  00:44:47  -7.5   -4.5     -3.46683     2      1      
+iter:  23  00:44:50  -7.8   -4.6     -3.46714     2      1      
+iter:  24  00:44:52  -7.8   -4.6     -3.46704     2      2      
+iter:  25  00:44:55  -7.7   -4.1     -3.46711     2      2      
+iter:  26  00:44:57  -8.5   -4.6     -3.46716     2      1      
+iter:  27  00:45:00  -8.5   -5.1     -3.46708     2      1      
+iter:  28  00:45:02  -9.1   -5.2     -3.46713     1      1      
+------------------------------------
+Converged After 28 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:        +33.92728
+Potential:      -29.51691
+External:        +0.00000
+XC:              -8.11043
+Entropy (-ST):   -0.03829
+Local:           +0.25208
+-------------------------
+Free Energy:     -3.48627
+Zero Kelvin:     -3.46713
+
+Fermi Level: 14.93034
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-0.94690224 -0.94690224 -0.94690224]
+
+Memory estimate
+---------------
+Calculator  236.30 MiB
+    Initial overhead  223.52 MiB
+    Density  5.10 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.04 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.03 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.30 MiB
+    Wavefunctions  5.65 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.68 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.100000    2.100000    12     0.2475
+  2. axis:    yes    2.100000    0.000000    2.100000    12     0.2475
+  3. axis:    yes    2.100000    2.100000    0.000000    12     0.2475
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:45:10  +2.1            -4.41299     10     11     
+iter:   2  00:45:12  -2.3            -4.65120     3             
+iter:   3  00:45:14  -3.0            -4.68293     2             
+iter:   4  00:45:16  -2.8   -1.3     -4.54837     5      6      
+iter:   5  00:45:18  -1.7   -1.4     -4.31987     9      7      
+iter:   6  00:45:20  -3.2   -2.1     -4.36077     4      5      
+iter:   7  00:45:22  -3.7   -2.3     -4.36209     3      5      
+iter:   8  00:45:24  -4.5   -3.1     -4.36285     3      4      
+iter:   9  00:45:26  -5.0   -3.3     -4.36242     3      3      
+iter:  10  00:45:28  -5.2   -3.6     -4.36322     2      1      
+iter:  11  00:45:30  -5.4   -3.6     -4.36259     3      3      
+iter:  12  00:45:32  -5.9   -3.5     -4.36297     2      1      
+iter:  13  00:45:34  -5.9   -3.5     -4.36304     3      3      
+iter:  14  00:45:36  -6.7   -3.6     -4.36251     2      1      
+iter:  15  00:45:38  -6.6   -3.6     -4.36279     2      3      
+iter:  16  00:45:40  -7.1   -3.7     -4.36308     2      2      
+iter:  17  00:45:42  -7.3   -3.8     -4.36290     2      3      
+iter:  18  00:45:44  -7.6   -4.7     -4.36259     2      1      
+iter:  19  00:45:46  -7.3   -4.9     -4.36290     1      1      
+iter:  20  00:45:48  -8.2   -4.9     -4.36281     2      1      
+iter:  21  00:45:50  -8.5   -4.8     -4.36281     2      1      
+iter:  22  00:45:52  -8.8   -5.0     -4.36290     2      1      
+iter:  23  00:45:54  -9.2   -5.0     -4.36286     1      1      
+------------------------------------
+Converged After 23 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:        -14.30475
+Potential:      +11.95172
+External:        +0.00000
+XC:              -2.17460
+Entropy (-ST):   -0.01934
+Local:           +0.17445
+-------------------------
+Free Energy:     -4.37253
+Zero Kelvin:     -4.36286
+
+Fermi Level: 8.17593
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.191052 -1.191052 -1.191052]
+
+Memory estimate
+---------------
+Calculator  237.55 MiB
+    Initial overhead  223.52 MiB
+    Density  6.11 MiB
+        Arrays  0.34 MiB
+        Localized functions  5.05 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.11 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.38 MiB
+    Wavefunctions  5.82 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.85 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    1.950000    1.950000    12     0.2298
+  2. axis:    yes    1.950000    0.000000    1.950000    12     0.2298
+  3. axis:    yes    1.950000    1.950000    0.000000    12     0.2298
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:46:04  +2.4            -4.06614     10     11     
+iter:   2  00:46:06  -2.0            -4.45170     3             
+iter:   3  00:46:08  -2.7            -4.50781     2             
+iter:   4  00:46:11  -2.7   -1.3     -4.38494     4      6      
+iter:   5  00:46:13  -1.6   -1.4     -4.12868     8      7      
+iter:   6  00:46:15  -3.0   -2.2     -4.17041     3      5      
+iter:   7  00:46:18  -3.7   -2.2     -4.16784     3      5      
+iter:   8  00:46:20  -4.2   -3.1     -4.16855     3      4      
+iter:   9  00:46:22  -4.6   -3.4     -4.16862     2      3      
+iter:  10  00:46:25  -4.7   -3.3     -4.16907     3      4      
+iter:  11  00:46:27  -5.2   -3.1     -4.16896     2      3      
+iter:  12  00:46:29  -4.9   -3.1     -4.16888     3      4      
+iter:  13  00:46:31  -5.8   -3.3     -4.16902     2      3      
+iter:  14  00:46:34  -6.0   -3.3     -4.16908     2      3      
+iter:  15  00:46:36  -5.8   -3.3     -4.16915     2      3      
+iter:  16  00:46:38  -6.5   -3.5     -4.16900     2      3      
+iter:  17  00:46:41  -6.7   -3.6     -4.16900     2      3      
+iter:  18  00:46:43  -7.2   -3.7     -4.16898     2      3      
+iter:  19  00:46:45  -7.2   -3.9     -4.16879     2      2      
+iter:  20  00:46:48  -7.2   -4.0     -4.16891     2      2      
+iter:  21  00:46:50  -7.5   -4.2     -4.16899     2      2      
+iter:  22  00:46:52  -7.9   -4.3     -4.16901     2      2      
+iter:  23  00:46:54  -8.3   -4.3     -4.16886     2      1      
+iter:  24  00:46:57  -8.5   -4.4     -4.16869     2      1      
+iter:  25  00:46:59  -8.6   -4.5     -4.16894     2      2      
+iter:  26  00:47:01  -8.9   -4.8     -4.16889     2      1      
+iter:  27  00:47:04  -8.9   -4.9     -4.16893     2      1      
+iter:  28  00:47:06  -9.0   -4.9     -4.16906     2      1      
+------------------------------------
+Converged After 28 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         +9.93539
+Potential:       -8.81577
+External:        +0.00000
+XC:              -5.49944
+Entropy (-ST):   -0.03162
+Local:           +0.22656
+-------------------------
+Free Energy:     -4.18487
+Zero Kelvin:     -4.16906
+
+Fermi Level: 12.29559
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.02659478 -1.02659478 -1.02659478]
+
+Memory estimate
+---------------
+Calculator  236.66 MiB
+    Initial overhead  223.59 MiB
+    Density  5.33 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.27 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.05 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.69 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.72 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.062500    2.062500    12     0.2431
+  2. axis:    yes    2.062500    0.000000    2.062500    12     0.2431
+  3. axis:    yes    2.062500    2.062500    0.000000    12     0.2431
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:47:14  +2.2            -4.43142     10     11     
+iter:   2  00:47:16  -2.2            -4.70057     3             
+iter:   3  00:47:18  -3.0            -4.73746     2             
+iter:   4  00:47:20  -2.7   -1.3     -4.60336     4      6      
+iter:   5  00:47:22  -1.7   -1.4     -4.36713     9      7      
+iter:   6  00:47:24  -3.2   -2.1     -4.40845     4      5      
+iter:   7  00:47:27  -3.7   -2.3     -4.40926     3      5      
+iter:   8  00:47:29  -4.5   -3.1     -4.40991     3      4      
+iter:   9  00:47:31  -5.0   -3.5     -4.40975     2      3      
+iter:  10  00:47:33  -5.1   -3.6     -4.41028     2      2      
+iter:  11  00:47:35  -5.6   -3.5     -4.40989     2      3      
+iter:  12  00:47:37  -5.8   -3.7     -4.40970     2      2      
+iter:  13  00:47:39  -6.2   -3.6     -4.41005     2      3      
+iter:  14  00:47:41  -6.4   -4.1     -4.41015     2      2      
+iter:  15  00:47:43  -6.8   -4.1     -4.41000     2      1      
+iter:  16  00:47:45  -6.9   -4.1     -4.40985     2      2      
+iter:  17  00:47:47  -7.2   -4.1     -4.41006     2      2      
+iter:  18  00:47:49  -7.6   -4.2     -4.40992     2      2      
+iter:  19  00:47:51  -7.9   -4.3     -4.40999     2      2      
+iter:  20  00:47:53  -8.0   -4.5     -4.41009     2      1      
+iter:  21  00:47:55  -8.4   -4.8     -4.41021     2      1      
+iter:  22  00:47:57  -8.6   -4.9     -4.41030     2      1      
+iter:  23  00:48:00  -8.9   -5.2     -4.41010     2      1      
+iter:  24  00:48:02  -9.2   -5.2     -4.40991     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:        -10.37425
+Potential:       +8.60741
+External:        +0.00000
+XC:              -2.82094
+Entropy (-ST):   -0.02102
+Local:           +0.18838
+-------------------------
+Free Energy:     -4.42042
+Zero Kelvin:     -4.40991
+
+Fermi Level: 9.08625
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.14923489 -1.14923489 -1.14923489]
+
+Memory estimate
+---------------
+Calculator  236.74 MiB
+    Initial overhead  223.95 MiB
+    Density  5.10 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.04 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.03 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.30 MiB
+    Wavefunctions  5.65 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.68 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.100000    2.100000    12     0.2475
+  2. axis:    yes    2.100000    0.000000    2.100000    12     0.2475
+  3. axis:    yes    2.100000    2.100000    0.000000    12     0.2475
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:48:10  +2.1            -4.41299     10     11     
+iter:   2  00:48:11  -2.3            -4.65120     3             
+iter:   3  00:48:13  -3.0            -4.68293     2             
+iter:   4  00:48:15  -2.8   -1.3     -4.54837     5      6      
+iter:   5  00:48:17  -1.7   -1.4     -4.31987     9      7      
+iter:   6  00:48:19  -3.2   -2.1     -4.36077     4      5      
+iter:   7  00:48:21  -3.7   -2.3     -4.36209     3      5      
+iter:   8  00:48:23  -4.5   -3.1     -4.36285     3      4      
+iter:   9  00:48:25  -5.0   -3.3     -4.36242     3      3      
+iter:  10  00:48:27  -5.2   -3.6     -4.36322     2      1      
+iter:  11  00:48:29  -5.4   -3.6     -4.36259     3      3      
+iter:  12  00:48:31  -5.9   -3.5     -4.36297     2      1      
+iter:  13  00:48:33  -5.9   -3.5     -4.36304     3      3      
+iter:  14  00:48:35  -6.7   -3.6     -4.36251     2      1      
+iter:  15  00:48:37  -6.6   -3.6     -4.36279     2      3      
+iter:  16  00:48:39  -7.1   -3.7     -4.36308     2      2      
+iter:  17  00:48:41  -7.3   -3.8     -4.36290     2      3      
+iter:  18  00:48:43  -7.6   -4.7     -4.36259     2      1      
+iter:  19  00:48:45  -7.3   -4.9     -4.36290     1      1      
+iter:  20  00:48:47  -8.2   -4.9     -4.36281     2      1      
+iter:  21  00:48:49  -8.5   -4.8     -4.36281     2      1      
+iter:  22  00:48:51  -8.8   -5.0     -4.36290     2      1      
+iter:  23  00:48:53  -9.2   -5.0     -4.36286     1      1      
+------------------------------------
+Converged After 23 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:        -14.30475
+Potential:      +11.95172
+External:        +0.00000
+XC:              -2.17460
+Entropy (-ST):   -0.01934
+Local:           +0.17445
+-------------------------
+Free Energy:     -4.37253
+Zero Kelvin:     -4.36286
+
+Fermi Level: 8.17593
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.191052 -1.191052 -1.191052]
+
+Memory estimate
+---------------
+Calculator  242.30 MiB
+    Initial overhead  229.09 MiB
+    Density  5.44 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.39 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.33 MiB
+    Wavefunctions  5.71 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.043750    2.043750    12     0.2409
+  2. axis:    yes    2.043750    0.000000    2.043750    12     0.2409
+  3. axis:    yes    2.043750    2.043750    0.000000    12     0.2409
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:49:02  +2.2            -4.42020     10     11     
+iter:   2  00:49:04  -2.2            -4.70596     3             
+iter:   3  00:49:06  -2.9            -4.74546     2             
+iter:   4  00:49:08  -2.7   -1.3     -4.61223     4      6      
+iter:   5  00:49:10  -1.7   -1.4     -4.37334     9      7      
+iter:   6  00:49:12  -3.1   -2.1     -4.41399     4      5      
+iter:   7  00:49:14  -3.8   -2.3     -4.41439     3      5      
+iter:   8  00:49:16  -4.5   -3.1     -4.41503     3      4      
+iter:   9  00:49:18  -4.9   -3.5     -4.41491     2      3      
+iter:  10  00:49:21  -5.1   -3.6     -4.41524     2      3      
+iter:  11  00:49:23  -5.6   -3.4     -4.41505     2      3      
+iter:  12  00:49:25  -5.7   -3.6     -4.41502     2      3      
+iter:  13  00:49:27  -6.0   -3.9     -4.41530     2      3      
+iter:  14  00:49:29  -6.4   -3.9     -4.41513     2      3      
+iter:  15  00:49:31  -6.4   -4.4     -4.41507     2      1      
+iter:  16  00:49:33  -6.9   -4.5     -4.41494     2      1      
+iter:  17  00:49:35  -7.1   -4.5     -4.41512     2      2      
+iter:  18  00:49:37  -7.5   -4.5     -4.41543     2      1      
+iter:  19  00:49:40  -7.8   -4.6     -4.41488     2      1      
+iter:  20  00:49:42  -8.1   -4.8     -4.41498     2      1      
+iter:  21  00:49:44  -8.4   -5.4     -4.41522     2      1      
+iter:  22  00:49:46  -8.3   -5.6     -4.41520     1      1      
+iter:  23  00:49:48  -9.1   -5.7     -4.41520     1      1      
+------------------------------------
+Converged After 23 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.00813
+Potential:       +6.58983
+External:        +0.00000
+XC:              -3.18281
+Entropy (-ST):   -0.02220
+Local:           +0.19701
+-------------------------
+Free Energy:     -4.42630
+Zero Kelvin:     -4.41520
+
+Fermi Level: 9.56887
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.1285107 -1.1285107 -1.1285107]
+
+Memory estimate
+---------------
+Calculator  248.50 MiB
+    Initial overhead  235.14 MiB
+    Density  5.57 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.51 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.07 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.34 MiB
+    Wavefunctions  5.73 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.76 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.025000    2.025000    12     0.2386
+  2. axis:    yes    2.025000    0.000000    2.025000    12     0.2386
+  3. axis:    yes    2.025000    2.025000    0.000000    12     0.2386
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:49:57  +2.3            -4.39243     10     11     
+iter:   2  00:49:59  -2.1            -4.69561     3             
+iter:   3  00:50:01  -2.9            -4.73783     2             
+iter:   4  00:50:03  -2.7   -1.3     -4.60588     4      6      
+iter:   5  00:50:05  -1.7   -1.4     -4.36379     8      7      
+iter:   6  00:50:07  -3.1   -2.1     -4.40435     4      5      
+iter:   7  00:50:09  -3.8   -2.3     -4.40430     3      5      
+iter:   8  00:50:12  -4.4   -3.1     -4.40493     3      4      
+iter:   9  00:50:14  -4.9   -3.5     -4.40487     2      3      
+iter:  10  00:50:16  -5.1   -3.5     -4.40528     2      3      
+iter:  11  00:50:18  -5.5   -3.3     -4.40496     2      3      
+iter:  12  00:50:20  -5.5   -3.5     -4.40492     2      3      
+iter:  13  00:50:22  -5.8   -3.7     -4.40532     2      3      
+iter:  14  00:50:24  -6.2   -3.7     -4.40505     2      3      
+iter:  15  00:50:26  -6.4   -4.0     -4.40478     2      1      
+iter:  16  00:50:29  -6.7   -4.1     -4.40498     2      2      
+iter:  17  00:50:31  -7.1   -4.1     -4.40477     2      1      
+iter:  18  00:50:33  -7.3   -4.2     -4.40502     2      2      
+iter:  19  00:50:35  -7.4   -4.5     -4.40523     2      2      
+iter:  20  00:50:37  -7.9   -4.9     -4.40510     2      1      
+iter:  21  00:50:39  -8.0   -4.9     -4.40507     2      1      
+iter:  22  00:50:41  -8.5   -5.1     -4.40515     1      1      
+iter:  23  00:50:43  -8.3   -5.2     -4.40516     2      1      
+iter:  24  00:50:46  -9.2   -5.7     -4.40515     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -5.26415
+Potential:       +4.24297
+External:        +0.00000
+XC:              -3.57644
+Entropy (-ST):   -0.02365
+Local:           +0.20429
+-------------------------
+Free Energy:     -4.41698
+Zero Kelvin:     -4.40515
+
+Fermi Level: 10.07111
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.10789603 -1.10789603 -1.10789603]
+
+Memory estimate
+---------------
+Calculator  257.34 MiB
+    Initial overhead  244.20 MiB
+    Density  5.38 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.33 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.72 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.053125    2.053125    12     0.2420
+  2. axis:    yes    2.053125    0.000000    2.053125    12     0.2420
+  3. axis:    yes    2.053125    2.053125    0.000000    12     0.2420
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:50:54  +2.2            -4.42736     10     11     
+iter:   2  00:50:56  -2.2            -4.70514     3             
+iter:   3  00:50:58  -2.9            -4.74326     2             
+iter:   4  00:51:00  -2.7   -1.3     -4.60954     4      6      
+iter:   5  00:51:02  -1.7   -1.4     -4.37176     9      7      
+iter:   6  00:51:04  -3.2   -2.1     -4.41296     4      5      
+iter:   7  00:51:06  -3.8   -2.3     -4.41357     3      5      
+iter:   8  00:51:08  -4.5   -3.1     -4.41421     3      4      
+iter:   9  00:51:11  -4.9   -3.5     -4.41407     2      3      
+iter:  10  00:51:13  -5.1   -3.6     -4.41466     2      2      
+iter:  11  00:51:15  -5.6   -3.5     -4.41422     2      3      
+iter:  12  00:51:17  -5.7   -3.7     -4.41423     2      3      
+iter:  13  00:51:19  -6.1   -3.7     -4.41437     2      3      
+iter:  14  00:51:21  -6.4   -4.0     -4.41445     2      2      
+iter:  15  00:51:23  -6.7   -4.0     -4.41458     2      1      
+iter:  16  00:51:25  -7.0   -4.0     -4.41419     2      1      
+iter:  17  00:51:27  -7.3   -4.1     -4.41418     2      2      
+iter:  18  00:51:29  -7.6   -4.2     -4.41419     2      1      
+iter:  19  00:51:31  -7.2   -4.2     -4.41438     2      2      
+iter:  20  00:51:34  -8.1   -4.4     -4.41411     2      1      
+iter:  21  00:51:36  -8.2   -4.4     -4.41442     2      1      
+iter:  22  00:51:38  -8.6   -4.4     -4.41474     2      1      
+iter:  23  00:51:40  -8.7   -4.5     -4.41441     2      1      
+iter:  24  00:51:42  -8.9   -4.5     -4.41402     2      1      
+iter:  25  00:51:44  -9.3   -4.9     -4.41407     2      1      
+------------------------------------
+Converged After 25 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -9.25874
+Potential:       +7.65960
+External:        +0.00000
+XC:              -2.99729
+Entropy (-ST):   -0.02158
+Local:           +0.19315
+-------------------------
+Free Energy:     -4.42486
+Zero Kelvin:     -4.41407
+
+Fermi Level: 9.32508
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.13885407 -1.13885407 -1.13885407]
+
+Memory estimate
+---------------
+Calculator  259.99 MiB
+    Initial overhead  246.70 MiB
+    Density  5.51 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.45 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.33 MiB
+    Wavefunctions  5.72 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.75 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.034375    2.034375    12     0.2398
+  2. axis:    yes    2.034375    0.000000    2.034375    12     0.2398
+  3. axis:    yes    2.034375    2.034375    0.000000    12     0.2398
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:51:53  +2.2            -4.40912     10     11     
+iter:   2  00:51:55  -2.2            -4.70283     3             
+iter:   3  00:51:57  -2.9            -4.74374     2             
+iter:   4  00:51:59  -2.7   -1.3     -4.61110     4      6      
+iter:   5  00:52:01  -1.7   -1.4     -4.37069     9      7      
+iter:   6  00:52:03  -3.1   -2.1     -4.41120     4      5      
+iter:   7  00:52:05  -3.8   -2.3     -4.41139     3      5      
+iter:   8  00:52:07  -4.4   -3.1     -4.41202     3      4      
+iter:   9  00:52:09  -4.9   -3.5     -4.41194     2      3      
+iter:  10  00:52:12  -5.1   -3.5     -4.41230     2      3      
+iter:  11  00:52:14  -5.5   -3.4     -4.41205     2      3      
+iter:  12  00:52:16  -5.6   -3.6     -4.41200     2      3      
+iter:  13  00:52:18  -6.0   -3.8     -4.41232     2      3      
+iter:  14  00:52:20  -6.3   -3.8     -4.41207     2      2      
+iter:  15  00:52:22  -6.4   -4.0     -4.41210     2      1      
+iter:  16  00:52:24  -6.9   -4.0     -4.41208     2      2      
+iter:  17  00:52:26  -7.1   -4.3     -4.41212     2      2      
+iter:  18  00:52:28  -7.6   -4.4     -4.41221     1      2      
+iter:  19  00:52:31  -7.7   -5.1     -4.41220     1      1      
+iter:  20  00:52:33  -8.1   -5.0     -4.41222     1      1      
+iter:  21  00:52:35  -8.3   -5.0     -4.41228     1      1      
+iter:  22  00:52:37  -8.6   -4.8     -4.41211     2      1      
+iter:  23  00:52:39  -8.9   -5.1     -4.41212     2      1      
+iter:  24  00:52:41  -9.2   -5.1     -4.41216     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -6.64598
+Potential:       +5.42248
+External:        +0.00000
+XC:              -3.37697
+Entropy (-ST):   -0.02290
+Local:           +0.19976
+-------------------------
+Free Energy:     -4.42361
+Zero Kelvin:     -4.41216
+
+Fermi Level: 9.81754
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.118194 -1.118194 -1.118194]
+
+Memory estimate
+---------------
+Calculator  267.77 MiB
+    Initial overhead  254.59 MiB
+    Density  5.41 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.048438    2.048438    12     0.2414
+  2. axis:    yes    2.048438    0.000000    2.048438    12     0.2414
+  3. axis:    yes    2.048438    2.048438    0.000000    12     0.2414
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:52:50  +2.2            -4.42405     10     11     
+iter:   2  00:52:52  -2.2            -4.70606     3             
+iter:   3  00:52:54  -2.9            -4.74483     2             
+iter:   4  00:52:56  -2.7   -1.3     -4.61134     4      6      
+iter:   5  00:52:58  -1.7   -1.4     -4.37293     9      7      
+iter:   6  00:53:00  -3.1   -2.1     -4.41394     4      5      
+iter:   7  00:53:02  -3.8   -2.3     -4.41443     3      5      
+iter:   8  00:53:04  -4.5   -3.1     -4.41508     3      4      
+iter:   9  00:53:07  -4.9   -3.5     -4.41494     2      3      
+iter:  10  00:53:09  -5.1   -3.6     -4.41527     2      3      
+iter:  11  00:53:11  -5.6   -3.4     -4.41509     2      3      
+iter:  12  00:53:13  -5.7   -3.6     -4.41508     2      3      
+iter:  13  00:53:15  -6.1   -3.8     -4.41521     2      3      
+iter:  14  00:53:17  -6.4   -3.8     -4.41546     2      2      
+iter:  15  00:53:19  -6.6   -3.9     -4.41540     2      1      
+iter:  16  00:53:21  -6.9   -3.9     -4.41527     2      2      
+iter:  17  00:53:24  -7.2   -4.0     -4.41516     2      2      
+iter:  18  00:53:26  -7.2   -4.2     -4.41520     2      2      
+iter:  19  00:53:28  -7.7   -4.7     -4.41507     1      1      
+iter:  20  00:53:30  -7.7   -4.8     -4.41502     1      1      
+iter:  21  00:53:32  -8.3   -4.9     -4.41519     2      1      
+iter:  22  00:53:34  -8.6   -4.9     -4.41519     2      1      
+iter:  23  00:53:36  -8.5   -5.0     -4.41492     2      1      
+iter:  24  00:53:38  -9.1   -5.4     -4.41524     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.64160
+Potential:       +7.13131
+External:        +0.00000
+XC:              -3.08922
+Entropy (-ST):   -0.02188
+Local:           +0.19521
+-------------------------
+Free Energy:     -4.42618
+Zero Kelvin:     -4.41524
+
+Fermi Level: 9.44643
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13368019 -1.13368019 -1.13368019]
+
+Memory estimate
+---------------
+Calculator  269.90 MiB
+    Initial overhead  256.77 MiB
+    Density  5.38 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.33 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.72 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.053125    2.053125    12     0.2420
+  2. axis:    yes    2.053125    0.000000    2.053125    12     0.2420
+  3. axis:    yes    2.053125    2.053125    0.000000    12     0.2420
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:53:47  +2.2            -4.42736     10     11     
+iter:   2  00:53:49  -2.2            -4.70514     3             
+iter:   3  00:53:51  -2.9            -4.74326     2             
+iter:   4  00:53:53  -2.7   -1.3     -4.60954     4      6      
+iter:   5  00:53:55  -1.7   -1.4     -4.37176     9      7      
+iter:   6  00:53:57  -3.2   -2.1     -4.41296     4      5      
+iter:   7  00:53:59  -3.8   -2.3     -4.41357     3      5      
+iter:   8  00:54:01  -4.5   -3.1     -4.41421     3      4      
+iter:   9  00:54:03  -4.9   -3.5     -4.41407     2      3      
+iter:  10  00:54:05  -5.1   -3.6     -4.41466     2      2      
+iter:  11  00:54:07  -5.6   -3.5     -4.41422     2      3      
+iter:  12  00:54:10  -5.7   -3.7     -4.41423     2      3      
+iter:  13  00:54:12  -6.1   -3.7     -4.41437     2      3      
+iter:  14  00:54:14  -6.4   -4.0     -4.41445     2      2      
+iter:  15  00:54:16  -6.7   -4.0     -4.41458     2      1      
+iter:  16  00:54:18  -7.0   -4.0     -4.41419     2      1      
+iter:  17  00:54:20  -7.3   -4.1     -4.41418     2      2      
+iter:  18  00:54:22  -7.6   -4.2     -4.41419     2      1      
+iter:  19  00:54:24  -7.2   -4.2     -4.41438     2      2      
+iter:  20  00:54:26  -8.1   -4.4     -4.41411     2      1      
+iter:  21  00:54:28  -8.2   -4.4     -4.41442     2      1      
+iter:  22  00:54:30  -8.6   -4.4     -4.41474     2      1      
+iter:  23  00:54:32  -8.7   -4.5     -4.41441     2      1      
+iter:  24  00:54:34  -8.9   -4.5     -4.41402     2      1      
+iter:  25  00:54:37  -9.3   -4.9     -4.41407     2      1      
+------------------------------------
+Converged After 25 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -9.25874
+Potential:       +7.65960
+External:        +0.00000
+XC:              -2.99729
+Entropy (-ST):   -0.02158
+Local:           +0.19315
+-------------------------
+Free Energy:     -4.42486
+Zero Kelvin:     -4.41407
+
+Fermi Level: 9.32508
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.13885407 -1.13885407 -1.13885407]
+
+Memory estimate
+---------------
+Calculator  278.41 MiB
+    Initial overhead  265.22 MiB
+    Density  5.43 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.37 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.33 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.046094    2.046094    12     0.2411
+  2. axis:    yes    2.046094    0.000000    2.046094    12     0.2411
+  3. axis:    yes    2.046094    2.046094    0.000000    12     0.2411
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:54:45  +2.2            -4.42221     10     11     
+iter:   2  00:54:47  -2.2            -4.70614     3             
+iter:   3  00:54:49  -2.9            -4.74526     2             
+iter:   4  00:54:51  -2.7   -1.3     -4.61191     4      6      
+iter:   5  00:54:54  -1.7   -1.4     -4.37327     9      7      
+iter:   6  00:54:56  -3.1   -2.1     -4.41408     4      5      
+iter:   7  00:54:58  -3.8   -2.3     -4.41453     3      5      
+iter:   8  00:55:00  -4.5   -3.1     -4.41517     3      4      
+iter:   9  00:55:02  -4.9   -3.5     -4.41504     2      3      
+iter:  10  00:55:04  -5.1   -3.6     -4.41537     2      3      
+iter:  11  00:55:06  -5.6   -3.4     -4.41519     2      3      
+iter:  12  00:55:08  -5.7   -3.6     -4.41516     2      3      
+iter:  13  00:55:11  -6.0   -3.9     -4.41542     2      3      
+iter:  14  00:55:13  -6.3   -3.8     -4.41521     2      3      
+iter:  15  00:55:15  -6.6   -4.2     -4.41557     2      1      
+iter:  16  00:55:17  -6.8   -4.2     -4.41542     2      1      
+iter:  17  00:55:19  -7.0   -4.3     -4.41532     1      2      
+iter:  18  00:55:21  -7.4   -4.4     -4.41551     2      1      
+iter:  19  00:55:23  -7.5   -4.5     -4.41543     2      2      
+iter:  20  00:55:25  -8.1   -4.7     -4.41522     2      1      
+iter:  21  00:55:28  -8.0   -4.7     -4.41529     2      1      
+iter:  22  00:55:30  -8.7   -4.7     -4.41533     1      1      
+iter:  23  00:55:32  -8.8   -4.9     -4.41532     1      1      
+iter:  24  00:55:34  -9.2   -5.0     -4.41530     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.31504
+Potential:       +6.85128
+External:        +0.00000
+XC:              -3.13630
+Entropy (-ST):   -0.02204
+Local:           +0.19578
+-------------------------
+Free Energy:     -4.42632
+Zero Kelvin:     -4.41530
+
+Fermi Level: 9.50753
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.1310942 -1.1310942 -1.1310942]
+
+Memory estimate
+---------------
+Calculator  283.04 MiB
+    Initial overhead  269.83 MiB
+    Density  5.44 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.39 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.33 MiB
+    Wavefunctions  5.71 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.043750    2.043750    12     0.2409
+  2. axis:    yes    2.043750    0.000000    2.043750    12     0.2409
+  3. axis:    yes    2.043750    2.043750    0.000000    12     0.2409
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:55:43  +2.2            -4.42020     10     11     
+iter:   2  00:55:45  -2.2            -4.70596     3             
+iter:   3  00:55:46  -2.9            -4.74546     2             
+iter:   4  00:55:49  -2.7   -1.3     -4.61223     4      6      
+iter:   5  00:55:51  -1.7   -1.4     -4.37334     9      7      
+iter:   6  00:55:53  -3.1   -2.1     -4.41399     4      5      
+iter:   7  00:55:55  -3.8   -2.3     -4.41439     3      5      
+iter:   8  00:55:57  -4.5   -3.1     -4.41503     3      4      
+iter:   9  00:55:59  -4.9   -3.5     -4.41491     2      3      
+iter:  10  00:56:01  -5.1   -3.6     -4.41524     2      3      
+iter:  11  00:56:04  -5.6   -3.4     -4.41505     2      3      
+iter:  12  00:56:06  -5.7   -3.6     -4.41502     2      3      
+iter:  13  00:56:08  -6.0   -3.9     -4.41530     2      3      
+iter:  14  00:56:10  -6.4   -3.9     -4.41513     2      3      
+iter:  15  00:56:12  -6.4   -4.4     -4.41507     2      1      
+iter:  16  00:56:14  -6.9   -4.5     -4.41494     2      1      
+iter:  17  00:56:16  -7.1   -4.5     -4.41512     2      2      
+iter:  18  00:56:18  -7.5   -4.5     -4.41543     2      1      
+iter:  19  00:56:20  -7.8   -4.6     -4.41488     2      1      
+iter:  20  00:56:22  -8.1   -4.8     -4.41498     2      1      
+iter:  21  00:56:25  -8.4   -5.4     -4.41522     2      1      
+iter:  22  00:56:27  -8.3   -5.6     -4.41520     1      1      
+iter:  23  00:56:29  -9.1   -5.7     -4.41520     1      1      
+------------------------------------
+Converged After 23 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.00813
+Potential:       +6.58983
+External:        +0.00000
+XC:              -3.18281
+Entropy (-ST):   -0.02220
+Local:           +0.19701
+-------------------------
+Free Energy:     -4.42630
+Zero Kelvin:     -4.41520
+
+Fermi Level: 9.56887
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.1285107 -1.1285107 -1.1285107]
+
+Memory estimate
+---------------
+Calculator  291.12 MiB
+    Initial overhead  277.94 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.047266    2.047266    12     0.2413
+  2. axis:    yes    2.047266    0.000000    2.047266    12     0.2413
+  3. axis:    yes    2.047266    2.047266    0.000000    12     0.2413
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:56:37  +2.2            -4.42315     10     11     
+iter:   2  00:56:39  -2.2            -4.70613     3             
+iter:   3  00:56:41  -2.9            -4.74507     2             
+iter:   4  00:56:43  -2.7   -1.3     -4.61165     4      6      
+iter:   5  00:56:46  -1.7   -1.4     -4.37312     9      7      
+iter:   6  00:56:48  -3.1   -2.1     -4.41404     4      5      
+iter:   7  00:56:50  -3.8   -2.3     -4.41451     3      5      
+iter:   8  00:56:52  -4.5   -3.1     -4.41515     3      4      
+iter:   9  00:56:54  -4.9   -3.5     -4.41502     2      3      
+iter:  10  00:56:56  -5.1   -3.6     -4.41535     2      3      
+iter:  11  00:56:58  -5.6   -3.4     -4.41517     2      3      
+iter:  12  00:57:01  -5.7   -3.6     -4.41515     2      3      
+iter:  13  00:57:03  -6.1   -3.8     -4.41535     2      2      
+iter:  14  00:57:05  -6.2   -3.8     -4.41523     2      2      
+iter:  15  00:57:07  -6.7   -3.8     -4.41528     1      2      
+iter:  16  00:57:09  -6.3   -3.9     -4.41538     2      3      
+iter:  17  00:57:11  -7.2   -4.3     -4.41523     2      2      
+iter:  18  00:57:13  -7.5   -4.6     -4.41519     2      1      
+iter:  19  00:57:15  -7.6   -4.6     -4.41517     2      2      
+iter:  20  00:57:17  -8.2   -4.7     -4.41537     2      1      
+iter:  21  00:57:20  -8.1   -4.7     -4.41542     2      1      
+iter:  22  00:57:22  -8.3   -4.9     -4.41549     2      1      
+iter:  23  00:57:24  -9.0   -5.2     -4.41535     1      1      
+------------------------------------
+Converged After 23 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.47133
+Potential:       +6.98459
+External:        +0.00000
+XC:              -3.11260
+Entropy (-ST):   -0.02196
+Local:           +0.19497
+-------------------------
+Free Energy:     -4.42633
+Zero Kelvin:     -4.41535
+
+Fermi Level: 9.47686
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13239522 -1.13239522 -1.13239522]
+
+Memory estimate
+---------------
+Calculator  294.22 MiB
+    Initial overhead  281.05 MiB
+    Density  5.41 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.048438    2.048438    12     0.2414
+  2. axis:    yes    2.048438    0.000000    2.048438    12     0.2414
+  3. axis:    yes    2.048438    2.048438    0.000000    12     0.2414
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:57:32  +2.2            -4.42405     10     11     
+iter:   2  00:57:34  -2.2            -4.70606     3             
+iter:   3  00:57:36  -2.9            -4.74483     2             
+iter:   4  00:57:38  -2.7   -1.3     -4.61134     4      6      
+iter:   5  00:57:41  -1.7   -1.4     -4.37293     9      7      
+iter:   6  00:57:43  -3.1   -2.1     -4.41394     4      5      
+iter:   7  00:57:45  -3.8   -2.3     -4.41443     3      5      
+iter:   8  00:57:47  -4.5   -3.1     -4.41508     3      4      
+iter:   9  00:57:49  -4.9   -3.5     -4.41494     2      3      
+iter:  10  00:57:51  -5.1   -3.6     -4.41527     2      3      
+iter:  11  00:57:53  -5.6   -3.4     -4.41509     2      3      
+iter:  12  00:57:55  -5.7   -3.6     -4.41508     2      3      
+iter:  13  00:57:58  -6.1   -3.8     -4.41521     2      3      
+iter:  14  00:58:00  -6.4   -3.8     -4.41546     2      2      
+iter:  15  00:58:02  -6.6   -3.9     -4.41540     2      1      
+iter:  16  00:58:04  -6.9   -3.9     -4.41527     2      2      
+iter:  17  00:58:06  -7.2   -4.0     -4.41516     2      2      
+iter:  18  00:58:08  -7.2   -4.2     -4.41520     2      2      
+iter:  19  00:58:10  -7.7   -4.7     -4.41507     1      1      
+iter:  20  00:58:12  -7.7   -4.8     -4.41502     1      1      
+iter:  21  00:58:14  -8.3   -4.9     -4.41519     2      1      
+iter:  22  00:58:17  -8.6   -4.9     -4.41519     2      1      
+iter:  23  00:58:19  -8.5   -5.0     -4.41492     2      1      
+iter:  24  00:58:21  -9.1   -5.4     -4.41524     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.64160
+Potential:       +7.13131
+External:        +0.00000
+XC:              -3.08922
+Entropy (-ST):   -0.02188
+Local:           +0.19521
+-------------------------
+Free Energy:     -4.42618
+Zero Kelvin:     -4.41524
+
+Fermi Level: 9.44643
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13368019 -1.13368019 -1.13368019]
+
+Memory estimate
+---------------
+Calculator  301.98 MiB
+    Initial overhead  288.80 MiB
+    Density  5.43 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.37 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.33 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.046680    2.046680    12     0.2412
+  2. axis:    yes    2.046680    0.000000    2.046680    12     0.2412
+  3. axis:    yes    2.046680    2.046680    0.000000    12     0.2412
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:58:29  +2.2            -4.42268     10     11     
+iter:   2  00:58:31  -2.2            -4.70614     3             
+iter:   3  00:58:33  -2.9            -4.74518     2             
+iter:   4  00:58:35  -2.7   -1.3     -4.61179     4      6      
+iter:   5  00:58:38  -1.7   -1.4     -4.37320     9      7      
+iter:   6  00:58:40  -3.1   -2.1     -4.41407     4      5      
+iter:   7  00:58:42  -3.8   -2.3     -4.41453     3      5      
+iter:   8  00:58:44  -4.5   -3.1     -4.41517     3      4      
+iter:   9  00:58:46  -4.9   -3.5     -4.41504     2      3      
+iter:  10  00:58:48  -5.1   -3.6     -4.41537     2      3      
+iter:  11  00:58:50  -5.6   -3.4     -4.41519     2      3      
+iter:  12  00:58:53  -5.7   -3.6     -4.41516     2      3      
+iter:  13  00:58:55  -6.1   -3.8     -4.41538     2      3      
+iter:  14  00:58:57  -6.3   -3.8     -4.41523     2      3      
+iter:  15  00:58:59  -6.7   -3.9     -4.41526     2      2      
+iter:  16  00:59:01  -6.8   -4.1     -4.41543     2      2      
+iter:  17  00:59:03  -7.2   -4.2     -4.41569     2      1      
+iter:  18  00:59:05  -7.4   -4.2     -4.41541     2      2      
+iter:  19  00:59:07  -7.5   -4.4     -4.41530     2      2      
+iter:  20  00:59:09  -7.8   -4.5     -4.41557     2      1      
+iter:  21  00:59:12  -8.1   -4.6     -4.41548     2      1      
+iter:  22  00:59:14  -8.3   -4.7     -4.41534     2      1      
+iter:  23  00:59:16  -8.3   -4.8     -4.41534     2      1      
+iter:  24  00:59:18  -8.3   -4.8     -4.41538     2      1      
+iter:  25  00:59:20  -9.0   -4.9     -4.41528     2      1      
+------------------------------------
+Converged After 25 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.41601
+Potential:       +6.93908
+External:        +0.00000
+XC:              -3.12320
+Entropy (-ST):   -0.02200
+Local:           +0.19585
+-------------------------
+Free Energy:     -4.42628
+Zero Kelvin:     -4.41528
+
+Fermi Level: 9.49205
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.1317513 -1.1317513 -1.1317513]
+
+Memory estimate
+---------------
+Calculator  304.47 MiB
+    Initial overhead  291.30 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.047852    2.047852    12     0.2413
+  2. axis:    yes    2.047852    0.000000    2.047852    12     0.2413
+  3. axis:    yes    2.047852    2.047852    0.000000    12     0.2413
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  00:59:29  +2.2            -4.42361     10     11     
+iter:   2  00:59:31  -2.2            -4.70610     3             
+iter:   3  00:59:33  -2.9            -4.74496     2             
+iter:   4  00:59:35  -2.7   -1.3     -4.61151     4      6      
+iter:   5  00:59:37  -1.7   -1.4     -4.37303     9      7      
+iter:   6  00:59:39  -3.1   -2.1     -4.41400     4      5      
+iter:   7  00:59:41  -3.8   -2.3     -4.41448     3      5      
+iter:   8  00:59:43  -4.5   -3.1     -4.41512     3      4      
+iter:   9  00:59:45  -4.9   -3.5     -4.41499     2      3      
+iter:  10  00:59:47  -5.1   -3.6     -4.41532     2      3      
+iter:  11  00:59:50  -5.6   -3.4     -4.41514     2      3      
+iter:  12  00:59:52  -5.7   -3.6     -4.41512     2      3      
+iter:  13  00:59:54  -6.1   -3.8     -4.41519     2      2      
+iter:  14  00:59:56  -6.4   -3.8     -4.41551     2      2      
+iter:  15  00:59:58  -6.6   -3.9     -4.41538     2      2      
+iter:  16  01:00:00  -7.0   -3.9     -4.41521     2      3      
+iter:  17  01:00:02  -6.9   -4.2     -4.41543     2      2      
+iter:  18  01:00:04  -7.5   -5.2     -4.41535     1      1      
+iter:  19  01:00:06  -7.6   -5.2     -4.41530     2      1      
+iter:  20  01:00:08  -8.2   -5.1     -4.41525     1      1      
+iter:  21  01:00:11  -8.2   -5.0     -4.41537     1      1      
+iter:  22  01:00:13  -8.7   -5.1     -4.41523     2      1      
+iter:  23  01:00:15  -8.9   -5.1     -4.41523     1      1      
+iter:  24  01:00:17  -9.2   -5.3     -4.41524     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.56948
+Potential:       +7.07026
+External:        +0.00000
+XC:              -3.10034
+Entropy (-ST):   -0.02192
+Local:           +0.19528
+-------------------------
+Free Energy:     -4.42620
+Zero Kelvin:     -4.41524
+
+Fermi Level: 9.46158
+
+
+Total Charge:  0.000000 electrons
+Dipole Moment: [-1.13303897 -1.13303897 -1.13303897]
+
+Memory estimate
+---------------
+Calculator  313.95 MiB
+    Initial overhead  300.77 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.37 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.33 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.046973    2.046973    12     0.2412
+  2. axis:    yes    2.046973    0.000000    2.046973    12     0.2412
+  3. axis:    yes    2.046973    2.046973    0.000000    12     0.2412
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  01:00:26  +2.2            -4.42292     10     11     
+iter:   2  01:00:27  -2.2            -4.70614     3             
+iter:   3  01:00:29  -2.9            -4.74513     2             
+iter:   4  01:00:32  -2.7   -1.3     -4.61172     4      6      
+iter:   5  01:00:34  -1.7   -1.4     -4.37317     9      7      
+iter:   6  01:00:36  -3.1   -2.1     -4.41406     4      5      
+iter:   7  01:00:38  -3.8   -2.3     -4.41452     3      5      
+iter:   8  01:00:40  -4.5   -3.1     -4.41516     3      4      
+iter:   9  01:00:42  -4.9   -3.5     -4.41503     2      3      
+iter:  10  01:00:44  -5.1   -3.6     -4.41536     2      3      
+iter:  11  01:00:46  -5.6   -3.4     -4.41518     2      3      
+iter:  12  01:00:49  -5.7   -3.6     -4.41516     2      3      
+iter:  13  01:00:51  -6.1   -3.8     -4.41548     2      2      
+iter:  14  01:00:53  -6.4   -3.8     -4.41509     2      2      
+iter:  15  01:00:55  -6.6   -3.9     -4.41527     2      3      
+iter:  16  01:00:57  -6.7   -4.1     -4.41553     2      2      
+iter:  17  01:00:59  -7.2   -4.3     -4.41534     1      1      
+iter:  18  01:01:01  -6.9   -4.4     -4.41546     2      2      
+iter:  19  01:01:03  -7.6   -4.2     -4.41525     2      2      
+iter:  20  01:01:05  -8.0   -4.5     -4.41534     1      1      
+iter:  21  01:01:08  -8.1   -4.6     -4.41540     2      1      
+iter:  22  01:01:10  -8.6   -5.4     -4.41534     1      1      
+iter:  23  01:01:12  -8.9   -5.5     -4.41531     1      1      
+iter:  24  01:01:14  -9.2   -5.9     -4.41531     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.44706
+Potential:       +6.96507
+External:        +0.00000
+XC:              -3.11813
+Entropy (-ST):   -0.02198
+Local:           +0.19579
+-------------------------
+Free Energy:     -4.42630
+Zero Kelvin:     -4.41531
+
+Fermi Level: 9.48454
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13206532 -1.13206532 -1.13206532]
+
+Memory estimate
+---------------
+Calculator  316.40 MiB
+    Initial overhead  303.22 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.047559    2.047559    12     0.2413
+  2. axis:    yes    2.047559    0.000000    2.047559    12     0.2413
+  3. axis:    yes    2.047559    2.047559    0.000000    12     0.2413
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  01:01:23  +2.2            -4.42338     10     11     
+iter:   2  01:01:24  -2.2            -4.70612     3             
+iter:   3  01:01:26  -2.9            -4.74502     2             
+iter:   4  01:01:29  -2.7   -1.3     -4.61158     4      6      
+iter:   5  01:01:31  -1.7   -1.4     -4.37308     9      7      
+iter:   6  01:01:33  -3.1   -2.1     -4.41402     4      5      
+iter:   7  01:01:35  -3.8   -2.3     -4.41450     3      5      
+iter:   8  01:01:37  -4.5   -3.1     -4.41514     3      4      
+iter:   9  01:01:39  -4.9   -3.5     -4.41501     2      3      
+iter:  10  01:01:41  -5.1   -3.6     -4.41533     2      3      
+iter:  11  01:01:43  -5.6   -3.4     -4.41516     2      3      
+iter:  12  01:01:46  -5.7   -3.6     -4.41514     2      3      
+iter:  13  01:01:48  -6.1   -3.8     -4.41524     2      2      
+iter:  14  01:01:50  -6.3   -3.9     -4.41528     2      3      
+iter:  15  01:01:52  -6.6   -3.9     -4.41535     2      2      
+iter:  16  01:01:54  -6.6   -4.0     -4.41547     2      2      
+iter:  17  01:01:56  -7.3   -4.1     -4.41532     2      2      
+iter:  18  01:01:58  -7.6   -4.3     -4.41526     2      1      
+iter:  19  01:02:00  -7.7   -4.4     -4.41503     2      1      
+iter:  20  01:02:02  -8.1   -4.6     -4.41494     2      1      
+iter:  21  01:02:05  -8.3   -4.8     -4.41505     2      1      
+iter:  22  01:02:07  -8.5   -5.0     -4.41519     2      1      
+iter:  23  01:02:09  -8.7   -5.1     -4.41535     2      1      
+iter:  24  01:02:11  -8.8   -5.4     -4.41527     1      1      
+iter:  25  01:02:13  -9.4   -5.4     -4.41523     2      1      
+------------------------------------
+Converged After 25 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.50458
+Potential:       +7.01266
+External:        +0.00000
+XC:              -3.10731
+Entropy (-ST):   -0.02194
+Local:           +0.19497
+-------------------------
+Free Energy:     -4.42620
+Zero Kelvin:     -4.41523
+
+Fermi Level: 9.46930
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13271231 -1.13271231 -1.13271231]
+
+Memory estimate
+---------------
+Calculator  325.57 MiB
+    Initial overhead  312.39 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.33 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.047119    2.047119    12     0.2413
+  2. axis:    yes    2.047119    0.000000    2.047119    12     0.2413
+  3. axis:    yes    2.047119    2.047119    0.000000    12     0.2413
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  01:02:22  +2.2            -4.42303     10     11     
+iter:   2  01:02:24  -2.2            -4.70614     3             
+iter:   3  01:02:25  -2.9            -4.74510     2             
+iter:   4  01:02:28  -2.7   -1.3     -4.61169     4      6      
+iter:   5  01:02:30  -1.7   -1.4     -4.37315     9      7      
+iter:   6  01:02:32  -3.1   -2.1     -4.41405     4      5      
+iter:   7  01:02:34  -3.8   -2.3     -4.41452     3      5      
+iter:   8  01:02:36  -4.5   -3.1     -4.41516     3      4      
+iter:   9  01:02:38  -4.9   -3.5     -4.41503     2      3      
+iter:  10  01:02:40  -5.1   -3.6     -4.41535     2      3      
+iter:  11  01:02:43  -5.6   -3.4     -4.41518     2      3      
+iter:  12  01:02:45  -5.7   -3.6     -4.41515     2      3      
+iter:  13  01:02:47  -6.1   -3.8     -4.41541     2      2      
+iter:  14  01:02:49  -6.3   -3.8     -4.41517     2      2      
+iter:  15  01:02:51  -6.7   -3.9     -4.41527     2      3      
+iter:  16  01:02:53  -6.5   -3.9     -4.41538     2      3      
+iter:  17  01:02:55  -7.2   -4.5     -4.41528     2      2      
+iter:  18  01:02:57  -7.2   -4.6     -4.41530     2      1      
+iter:  19  01:02:59  -7.9   -4.7     -4.41530     2      1      
+iter:  20  01:03:02  -8.1   -4.7     -4.41535     2      1      
+iter:  21  01:03:04  -8.0   -4.8     -4.41549     2      1      
+iter:  22  01:03:06  -8.7   -5.1     -4.41531     2      1      
+iter:  23  01:03:08  -8.6   -5.1     -4.41529     1      1      
+iter:  24  01:03:10  -9.3   -5.1     -4.41526     1      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.44603
+Potential:       +6.96264
+External:        +0.00000
+XC:              -3.11599
+Entropy (-ST):   -0.02197
+Local:           +0.19511
+-------------------------
+Free Energy:     -4.42624
+Zero Kelvin:     -4.41526
+
+Fermi Level: 9.48075
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13222937 -1.13222937 -1.13222937]
+
+Memory estimate
+---------------
+Calculator  329.96 MiB
+    Initial overhead  316.78 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.047412    2.047412    12     0.2413
+  2. axis:    yes    2.047412    0.000000    2.047412    12     0.2413
+  3. axis:    yes    2.047412    2.047412    0.000000    12     0.2413
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  01:03:19  +2.2            -4.42326     10     11     
+iter:   2  01:03:21  -2.2            -4.70613     3             
+iter:   3  01:03:23  -2.9            -4.74505     2             
+iter:   4  01:03:25  -2.7   -1.3     -4.61162     4      6      
+iter:   5  01:03:27  -1.7   -1.4     -4.37310     9      7      
+iter:   6  01:03:29  -3.1   -2.1     -4.41403     4      5      
+iter:   7  01:03:31  -3.8   -2.3     -4.41450     3      5      
+iter:   8  01:03:33  -4.5   -3.1     -4.41514     3      4      
+iter:   9  01:03:35  -4.9   -3.5     -4.41501     2      3      
+iter:  10  01:03:38  -5.1   -3.6     -4.41534     2      3      
+iter:  11  01:03:40  -5.6   -3.4     -4.41516     2      3      
+iter:  12  01:03:42  -5.7   -3.6     -4.41514     2      3      
+iter:  13  01:03:44  -6.1   -3.8     -4.41532     2      1      
+iter:  14  01:03:46  -6.2   -3.9     -4.41525     2      3      
+iter:  15  01:03:48  -6.6   -4.1     -4.41536     2      2      
+iter:  16  01:03:50  -6.9   -4.2     -4.41549     2      2      
+iter:  17  01:03:52  -7.3   -4.7     -4.41534     2      1      
+iter:  18  01:03:54  -7.4   -4.7     -4.41530     1      1      
+iter:  19  01:03:56  -7.8   -4.7     -4.41540     2      1      
+iter:  20  01:03:59  -8.2   -4.6     -4.41513     2      1      
+iter:  21  01:04:01  -8.4   -4.8     -4.41519     1      1      
+iter:  22  01:04:03  -8.2   -4.8     -4.41554     2      1      
+iter:  23  01:04:05  -9.0   -5.2     -4.41528     2      1      
+iter:  24  01:04:07  -8.9   -5.3     -4.41528     1      1      
+iter:  25  01:04:09  -9.6   -5.4     -4.41528     1      1      
+------------------------------------
+Converged After 25 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.49970
+Potential:       +7.00970
+External:        +0.00000
+XC:              -3.10958
+Entropy (-ST):   -0.02195
+Local:           +0.19528
+-------------------------
+Free Energy:     -4.42625
+Zero Kelvin:     -4.41528
+
+Fermi Level: 9.47307
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13255157 -1.13255157 -1.13255157]
+
+Memory estimate
+---------------
+Calculator  336.79 MiB
+    Initial overhead  323.61 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.047339    2.047339    12     0.2413
+  2. axis:    yes    2.047339    0.000000    2.047339    12     0.2413
+  3. axis:    yes    2.047339    2.047339    0.000000    12     0.2413
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  01:04:18  +2.2            -4.42321     10     11     
+iter:   2  01:04:20  -2.2            -4.70613     3             
+iter:   3  01:04:22  -2.9            -4.74506     2             
+iter:   4  01:04:24  -2.7   -1.3     -4.61164     4      6      
+iter:   5  01:04:26  -1.7   -1.4     -4.37311     9      7      
+iter:   6  01:04:28  -3.1   -2.1     -4.41404     4      5      
+iter:   7  01:04:30  -3.8   -2.3     -4.41451     3      5      
+iter:   8  01:04:32  -4.5   -3.1     -4.41515     3      4      
+iter:   9  01:04:35  -4.9   -3.5     -4.41502     2      3      
+iter:  10  01:04:37  -5.1   -3.6     -4.41534     2      3      
+iter:  11  01:04:39  -5.6   -3.4     -4.41517     2      3      
+iter:  12  01:04:41  -5.7   -3.6     -4.41515     2      3      
+iter:  13  01:04:43  -6.1   -3.8     -4.41544     2      1      
+iter:  14  01:04:45  -6.2   -3.8     -4.41523     2      2      
+iter:  15  01:04:47  -6.6   -3.9     -4.41527     2      3      
+iter:  16  01:04:49  -6.6   -4.0     -4.41538     2      3      
+iter:  17  01:04:52  -7.3   -4.4     -4.41523     2      2      
+iter:  18  01:04:54  -7.4   -4.6     -4.41527     2      1      
+iter:  19  01:04:56  -7.8   -4.7     -4.41533     1      1      
+iter:  20  01:04:58  -7.9   -4.8     -4.41538     2      1      
+iter:  21  01:05:00  -8.5   -5.1     -4.41537     2      1      
+iter:  22  01:05:02  -8.8   -5.3     -4.41531     1      1      
+iter:  23  01:05:04  -8.7   -5.3     -4.41531     1      1      
+iter:  24  01:05:06  -9.1   -5.2     -4.41536     2      1      
+------------------------------------
+Converged After 24 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.48121
+Potential:       +6.99284
+External:        +0.00000
+XC:              -3.11121
+Entropy (-ST):   -0.02196
+Local:           +0.19520
+-------------------------
+Free Energy:     -4.42634
+Zero Kelvin:     -4.41536
+
+Fermi Level: 9.47499
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13247593 -1.13247593 -1.13247593]
+
+Memory estimate
+---------------
+Calculator  336.79 MiB
+    Initial overhead  323.61 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.047412    2.047412    12     0.2413
+  2. axis:    yes    2.047412    0.000000    2.047412    12     0.2413
+  3. axis:    yes    2.047412    2.047412    0.000000    12     0.2413
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  01:05:15  +2.2            -4.42326     10     11     
+iter:   2  01:05:17  -2.2            -4.70613     3             
+iter:   3  01:05:19  -2.9            -4.74505     2             
+iter:   4  01:05:21  -2.7   -1.3     -4.61162     4      6      
+iter:   5  01:05:23  -1.7   -1.4     -4.37310     9      7      
+iter:   6  01:05:25  -3.1   -2.1     -4.41403     4      5      
+iter:   7  01:05:27  -3.8   -2.3     -4.41450     3      5      
+iter:   8  01:05:30  -4.5   -3.1     -4.41514     3      4      
+iter:   9  01:05:32  -4.9   -3.5     -4.41501     2      3      
+iter:  10  01:05:34  -5.1   -3.6     -4.41534     2      3      
+iter:  11  01:05:36  -5.6   -3.4     -4.41516     2      3      
+iter:  12  01:05:38  -5.7   -3.6     -4.41514     2      3      
+iter:  13  01:05:40  -6.1   -3.8     -4.41532     2      1      
+iter:  14  01:05:42  -6.2   -3.9     -4.41525     2      3      
+iter:  15  01:05:44  -6.6   -4.1     -4.41536     2      2      
+iter:  16  01:05:46  -6.9   -4.2     -4.41549     2      2      
+iter:  17  01:05:49  -7.3   -4.7     -4.41534     2      1      
+iter:  18  01:05:51  -7.4   -4.7     -4.41530     1      1      
+iter:  19  01:05:53  -7.8   -4.7     -4.41540     2      1      
+iter:  20  01:05:55  -8.2   -4.6     -4.41513     2      1      
+iter:  21  01:05:57  -8.4   -4.8     -4.41519     1      1      
+iter:  22  01:05:59  -8.2   -4.8     -4.41554     2      1      
+iter:  23  01:06:01  -9.0   -5.2     -4.41528     2      1      
+iter:  24  01:06:03  -8.9   -5.3     -4.41528     1      1      
+iter:  25  01:06:05  -9.6   -5.4     -4.41528     1      1      
+------------------------------------
+Converged After 25 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.49970
+Potential:       +7.00970
+External:        +0.00000
+XC:              -3.10958
+Entropy (-ST):   -0.02195
+Local:           +0.19528
+-------------------------
+Free Energy:     -4.42625
+Zero Kelvin:     -4.41528
+
+Fermi Level: 9.47307
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13255157 -1.13255157 -1.13255157]
+
+Memory estimate
+---------------
+Calculator  336.79 MiB
+    Initial overhead  323.61 MiB
+    Density  5.42 MiB
+        Arrays  0.34 MiB
+        Localized functions  4.36 MiB
+        Mixer  0.08 MiB
+        Interpolator  0.64 MiB
+    Hamiltonian  2.06 MiB
+        Arrays  0.22 MiB
+        Restrictor  0.37 MiB
+        XC 3D grid  0.11 MiB
+        Poisson  1.03 MiB
+        vbar  0.32 MiB
+    Wavefunctions  5.70 MiB
+        Arrays psit_nG  3.96 MiB
+        Eigensolver  0.53 MiB
+        Projectors  0.73 MiB
+        Overlap op  0.40 MiB
+        Kinetic operator  0.09 MiB
+
+Positions:
+  0 Au    0.0000    0.0000    0.0000
+
+                
+                
+                
+                
+       Au       
+                
+                
+                
+
+Unit Cell:
+           Periodic     X           Y           Z      Points  Spacing
+  --------------------------------------------------------------------
+  1. axis:    yes    0.000000    2.047302    2.047302    12     0.2413
+  2. axis:    yes    2.047302    0.000000    2.047302    12     0.2413
+  3. axis:    yes    2.047302    2.047302    0.000000    12     0.2413
+
+Au-setup:
+  name   : Gold
+  id     : a44207148b704df7bec07bf25e8feca8
+  Z      : 79
+  valence: 11
+  core   : 68
+  charge : 0.0
+  file   : /usr/share/gpaw-setups/Au.LDA.gz
+  cutoffs: 1.32(comp), 2.33(filt), 2.81(core), lmax=2
+  valence states:
+            energy   radius
+    6s(1)   -6.048   1.323
+    6p(0)   -0.888   1.323
+    5d(10)  -7.129   1.323
+    *s      21.163   1.323
+    *p      26.323   1.323
+    *d      20.082   1.323
+
+Using partial waves for Au as LCAO basis
+
+Using the LDA Exchange-Correlation Functional.
+Spin-Paired Calculation
+Total Charge:      0.000000
+Fermi Temperature: 0.100000
+Mode: Finite-difference
+Eigensolver:       rmm-diis
+                   (3 nearest neighbors central finite-difference stencil)
+Poisson Solver:    Jacobi 
+                   (3 nearest neighbors central finite-difference stencil)
+Interpolation:     6th Order
+Reference Energy:  -516313.755679
+
+Total number of cores used: 1
+Diagonalizer layout: Serial LAPACK
+Orthonormalizer layout: Serial LAPACK
+
+Symmetries present: 48
+10 k-points in the Irreducible Part of the Brillouin Zone (total: 64)
+Linear Mixing Parameter:           0.1
+Pulay Mixing with 3 Old Densities
+Damping of Long Wave Oscillations: 50
+
+Convergence Criteria:
+Total Energy Change per Atom:           0.001 eV / atom
+Integral of Absolute Density Change:    0.0001 electrons
+Integral of Absolute Eigenstate Change: 1e-09
+Number of Bands in Calculation:         15
+Bands to Converge:                      Occupied States Only
+Number of Valence Electrons:            11
+                     log10-error:    Total        Iterations:
+           Time      WFS    Density  Energy       Fermi  Poisson
+iter:   1  01:06:14  +2.2            -4.42318     10     11     
+iter:   2  01:06:16  -2.2            -4.70613     3             
+iter:   3  01:06:18  -2.9            -4.74507     2             
+iter:   4  01:06:20  -2.7   -1.3     -4.61165     4      6      
+iter:   5  01:06:22  -1.7   -1.4     -4.37312     9      7      
+iter:   6  01:06:24  -3.1   -2.1     -4.41404     4      5      
+iter:   7  01:06:27  -3.8   -2.3     -4.41451     3      5      
+iter:   8  01:06:29  -4.5   -3.1     -4.41515     3      4      
+iter:   9  01:06:31  -4.9   -3.5     -4.41502     2      3      
+iter:  10  01:06:33  -5.1   -3.6     -4.41535     2      3      
+iter:  11  01:06:35  -5.6   -3.4     -4.41517     2      3      
+iter:  12  01:06:37  -5.7   -3.6     -4.41515     2      3      
+iter:  13  01:06:39  -6.1   -3.8     -4.41534     2      2      
+iter:  14  01:06:41  -6.2   -3.8     -4.41524     2      2      
+iter:  15  01:06:44  -6.7   -3.9     -4.41528     2      3      
+iter:  16  01:06:46  -6.4   -3.9     -4.41538     2      3      
+iter:  17  01:06:48  -7.3   -4.3     -4.41524     2      2      
+iter:  18  01:06:50  -7.5   -4.8     -4.41524     2      1      
+iter:  19  01:06:52  -7.9   -4.8     -4.41526     1      1      
+iter:  20  01:06:54  -8.0   -4.8     -4.41521     2      1      
+iter:  21  01:06:56  -8.4   -4.9     -4.41531     1      1      
+iter:  22  01:06:58  -8.4   -4.9     -4.41518     2      1      
+iter:  23  01:07:00  -9.0   -5.1     -4.41532     2      1      
+------------------------------------
+Converged After 23 Iterations.
+
+Energy Contributions Relative to Reference Atom:(reference = -516313.75568)
+-------------------------
+Kinetic:         -8.49018
+Potential:       +7.00199
+External:        +0.00000
+XC:              -3.11151
+Entropy (-ST):   -0.02196
+Local:           +0.19536
+-------------------------
+Free Energy:     -4.42630
+Zero Kelvin:     -4.41532
+
+Fermi Level: 9.47591
+
+
+Total Charge:  -0.000000 electrons
+Dipole Moment: [-1.13243123 -1.13243123 -1.13243123]
+<?xml version="1.0" ?>
+<test id="FCCLattice">
+	<config>
+		<potential>
+			GPAW
+		</potential>
+		<element>
+			Au
+		</element>
+	</config>
+	<results>
+		<FCCLatticeConstant>
+			4.09467773438
+		</FCCLatticeConstant>
+		<FCCEnergyPerAtom>
+			-4.41535808854
+		</FCCEnergyPerAtom>
+	</results>
+</test>
+
+Memory usage: 323.61 MB
+
+============================================================
+Timing:                               incl.     excl.
+============================================================
+Initialization:                     212.233    44.765   2.3% ||
+ Hamiltonian:                         7.390     0.004   0.0% |
+  Atomic:                             3.781     0.159   0.0% |
+   XC Correction:                     3.622     3.622   0.2% |
+  Communicate energies:               0.000     0.000   0.0% |
+  Hartree integrate/restrict:         0.033     0.033   0.0% |
+  Initialize Hamiltonian:             0.093     0.093   0.0% |
+  Poisson:                            3.118     3.118   0.2% |
+  XC 3D grid:                         0.347     0.347   0.0% |
+  vbar:                               0.014     0.014   0.0% |
+ LCAO initialization:               160.078     6.814   0.4% |
+  LCAO eigensolver:                 113.046     0.043   0.0% |
+   Atomic Hamiltonian:                0.040     0.040   0.0% |
+   Calculate projections:             0.011     0.011   0.0% |
+   Distribute overlap matrix:         0.005     0.005   0.0% |
+   Orbital Layouts:                   0.084     0.084   0.0% |
+   Potential matrix:                112.862   112.862   5.9% |-|
+  LCAO to grid:                      24.627    24.627   1.3% ||
+  Set positions (LCAO WFS):          15.591     0.006   0.0% |
+   Basic WFS set positions:           0.059     0.059   0.0% |
+   Basis functions set positions:     0.001     0.001   0.0% |
+   TCI: Calculate S, T, P:           15.525    15.525   0.8% |
+SCF-cycle:                         1710.928     4.496   0.2% |
+ Density:                            23.787     0.032   0.0% |
+  Atomic density matrices:            5.009     5.009   0.3% |
+  Mix:                                5.832     5.832   0.3% |
+  Multipole moments:                  0.051     0.051   0.0% |
+  Pseudo density:                    12.862     5.457   0.3% |
+   Symmetrize density:                7.405     7.405   0.4% |
+ Hamiltonian:                       117.129     0.089   0.0% |
+  Atomic:                            90.615     3.987   0.2% |
+   XC Correction:                    86.628    86.628   4.5% |-|
+  Communicate energies:               0.010     0.010   0.0% |
+  Hartree integrate/restrict:         0.756     0.756   0.0% |
+  Poisson:                           17.605    17.605   0.9% |
+  XC 3D grid:                         7.723     7.723   0.4% |
+  vbar:                               0.331     0.331   0.0% |
+ Orthonormalize:                    318.026   289.364  15.0% |-----|
+  Band Layouts:                       1.056     0.164   0.0% |
+   Distribute results:                0.067     0.067   0.0% |
+   Inverse Cholesky:                  0.825     0.825   0.0% |
+  calc_matrix:                       15.300    15.300   0.8% |
+  rotate_psi:                        12.306    12.306   0.6% |
+ RMM-DIIS:                         1155.147   963.477  50.1% |-------------------|
+  precondition:                     191.669   191.669  10.0% |---|
+ Subspace diag:                      92.343     1.012   0.1% |
+  Band Layouts:                       2.890     0.264   0.0% |
+   Diagonalize:                       2.471     2.471   0.1% |
+   Distribute results:                0.155     0.155   0.0% |
+  calc_matrix:                       66.028    66.028   3.4% ||
+  rotate_psi:                        22.413    22.413   1.2% |
+Other:                                0.144     0.144   0.0% |
+============================================================
+Total:                                       1923.305 100.0%
+============================================================
+date: Thu Feb  3 01:07:01 2011
