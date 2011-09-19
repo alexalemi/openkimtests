@@ -20,7 +20,7 @@ class FCCLattice(BaseTest):
         It uses the ase helper function bulk to create a 1 atom periodic boundary
         condition crystal with a specific structure"""
         self.slab = bulk(self.element,'fcc',a=a)
-        if self.potentialname == 'ASAP':
+        if self.potentialname.lower() == 'asap':
             self.slab = self.slab.repeat((10,10,10))
 
         #set the calculator

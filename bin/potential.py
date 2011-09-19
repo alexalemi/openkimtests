@@ -64,6 +64,8 @@ def EMT_loader(name,element,slab=None,*args,**kwargs):
         raise PotentialLoadFailed('ASE:EMT',*args,**kwargs)
     return calc
 
+import scipy as sp
+
 def ASAP_loader(name,element,slab=None,*args,**kwargs):
     """ Load ASAP potential """
     supported_elements = ['Ni','Cu','Pd','Ag','Pt','Au']
@@ -79,7 +81,6 @@ def ASAP_loader(name,element,slab=None,*args,**kwargs):
             boxes = sp.floor(10/size + 1)
             if boxes > 1:
                 child_logger.warning('Cell Size too small for ASAP')
-            
 
         calc = EMT(*args,**kwargs)
     except:
@@ -104,10 +105,25 @@ potentials = {'emt':EMT_loader ,
 
 def KIM_loader(name,element,slab=None,*args,**kwargs):
     """ Load a KIM Potential """
-    default_args = {'tmp_dir':tmp_dir}
-    default_args.update(kwargs)
-
     child_logger = logger.getChild('KIM_loader')
+
+    #Make sure we have slab information
+    if slab is None:
+        child_logger.warning('KIM Potential needs slab information')
+        raise PotentialLoadFailed('KIM',*args,**kwargs)
+
+    subspec = slab.get_chemical_symbols()
+    spec_mass = slab.get_masses()
+
+    pair_style = "pair_KIM {name} {spec}".format(name=name,spec=subspec[0])
+    mass_string = "1 {}".format(spec_mass[0])
+
+    parameters = { "pair_style" : pair_style, 
+                        'pair_coeff' : ['* *'],
+                         'mass': mass_string }
+
+    default_args = {'tmp_dir':tmp_dir, 'parameters':parameters, 'specorder': subspec}
+    default_args.update(kwargs)
     try:
         from kim import KIM
     except ImportError:
@@ -210,12 +226,12 @@ def LAMMPS_loader(name,element,slab=None,*args,**kwargs):
 def load(name,element=None,slab=None,*args,**kwargs):
     """ Allow dictionary like access """
     logger.debug('Recieved a potential.load call')
-    name = name.lower()
-    if name in potentials:
+
+    if name.lower() in potentials:
         logger.debug('potentialname: %s found',name)
-        if element in supported_atoms[name]:
+        if element in supported_atoms[name.lower()]:
             logger.debug('element %r found',element)
-            return potentials[name](name,element,slab,*args,**kwargs)
+            return potentials[name.lower()](name,element,slab,*args,**kwargs)
         else:
             logger.warning('Element %r not supported by potential %r', element, name)
             raise UnsupportedAtom(name,element)
