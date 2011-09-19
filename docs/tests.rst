@@ -3,14 +3,9 @@ Openkim-Tests
 =============
 
 
-BaseTest
---------
+I am trying to imagine a situation where a Test has the following:
 
-
-ExampleTest
------------
-
-
-FCCLatticeTest
---------------
-
+ * results() method which does the computation
+ * self.calculator is the calculator you should use
+ * verify() is a testing method?  maybe?
+ 

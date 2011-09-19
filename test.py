@@ -7,7 +7,7 @@ import ase
 from ase.structure import bulk
 from ase.calculators.lammps import LAMMPS
 
-el1 = 'Al'
+el1 = 'Fe'
 slab = bulk(el1,'fcc',a=3.1)
 slab = slab.repeat((5,5,5))
 
