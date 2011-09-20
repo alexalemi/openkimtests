@@ -4,6 +4,8 @@ The Database module.
 Handles the abstraction of reading and writing the results of the tests.
 
 I will start by using XML
+
+the request method allows us to request previous test results
 """
 
 import os.path
