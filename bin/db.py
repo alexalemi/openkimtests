@@ -77,17 +77,17 @@ def XMLWriter(potential,element,test,results,write=False):
     """This method packages the results dictionary into our standard XML 
     Format.  The layout is roughly as follows
     
-    <test id='TestName'>
-        <config>
-            <potential> PotentialName </potential>
-            <element> Element Symbol </element>
-        </config>
-        <results>
-            <FirstResultKey> FirstResultValue </FirstResultKey>
-            <SecondResultKey> SecondResultValue </SecondResultKey>
-            ...
-        </results>
-    </test>
+    | <test id='TestName'>
+    |     <config>
+    |         <potential> PotentialName </potential>
+    |         <element> Element Symbol </element>
+    |     </config>
+    |     <results>
+    |         <FirstResultKey type='type'> FirstResultValue </FirstResultKey>
+    |         <SecondResultKey type='type'> SecondResultValue </SecondResultKey>
+    |         ...
+    |     </results>
+    | </test>
     """
 
     child_logger = logger.getChild('XMLWriter')
@@ -153,6 +153,7 @@ def XMLWriter(potential,element,test,results,write=False):
 reader = XMLReader
 writer = XMLWriter
 
+
 def get_by_potential(potential, cands = None):
     """ Get all of the results by potential name """
 
@@ -161,7 +162,6 @@ def get_by_element(element, cands=None):
 
 def get_by_test(test, cands=None):
     """ Get all of the results by test name """
-
 
 
 def results_exist(potential,element,test):
@@ -176,6 +176,9 @@ def results_timestamp(potential,element,test):
     filename = test + '.' + potential + '.' + element + '.xml'
     return os.path.getmtime(os.path.join(results_dir,filename))
 
+
+
+
 def request(potential,element,test,resultentry):
     """ Get the results from a potential, element, test pair """
     try:
@@ -187,5 +190,7 @@ def request(potential,element,test,resultentry):
         filename = test + '.' + potential + '.' + element + '.xml'
         logger.warning("Request %r doesn't exist",
                                 filename)
+        raise
+
     return results[resultentry]
 

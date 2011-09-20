@@ -46,34 +46,12 @@ class FCCLattice(BaseTest):
         if not warnflag:
             return {'FCCLatticeConstant':minimum[0], 'FCCEnergyPerAtom':energyminimum}
         else:
-            raise MinimizationError
-
-
-    def verify(self):
-        """Simple verification script.  Creates a plot that shows the 
-        crystal energy in the neighborhood of the computed minimum, along
-        with the computed minimum, as a check """
-        
-        print
-        print "Verifying minimization with plot... "
-        resultsdict = self.TestResults()
-        minimum = resultsdict['FCCLatticeConstant']
-        energyminimum = resultsdict['FCCEnergyPerAtom']
-        vals = minimum * sp.linspace(0.9,1.1,100)
-        ens = map(self.FCCEnergy, vals)
-        py.figure(1)
-        py.clf()
-        py.title('Energy minimization verification')
-        py.xlabel('Lattice constant (ang)')
-        py.ylabel('Energy (eV)')
-        py.plot(vals,ens)
-        py.plot(minimum,energyminimum,'r+')
-        py.show()
+            raise Exception('MinimizationError')
             
         
 #Ensures the script can be called from the command line
 if __name__ == '__main__':
-    test = FCCLattice(args.potential,args.element,verify=args.verify,write=args.write)
+    test = FCCLattice(args.potential,args.element,write=args.write)
     #raises BaseTest.main
     print test.main()
     

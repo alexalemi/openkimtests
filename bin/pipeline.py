@@ -13,10 +13,11 @@ test_dir = os.path.join(openkimtest_dir,'kim_tests')
 
 #import useful stuff
 import openkimtests
-from openkimtests.bin.logger import logger
-import openkimtests.bin.db as db
-from openkimtests.bin.filetools import file_list
-import openkimtests.bin.potential as potential_module
+from logger import logger
+import db
+from filetools import file_list
+import potential as potential_module
+
 import logging
 
 logger = logger.getChild('pipeline')
@@ -136,6 +137,21 @@ def run_tests(verbose=True,update=False):
     finally:
         child_logger.removeHandler(ch)
         
+
+
+
+def request(potential,element,test,resultentry):
+    """ Get the results from a potential, element, test pair
+        if it doesn't exist, run it """
+
+    if not db.results_exist(potential,element,test):
+        run_test(test,potential,element)
+    
+    ans = db.request(potential,element,test,resultentry)
+
+    return ans
+
+
         
 if __name__ == "__main__":
     #run all tests

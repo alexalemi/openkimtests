@@ -23,8 +23,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="OpenKIM-Tests v0.2 documentation" href="index.html" />
-    <link rel="next" title="&lt;no title&gt;" href="pipeline.html" />
-    <link rel="prev" title="Welcome to OpenKIM-Tests’s documentation!" href="index.html" /> 
+    <link rel="next" title="Code Base" href="code.html" />
+    <link rel="prev" title="User Guide" href="users.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,10 +34,13 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="pipeline.html" title="&lt;no title&gt;"
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Code Base"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to OpenKIM-Tests’s documentation!"
+          <a href="users.html" title="User Guide"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">OpenKIM-Tests v0.2 documentation</a> &raquo;</li> 
       </ul>
@@ -50,14 +53,114 @@
             
   <div class="section" id="openkim-tests">
 <h1>Openkim-Tests<a class="headerlink" href="#openkim-tests" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="basetest">
-<h2>BaseTest<a class="headerlink" href="#basetest" title="Permalink to this headline">¶</a></h2>
+<p>A test is a collection of ASE code that get run over and over,
+with different elements and different calculators attached.</p>
+<div class="section" id="minimaltest">
+<h2>MinimalTest<a class="headerlink" href="#minimaltest" title="Permalink to this headline">¶</a></h2>
+<p>For example, consider openkimtests.kim_tests._MinimalTest:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">_BaseTest</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c">#request method available as</span>
+<span class="c">#       request(potential,element,test,resultentry)</span>
+<span class="c">#logger available</span>
+
+<span class="k">class</span> <span class="nc">MinimalTest</span><span class="p">(</span><span class="n">BaseTest</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; This example serves as a minimal example of a test</span>
+<span class="sd">                        Notes:</span>
+<span class="sd">                                * Place slab in self.slab</span>
+<span class="sd">                                * calculator available at self.calculator &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot; This method computes the results as a dictionary &quot;&quot;&quot;</span>
+
+                <span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;answer&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">}</span>
+
+                <span class="k">return</span> <span class="n">results</span>
+
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">MinimalTest</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">potential</span><span class="p">,</span><span class="n">args</span><span class="o">.</span><span class="n">element</span><span class="p">,</span><span class="n">verify</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">verify</span><span class="p">,</span><span class="n">write</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">write</span><span class="p">)</span>
+    <span class="c">#raises BaseTest.main</span>
+    <span class="k">print</span> <span class="n">test</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="exampletest">
-<h2>ExampleTest<a class="headerlink" href="#exampletest" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>A few things to note:</dt>
+<dd><ul class="first last simple">
+<li>We&#8217;ve inherited from _BaseTest, this does a lot of the heavy lifting.</li>
+<li>We have a request(potential,element,test,resultentry) method to request other test results</li>
+<li>We should put our slab in self.slab</li>
+<li>We can access the calculator at self.calculator</li>
+<li>We need a results method, which returns a python dictionary of results</li>
+<li>The if name block at the end ensures we can call it from the command line.</li>
+</ul>
+</dd>
+</dl>
 </div>
-<div class="section" id="fcclatticetest">
-<h2>FCCLatticeTest<a class="headerlink" href="#fcclatticetest" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fcclattice">
+<h2>FCCLattice<a class="headerlink" href="#fcclattice" title="Permalink to this headline">¶</a></h2>
+<p>As a less trivial example, lets consider FCCLattice:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+
+<span class="c">#import BaseTest and ase</span>
+<span class="kn">from</span> <span class="nn">_BaseTest</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c">#Test specific imports</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">py</span>
+<span class="kn">from</span> <span class="nn">ase.structure</span> <span class="kn">import</span> <span class="n">bulk</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
+
+
+<span class="k">class</span> <span class="nc">FCCLattice</span><span class="p">(</span><span class="n">BaseTest</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;FCCLattice test returns the optimal fcc lattice constant and energy per atom&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">FCCEnergy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function computes the energy of the crystal formation given</span>
+<span class="sd">        a certain lattice constant</span>
+
+<span class="sd">        It uses the ase helper function bulk to create a 1 atom periodic boundary</span>
+<span class="sd">        condition crystal with a specific structure&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slab</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">,</span><span class="s">&#39;fcc&#39;</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">potentialname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;asap&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slab</span><span class="o">.</span><span class="n">repeat</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+        <span class="c">#set the calculator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slab</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calculator</span><span class="p">)</span>
+
+        <span class="c">#calculate and return the potential energy</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">slab</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;FCC Lattice Test Result</span>
+
+<span class="sd">        uses scipy fmin (a simplex method minimization tool), to find the optimal</span>
+<span class="sd">        lattice constant, and corresponding energy per atom&quot;&quot;&quot;</span>
+
+        <span class="c">#choose a reasonable starting constant</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="mf">3.00</span>
+
+        <span class="c">#minimize the energy per atom, using scipy fmin simplex minimizer.</span>
+        <span class="n">minimum</span><span class="p">,</span> <span class="n">energyminimum</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">funcalls</span><span class="p">,</span> <span class="n">warnflag</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FCCEnergy</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c">#ensure that the minimization performed as expected</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">warnflag</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s">&#39;FCCLatticeConstant&#39;</span><span class="p">:</span><span class="n">minimum</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&#39;FCCEnergyPerAtom&#39;</span><span class="p">:</span><span class="n">energyminimum</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;MinimizationError&#39;</span><span class="p">)</span>
+
+
+<span class="c">#Ensures the script can be called from the command line</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">FCCLattice</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">potential</span><span class="p">,</span><span class="n">args</span><span class="o">.</span><span class="n">element</span><span class="p">,</span><span class="n">write</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">write</span><span class="p">)</span>
+    <span class="c">#raises BaseTest.main</span>
+    <span class="k">print</span> <span class="n">test</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This test uses fmin to compute the FCCLattice constant of a one atom bulk block.  It returns the lattice constant as well as the energy per atom as results.  Note that ASAP requires a minimal box size, so if we have been called with the ASAP potential, it repeats the cell a few times.</p>
 </div>
 </div>
 
@@ -70,19 +173,18 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Openkim-Tests</a><ul>
-<li><a class="reference internal" href="#basetest">BaseTest</a></li>
-<li><a class="reference internal" href="#exampletest">ExampleTest</a></li>
-<li><a class="reference internal" href="#fcclatticetest">FCCLatticeTest</a></li>
+<li><a class="reference internal" href="#minimaltest">MinimalTest</a></li>
+<li><a class="reference internal" href="#fcclattice">FCCLattice</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to OpenKIM-Tests&#8217;s documentation!</a></p>
+  <p class="topless"><a href="users.html"
+                        title="previous chapter">User Guide</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="pipeline.html"
-                        title="next chapter">&lt;no title&gt;</a></p>
+  <p class="topless"><a href="code.html"
+                        title="next chapter">Code Base</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/tests.txt"
@@ -112,10 +214,13 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="pipeline.html" title="&lt;no title&gt;"
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Code Base"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to OpenKIM-Tests’s documentation!"
+          <a href="users.html" title="User Guide"
              >previous</a> |</li>
         <li><a href="index.html">OpenKIM-Tests v0.2 documentation</a> &raquo;</li> 
       </ul>

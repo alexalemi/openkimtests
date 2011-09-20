@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Code Base &mdash; OpenKIM-Tests v0.2 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="OpenKIM-Tests v0.2 documentation" href="index.html" />
+    <link rel="next" title="ToDo" href="todo.html" />
+    <link rel="prev" title="Openkim-Tests" href="tests.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="todo.html" title="ToDo"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tests.html" title="Openkim-Tests"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">OpenKIM-Tests v0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="code-base">
+<h1>Code Base<a class="headerlink" href="#code-base" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bin">
+<h2>bin<a class="headerlink" href="#bin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-openkimtests.bin.db">
+<span id="db"></span><h3>db<a class="headerlink" href="#module-openkimtests.bin.db" title="Permalink to this headline">¶</a></h3>
+<p>The Database module.</p>
+<p>Handles the abstraction of reading and writing the results of the tests.</p>
+<p>I will start by using XML</p>
+<p>the request method allows us to request previous test results</p>
+<dl class="function">
+<dt id="openkimtests.bin.db.XMLReader">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">XMLReader</tt><big>(</big><em>filename=None</em>, <em>test=None</em>, <em>potential=None</em>, <em>element=None</em>, <em>full=False</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/db.html#XMLReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.db.XMLReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method unpacks results to a dictionary,
+using json for the serialization</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.XMLWriter">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">XMLWriter</tt><big>(</big><em>potential</em>, <em>element</em>, <em>test</em>, <em>results</em>, <em>write=False</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/db.html#XMLWriter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.db.XMLWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method packages the results dictionary into our standard XML 
+Format.  The layout is roughly as follows</p>
+<div class="line-block">
+<div class="line">&lt;test id=&#8217;TestName&#8217;&gt;</div>
+<div class="line-block">
+<div class="line">&lt;config&gt;</div>
+<div class="line-block">
+<div class="line">&lt;potential&gt; PotentialName &lt;/potential&gt;</div>
+<div class="line">&lt;element&gt; Element Symbol &lt;/element&gt;</div>
+</div>
+<div class="line">&lt;/config&gt;</div>
+<div class="line">&lt;results&gt;</div>
+<div class="line-block">
+<div class="line">&lt;FirstResultKey type=&#8217;type&#8217;&gt; FirstResultValue &lt;/FirstResultKey&gt;</div>
+<div class="line">&lt;SecondResultKey type=&#8217;type&#8217;&gt; SecondResultValue &lt;/SecondResultKey&gt;</div>
+<div class="line">...</div>
+</div>
+<div class="line">&lt;/results&gt;</div>
+</div>
+<div class="line">&lt;/test&gt;</div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.get_by_element">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">get_by_element</tt><big>(</big><em>element</em>, <em>cands=None</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/db.html#get_by_element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.db.get_by_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all of the results by element</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.get_by_potential">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">get_by_potential</tt><big>(</big><em>potential</em>, <em>cands=None</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/db.html#get_by_potential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.db.get_by_potential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all of the results by potential name</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.get_by_test">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">get_by_test</tt><big>(</big><em>test</em>, <em>cands=None</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/db.html#get_by_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.db.get_by_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all of the results by test name</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.reader">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">reader</tt><big>(</big><em>filename=None</em>, <em>test=None</em>, <em>potential=None</em>, <em>element=None</em>, <em>full=False</em><big>)</big><a class="headerlink" href="#openkimtests.bin.db.reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method unpacks results to a dictionary,
+using json for the serialization</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.request">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">request</tt><big>(</big><em>potential</em>, <em>element</em>, <em>test</em>, <em>resultentry</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/db.html#request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.db.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the results from a potential, element, test pair</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.results_exist">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">results_exist</tt><big>(</big><em>potential</em>, <em>element</em>, <em>test</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/db.html#results_exist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.db.results_exist" title="Permalink to this definition">¶</a></dt>
+<dd><p>See if results exist</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.results_timestamp">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">results_timestamp</tt><big>(</big><em>potential</em>, <em>element</em>, <em>test</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/db.html#results_timestamp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.db.results_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the creation time of a results file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.db.writer">
+<tt class="descclassname">openkimtests.bin.db.</tt><tt class="descname">writer</tt><big>(</big><em>potential</em>, <em>element</em>, <em>test</em>, <em>results</em>, <em>write=False</em><big>)</big><a class="headerlink" href="#openkimtests.bin.db.writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method packages the results dictionary into our standard XML 
+Format.  The layout is roughly as follows</p>
+<div class="line-block">
+<div class="line">&lt;test id=&#8217;TestName&#8217;&gt;</div>
+<div class="line-block">
+<div class="line">&lt;config&gt;</div>
+<div class="line-block">
+<div class="line">&lt;potential&gt; PotentialName &lt;/potential&gt;</div>
+<div class="line">&lt;element&gt; Element Symbol &lt;/element&gt;</div>
+</div>
+<div class="line">&lt;/config&gt;</div>
+<div class="line">&lt;results&gt;</div>
+<div class="line-block">
+<div class="line">&lt;FirstResultKey type=&#8217;type&#8217;&gt; FirstResultValue &lt;/FirstResultKey&gt;</div>
+<div class="line">&lt;SecondResultKey type=&#8217;type&#8217;&gt; SecondResultValue &lt;/SecondResultKey&gt;</div>
+<div class="line">...</div>
+</div>
+<div class="line">&lt;/results&gt;</div>
+</div>
+<div class="line">&lt;/test&gt;</div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openkimtests.bin.filetools">
+<span id="filetools"></span><h3>filetools<a class="headerlink" href="#module-openkimtests.bin.filetools" title="Permalink to this headline">¶</a></h3>
+<p>A collection os useful file utilities</p>
+<dl class="function">
+<dt id="openkimtests.bin.filetools.file_list">
+<tt class="descclassname">openkimtests.bin.filetools.</tt><tt class="descname">file_list</tt><big>(</big><em>dir</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/filetools.html#file_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.filetools.file_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the valid python files inside a directory</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openkimtests.bin.logger">
+<span id="logger"></span><h3>logger<a class="headerlink" href="#module-openkimtests.bin.logger" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Holds the logger for the openkimtest project</dt>
+<dd>in logger, to be inherited by other modules
+and a child created
+e.g. child_logger = logger.getChild(&#8216;child_name&#8217;)</dd>
+</dl>
+</div>
+<div class="section" id="module-openkimtests.bin.potential">
+<span id="potential"></span><h3>potential<a class="headerlink" href="#module-openkimtests.bin.potential" title="Permalink to this headline">¶</a></h3>
+<p>The potential module.</p>
+<p>Handles the loading of potentials from ASE, KIM, and LAMMPS</p>
+<dl class="function">
+<dt id="openkimtests.bin.potential.ASAP_loader">
+<tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">ASAP_loader</tt><big>(</big><em>name</em>, <em>element</em>, <em>slab=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/potential.html#ASAP_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.ASAP_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load ASAP potential</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.potential.EMT_loader">
+<tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">EMT_loader</tt><big>(</big><em>name</em>, <em>element</em>, <em>slab=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/potential.html#EMT_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.EMT_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an ASE EMT potential</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.potential.GPAW_loader">
+<tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">GPAW_loader</tt><big>(</big><em>name</em>, <em>element</em>, <em>slab=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/potential.html#GPAW_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.GPAW_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the GPAW calculator</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.potential.KIM_loader">
+<tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">KIM_loader</tt><big>(</big><em>name</em>, <em>element</em>, <em>slab=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/potential.html#KIM_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.KIM_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a KIM Potential</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.potential.LAMMPS_loader">
+<tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">LAMMPS_loader</tt><big>(</big><em>name</em>, <em>element</em>, <em>slab=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/potential.html#LAMMPS_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.LAMMPS_loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load LAMMPS calculator</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="openkimtests.bin.potential.PackageDoesNotExist">
+<em class="property">exception </em><tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">PackageDoesNotExist</tt><a class="reference internal" href="_modules/openkimtests/bin/potential.html#PackageDoesNotExist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.PackageDoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised if a package cannot be loaded</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="openkimtests.bin.potential.PotentialLoadFailed">
+<em class="property">exception </em><tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">PotentialLoadFailed</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/potential.html#PotentialLoadFailed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.PotentialLoadFailed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised if the calculator failed to initialize</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="openkimtests.bin.potential.UnknownPotential">
+<em class="property">exception </em><tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">UnknownPotential</tt><a class="reference internal" href="_modules/openkimtests/bin/potential.html#UnknownPotential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.UnknownPotential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised if a package cannot be loaded</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="openkimtests.bin.potential.UnsupportedAtom">
+<em class="property">exception </em><tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">UnsupportedAtom</tt><a class="reference internal" href="_modules/openkimtests/bin/potential.html#UnsupportedAtom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.UnsupportedAtom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised if a package cannot be loaded</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.potential.kim_file_atoms">
+<tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">kim_file_atoms</tt><big>(</big><em>model</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/potential.html#kim_file_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.kim_file_atoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a KIM Model name, read the .kim file
+to get the supported atoms</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openkimtests.bin.potential.load">
+<tt class="descclassname">openkimtests.bin.potential.</tt><tt class="descname">load</tt><big>(</big><em>name</em>, <em>element=None</em>, <em>slab=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/openkimtests/bin/potential.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openkimtests.bin.potential.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow dictionary like access</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Code Base</a><ul>
+<li><a class="reference internal" href="#bin">bin</a><ul>
+<li><a class="reference internal" href="#module-openkimtests.bin.db">db</a></li>
+<li><a class="reference internal" href="#module-openkimtests.bin.filetools">filetools</a></li>
+<li><a class="reference internal" href="#module-openkimtests.bin.logger">logger</a></li>
+<li><a class="reference internal" href="#module-openkimtests.bin.potential">potential</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tests.html"
+                        title="previous chapter">Openkim-Tests</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="todo.html"
+                        title="next chapter">ToDo</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/code.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="todo.html" title="ToDo"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tests.html" title="Openkim-Tests"
+             >previous</a> |</li>
+        <li><a href="index.html">OpenKIM-Tests v0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Alex Alemi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

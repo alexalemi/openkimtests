@@ -1,9 +1,17 @@
-
+#! /usr/bin/env python
 
 from _BaseTest import *
 
+
+#request method available, as
+# 	request(potential,element,test,resultentry)
+#logger available
+
 class MinimalTest(BaseTest):
-	""" This example serves as a minimal example of a test """
+	""" This example serves as a minimal example of a test
+			Notes:
+				* Place slab in self.slab
+				* calculator available at self.calculator """
 
 	def results(self):
 		""" This method computes the results as a dictionary """
@@ -11,9 +19,6 @@ class MinimalTest(BaseTest):
 		results = {'answer':42}
 
 		return results
-
-	def verify(self):
-		""" This optional method can be used to do some more diagnostic stuff """
 
 	
 if __name__ == "__main__":

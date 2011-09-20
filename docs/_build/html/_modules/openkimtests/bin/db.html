@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>openkimtests.bin.db &mdash; OpenKIM-Tests v0.2 documentation</title>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="OpenKIM-Tests v0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">OpenKIM-Tests v0.2 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for openkimtests.bin.db</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The Database module.</span>
+
+<span class="sd">Handles the abstraction of reading and writing the results of the tests.</span>
+
+<span class="sd">I will start by using XML</span>
+
+<span class="sd">the request method allows us to request previous test results</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">openkimtests</span>
+<span class="n">openkimtest_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">openkimtests</span><span class="o">.</span><span class="n">__file__</span><span class="p">)</span>
+
+<span class="n">results_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">openkimtest_dir</span><span class="p">,</span><span class="s">&#39;results&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">logger</span> <span class="kn">import</span> <span class="n">logger</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;db&#39;</span><span class="p">)</span>
+
+
+<span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Initializing Database&#39;</span><span class="p">)</span>
+
+
+<span class="kn">import</span> <span class="nn">xml.dom.minidom</span> <span class="kn">as</span> <span class="nn">mini</span>
+<span class="kn">import</span> <span class="nn">simplejson</span>
+<span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">as</span> <span class="nn">etree</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+
+<div class="viewcode-block" id="XMLReader"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.db.XMLReader">[docs]</a><span class="k">def</span> <span class="nf">XMLReader</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">test</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">potential</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">element</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">full</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This method unpacks results to a dictionary,</span>
+<span class="sd">        using json for the serialization&quot;&quot;&quot;</span>
+    <span class="n">child_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;XMLReader&#39;</span><span class="p">)</span>
+    <span class="n">child_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;XMLReader called...&#39;</span><span class="p">)</span>
+
+    <span class="c">#if given a filename, load the file</span>
+    <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c">#otherwise, try to find the file</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">test</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">potential</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="o">+</span> <span class="s">&#39;.xml&#39;</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="n">filename</span><span class="p">))</span>
+
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+
+    <span class="c">#get test name</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span>
+
+    <span class="c">#get contrib</span>
+    <span class="n">config_node</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">config_node</span><span class="o">.</span><span class="n">getchildren</span><span class="p">():</span>
+        <span class="n">config</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">text</span>
+    
+    <span class="c">#get results</span>
+    <span class="n">results_node</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;results&#39;</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c">#read each of the results nodes</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">results_node</span><span class="p">:</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="n">simplejson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="c">#if a scipy array, cast it as such</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">attrib</span> <span class="o">==</span> <span class="s">&#39;ndarray&#39;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">if</span> <span class="n">full</span><span class="p">:</span>
+        <span class="c"># return full results</span>
+        <span class="k">return</span> <span class="n">test</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">results</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+
+
+</div>
+<div class="viewcode-block" id="XMLWriter"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.db.XMLWriter">[docs]</a><span class="k">def</span> <span class="nf">XMLWriter</span><span class="p">(</span><span class="n">potential</span><span class="p">,</span><span class="n">element</span><span class="p">,</span><span class="n">test</span><span class="p">,</span><span class="n">results</span><span class="p">,</span><span class="n">write</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This method packages the results dictionary into our standard XML </span>
+<span class="sd">    Format.  The layout is roughly as follows</span>
+<span class="sd">    </span>
+<span class="sd">    &lt;test id=&#39;TestName&#39;&gt;</span>
+<span class="sd">        &lt;config&gt;</span>
+<span class="sd">            &lt;potential&gt; PotentialName &lt;/potential&gt;</span>
+<span class="sd">            &lt;element&gt; Element Symbol &lt;/element&gt;</span>
+<span class="sd">        &lt;/config&gt;</span>
+<span class="sd">        &lt;results&gt;</span>
+<span class="sd">            &lt;FirstResultKey&gt; FirstResultValue &lt;/FirstResultKey&gt;</span>
+<span class="sd">            &lt;SecondResultKey&gt; SecondResultValue &lt;/SecondResultKey&gt;</span>
+<span class="sd">            ...</span>
+<span class="sd">        &lt;/results&gt;</span>
+<span class="sd">    &lt;/test&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">child_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="s">&#39;XMLWriter&#39;</span><span class="p">)</span>
+    <span class="n">child_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;XMLWriter called.&#39;</span><span class="p">)</span>
+
+    <span class="c">#create the XML document</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">mini</span><span class="o">.</span><span class="n">Document</span><span class="p">()</span>
+    
+    <span class="c">#Create and append the main test node</span>
+    <span class="n">testnode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s">&#39;test&#39;</span><span class="p">)</span>
+    <span class="n">testnode</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">testnode</span><span class="p">)</span>
+    
+    <span class="c">#Set the configuration part</span>
+    <span class="n">confignode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s">&#39;config&#39;</span><span class="p">)</span>
+    <span class="n">testnode</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">confignode</span><span class="p">)</span>
+    
+    <span class="c">#set and append the potential name and element nodes</span>
+    <span class="n">potentialnode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s">&#39;potential&#39;</span><span class="p">)</span>
+    <span class="n">elementnode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s">&#39;element&#39;</span><span class="p">)</span>
+    <span class="n">confignode</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">potentialnode</span><span class="p">)</span>
+    <span class="n">confignode</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">elementnode</span><span class="p">)</span>
+    
+    <span class="n">potentialnode</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">createTextNode</span><span class="p">(</span><span class="n">potential</span><span class="p">))</span>
+    <span class="n">elementnode</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">createTextNode</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+    
+    
+    <span class="c">#creates and appends the result node</span>
+    <span class="n">resultsnode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s">&#39;results&#39;</span><span class="p">)</span>
+    <span class="n">testnode</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">resultsnode</span><span class="p">)</span>
+    
+    <span class="c">#for every key,value pair in the results dictionary, create and</span>
+    <span class="c">#append a new node.</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">resultnode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+        <span class="n">typename</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="n">resultnode</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s">&#39;type&#39;</span><span class="p">,</span><span class="n">typename</span><span class="p">)</span>
+
+        <span class="c">#try to simplejson it</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">jsoned</span> <span class="o">=</span> <span class="n">simplejson</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="c">#if we have a scipy array, cast as list</span>
+            <span class="k">if</span> <span class="n">typename</span> <span class="o">==</span> <span class="s">&#39;ndarray&#39;</span><span class="p">:</span>
+                <span class="n">jsoned</span> <span class="o">=</span> <span class="n">simplejson</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span>
+
+        <span class="n">resultnode</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">createTextNode</span><span class="p">(</span><span class="n">jsoned</span><span class="p">))</span>
+        <span class="n">resultsnode</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">resultnode</span><span class="p">)</span>
+    
+    
+    <span class="k">if</span> <span class="n">write</span><span class="p">:</span>
+        <span class="n">resultfile</span> <span class="o">=</span> <span class="s">&#39;../results/&#39;</span> <span class="o">+</span> <span class="n">test</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">potential</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="o">+</span> <span class="s">&#39;.xml&#39;</span>
+        <span class="n">outputfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">resultfile</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">outputfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">toprettyxml</span><span class="p">())</span>
+        <span class="n">outputfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        
+    <span class="c">#return a pretty xml string.</span>
+    <span class="k">return</span> <span class="n">doc</span><span class="o">.</span><span class="n">toprettyxml</span><span class="p">()</span>
+</div>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">XMLReader</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">XMLWriter</span>
+
+<div class="viewcode-block" id="get_by_potential"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.db.get_by_potential">[docs]</a><span class="k">def</span> <span class="nf">get_by_potential</span><span class="p">(</span><span class="n">potential</span><span class="p">,</span> <span class="n">cands</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get all of the results by potential name &quot;&quot;&quot;</span>
+</div>
+<div class="viewcode-block" id="get_by_element"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.db.get_by_element">[docs]</a><span class="k">def</span> <span class="nf">get_by_element</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">cands</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get all of the results by element &quot;&quot;&quot;</span>
+</div>
+<div class="viewcode-block" id="get_by_test"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.db.get_by_test">[docs]</a><span class="k">def</span> <span class="nf">get_by_test</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">cands</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get all of the results by test name &quot;&quot;&quot;</span>
+
+
+</div>
+<div class="viewcode-block" id="results_exist"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.db.results_exist">[docs]</a><span class="k">def</span> <span class="nf">results_exist</span><span class="p">(</span><span class="n">potential</span><span class="p">,</span><span class="n">element</span><span class="p">,</span><span class="n">test</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; See if results exist &quot;&quot;&quot;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">test</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">potential</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="o">+</span> <span class="s">&#39;.xml&#39;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="n">filename</span><span class="p">))</span>
+</div>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<div class="viewcode-block" id="results_timestamp"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.db.results_timestamp">[docs]</a><span class="k">def</span> <span class="nf">results_timestamp</span><span class="p">(</span><span class="n">potential</span><span class="p">,</span><span class="n">element</span><span class="p">,</span><span class="n">test</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get the creation time of a results file &quot;&quot;&quot;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">test</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">potential</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="o">+</span> <span class="s">&#39;.xml&#39;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="n">filename</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="request"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.db.request">[docs]</a><span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">potential</span><span class="p">,</span><span class="n">element</span><span class="p">,</span><span class="n">test</span><span class="p">,</span><span class="n">resultentry</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get the results from a potential, element, test pair &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="p">(</span><span class="n">potential</span><span class="o">=</span><span class="n">potential</span><span class="p">,</span>
+                        <span class="n">element</span><span class="o">=</span><span class="n">element</span><span class="p">,</span>
+                        <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="c">#result doesn&#39;t appear to exist</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">test</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">potential</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="o">+</span> <span class="s">&#39;.xml&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Request </span><span class="si">%r</span><span class="s"> doesn&#39;t exist&quot;</span><span class="p">,</span>
+                                <span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span><span class="p">[</span><span class="n">resultentry</span><span class="p">]</span>
+</pre></div></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">OpenKIM-Tests v0.2 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Alex Alemi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

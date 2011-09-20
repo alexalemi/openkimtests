@@ -11,15 +11,18 @@ import argparse
 
 from openkimtests.bin.logger import logger
 
+import openkimtests.bin.pipeline as pipeline
 import openkimtests.bin.db as db
 
-logger = logger.getChild('_BaseTest')
+import ase
+
+logger = logger.getChild('Test')
 
 from openkimtests.bin import potential
 
 
 #helpful rename
-request = db.request
+request = pipeline.request
 
 class LackingResults(Exception):
     """ The LackingResults exception, raised if the test doesn't have a results method """
@@ -46,7 +49,7 @@ class BaseTest:
 
         self.result_names = []
 
-        self.logger = logger.getChild('BaseTest')
+        self.logger = logger.getChild(self.__class__.__name__)
 
     @property
     def calculator(self):

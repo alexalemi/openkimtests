@@ -10,10 +10,10 @@
 	</config>
 	<results>
 		<FCCLatticeConstant type="float64">
-			2.2268554687499984
+			2.5452392578124989
 		</FCCLatticeConstant>
 		<FCCEnergyPerAtom type="float64">
-			-0.60040139587994856
+			-0.0025471509656282976
 		</FCCEnergyPerAtom>
 	</results>
 </test>

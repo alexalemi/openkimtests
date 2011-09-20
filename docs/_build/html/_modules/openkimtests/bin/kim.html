@@ -1,0 +1,865 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>openkimtests.bin.kim &mdash; OpenKIM-Tests v0.2 documentation</title>
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="OpenKIM-Tests v0.2 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">OpenKIM-Tests v0.2 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for openkimtests.bin.kim</h1><div class="highlight"><pre>
+<span class="c">#!/usr//bin/env python</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is meant to be an easy to use kim potential for ASE.  Mostly copied from</span>
+<span class="sd">the ASE lammps potential.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span> 
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">shlex</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="nb">compile</span> <span class="k">as</span> <span class="n">re_compile</span><span class="p">,</span> <span class="n">IGNORECASE</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkdtemp</span><span class="p">,</span> <span class="n">NamedTemporaryFile</span><span class="p">,</span> <span class="n">mktemp</span> <span class="k">as</span> <span class="n">uns_mktemp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">decimal</span> <span class="kn">as</span> <span class="nn">dec</span>
+<span class="kn">from</span> <span class="nn">ase</span> <span class="kn">import</span> <span class="n">Atoms</span>
+<span class="kn">from</span> <span class="nn">ase.parallel</span> <span class="kn">import</span> <span class="n">paropen</span>
+<span class="kn">from</span> <span class="nn">ase.units</span> <span class="kn">import</span> <span class="n">GPa</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;LAMMPS&#39;</span><span class="p">,</span> <span class="s">&#39;write_lammps_data&#39;</span><span class="p">]</span>
+
+<span class="c"># &quot;End mark&quot; used to indicate that the calculation is done</span>
+<span class="n">CALCULATION_END_MARK</span> <span class="o">=</span> <span class="s">&#39;__end_of_ase_invoked_calculation__&#39;</span>
+
+<span class="k">class</span> <span class="nc">KIM</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;lammps&#39;</span><span class="p">,</span> <span class="n">tmp_dir</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{},</span> 
+                 <span class="n">specorder</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="p">[],</span> <span class="n">always_triclinic</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                 <span class="n">keep_alive</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">keep_tmp_files</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                 <span class="n">no_data_file</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The LAMMPS calculators object</span>
+
+<span class="sd">        files: list</span>
+<span class="sd">            Short explanation XXX</span>
+<span class="sd">        parameters: dict</span>
+<span class="sd">            Short explanation XXX</span>
+<span class="sd">        specorder: list</span>
+<span class="sd">            Short explanation XXX</span>
+<span class="sd">        keep_tmp_files: bool</span>
+<span class="sd">            Retain any temporary files created. Mostly useful for debugging.</span>
+<span class="sd">        tmp_dir: str</span>
+<span class="sd">            path/dirname (default None -&gt; create automatically).</span>
+<span class="sd">            Explicitly control where the calculator object should create </span>
+<span class="sd">            its files. Using this option implies &#39;keep_tmp_files&#39;</span>
+<span class="sd">        no_data_file: bool</span>
+<span class="sd">            Controls whether an explicit data file will be used for feeding</span>
+<span class="sd">            atom coordinates into lammps. Enable it to lessen the pressure on</span>
+<span class="sd">            the (tmp) file system. THIS OPTION MIGHT BE UNRELIABLE FOR CERTIAN</span>
+<span class="sd">            CORNER CASES (however, if it fails, you will notice...).</span>
+<span class="sd">        keep_alive: bool</span>
+<span class="sd">            When using LAMMPS as a spawned subprocess, keep the subprocess</span>
+<span class="sd">            alive (but idling whn unused) along with the calculator object.</span>
+<span class="sd">        always_triclinic: bool</span>
+<span class="sd">            Force use of a triclinic cell in LAMMPS, even if the cell is</span>
+<span class="sd">            a perfect parallelepiped.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">specorder</span> <span class="o">=</span> <span class="n">specorder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="n">files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">always_triclinic</span> <span class="o">=</span> <span class="n">always_triclinic</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calls</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forces</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keep_alive</span> <span class="o">=</span> <span class="n">keep_alive</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span> <span class="o">=</span> <span class="n">keep_tmp_files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_data_file</span> <span class="o">=</span> <span class="n">no_data_file</span>
+        <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># If tmp_dir is pointing somewhere, don&#39;t remove stuff!</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_handle</span> <span class="o">=</span> <span class="bp">None</span>        <span class="c"># To handle the lmp process</span>
+
+        <span class="c"># read_log depends on that the first (three) thermo_style custom args</span>
+        <span class="c"># can be capitilized and matched aginst the log output. I.e. </span>
+        <span class="c"># don&#39;t use e.g. &#39;ke&#39; or &#39;cpu&#39; which are labeled KinEng and CPU.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_args</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;step&#39;</span><span class="p">,</span> <span class="s">&#39;temp&#39;</span><span class="p">,</span> <span class="s">&#39;press&#39;</span><span class="p">,</span> <span class="s">&#39;cpu&#39;</span><span class="p">,</span> 
+                                    <span class="s">&#39;pxx&#39;</span><span class="p">,</span> <span class="s">&#39;pyy&#39;</span><span class="p">,</span> <span class="s">&#39;pzz&#39;</span><span class="p">,</span> <span class="s">&#39;pxy&#39;</span><span class="p">,</span> <span class="s">&#39;pxz&#39;</span><span class="p">,</span> <span class="s">&#39;pyz&#39;</span><span class="p">,</span>
+                                    <span class="s">&#39;ke&#39;</span><span class="p">,</span> <span class="s">&#39;pe&#39;</span><span class="p">,</span> <span class="s">&#39;etotal&#39;</span><span class="p">,</span>
+                                    <span class="s">&#39;vol&#39;</span><span class="p">,</span> <span class="s">&#39;lx&#39;</span><span class="p">,</span> <span class="s">&#39;ly&#39;</span><span class="p">,</span> <span class="s">&#39;lz&#39;</span><span class="p">,</span> <span class="s">&#39;atoms&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_mark</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_args</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]])</span>
+
+        <span class="c"># Match something which can be converted to a float</span>
+        <span class="n">f_re</span> <span class="o">=</span> <span class="s">r&#39;([+-]?(?:(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?|nan|inf))&#39;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_args</span><span class="p">)</span>
+        <span class="c"># Create a re matching exactly N white space separated floatish things</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_re</span> <span class="o">=</span> <span class="n">re_compile</span><span class="p">(</span><span class="s">r&#39;^\s*&#39;</span> <span class="o">+</span> <span class="s">r&#39;\s+&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">f_re</span><span class="p">]</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="s">r&#39;\s*$&#39;</span><span class="p">,</span>
+                                            <span class="n">flags</span><span class="o">=</span><span class="n">IGNORECASE</span><span class="p">)</span>
+        <span class="c"># thermo_content contains data &quot;writen by&quot; thermo_style.</span>
+        <span class="c"># It is a list of dictionaries, each dict (one for each line</span>
+        <span class="c"># printed by thermo_style) contains a mapping between each </span>
+        <span class="c"># custom_thermo_args-argument and the corresponding</span>
+        <span class="c"># value as printed by lammps. thermo_content will be </span>
+        <span class="c"># re-populated by the read_log method.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thermo_content</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">&#39;LAMMPS-&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="mo">0755</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_end</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">:</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_potential_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">thermo_content</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;pe&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_forces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forces</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_stress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+        <span class="n">tc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">thermo_content</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c"># 1 bar (used by lammps for metal units) = 1e-4 GPa</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">tc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;pxx&#39;</span><span class="p">,</span><span class="s">&#39;pyy&#39;</span><span class="p">,</span><span class="s">&#39;pzz&#39;</span><span class="p">,</span>
+                                         <span class="s">&#39;pyz&#39;</span><span class="p">,</span><span class="s">&#39;pxz&#39;</span><span class="p">,</span><span class="s">&#39;pxy&#39;</span><span class="p">)])</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mf">1e-4</span><span class="o">*</span><span class="n">GPa</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="s">&#39;atoms&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span> <span class="o">!=</span> <span class="n">atoms</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">atoms</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_lmp_alive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Return True if this calculator is currently handling a running lammps process</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_handle</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lmp_handle</span><span class="o">.</span><span class="n">poll</span><span class="p">(),</span> <span class="nb">int</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_lmp_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Close lammps input and wait for lammps to end. Return process return value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_alive</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_handle</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_handle</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method which explicitely runs LAMMPS.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">calls</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c"># set LAMMPS command from environment variable</span>
+        <span class="k">if</span> <span class="s">&#39;LAMMPS_COMMAND&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+            <span class="n">lammps_cmd_line</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;LAMMPS_COMMAND&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lammps_cmd_line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&#39;The LAMMPS_COMMAND environment variable &#39;</span>
+                                   <span class="s">&#39;must not be empty&#39;</span><span class="p">)</span>
+            <span class="c"># want always an absolute path to LAMMPS binary when calling from self.dir                       </span>
+            <span class="n">lammps_cmd_line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">lammps_cmd_line</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">else</span><span class="p">:</span>
+	    <span class="bp">self</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&#39;Please set LAMMPS_COMMAND environment variable&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;LAMMPS_OPTIONS&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+            <span class="n">lammps_options</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;LAMMPS_OPTIONS&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lammps_options</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;-echo log -screen none&#39;</span><span class="p">)</span>
+
+
+        <span class="c"># change into subdirectory for LAMMPS calculations</span>
+        <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">)</span>
+ 
+
+        <span class="c"># setup file names for LAMMPS calculation</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%06d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">calls</span><span class="p">)</span>
+        <span class="n">lammps_in</span> <span class="o">=</span> <span class="n">uns_mktemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">&#39;in_&#39;</span><span class="o">+</span><span class="n">label</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">)</span>
+        <span class="n">lammps_log</span> <span class="o">=</span> <span class="n">uns_mktemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">&#39;log_&#39;</span><span class="o">+</span><span class="n">label</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">)</span>
+        <span class="n">lammps_trj_fd</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">&#39;trj_&#39;</span><span class="o">+</span><span class="n">label</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">,</span>
+                                           <span class="n">delete</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">))</span>
+        <span class="n">lammps_trj</span> <span class="o">=</span> <span class="n">lammps_trj_fd</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_data_file</span><span class="p">:</span>
+            <span class="n">lammps_data</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lammps_data_fd</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">&#39;data_&#39;</span><span class="o">+</span><span class="n">label</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">,</span>
+                                                <span class="n">delete</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write_lammps_data</span><span class="p">(</span><span class="n">lammps_data</span><span class="o">=</span><span class="n">lammps_data_fd</span><span class="p">)</span>
+            <span class="n">lammps_data</span> <span class="o">=</span> <span class="n">lammps_data_fd</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">lammps_data_fd</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+
+        <span class="c"># see to it that LAMMPS is started</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_alive</span><span class="p">():</span>
+            <span class="c"># Attempt to (re)start lammps</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_handle</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">lammps_cmd_line</span><span class="o">+</span><span class="n">lammps_options</span><span class="o">+</span><span class="p">[</span><span class="s">&#39;-log&#39;</span><span class="p">,</span> <span class="s">&#39;/dev/stdout&#39;</span><span class="p">],</span> 
+                                    <span class="n">stdin</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span>
+        <span class="n">lmp_handle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_handle</span>
+
+
+        <span class="c"># Create thread reading lammps stdout (for reference, if requested,</span>
+        <span class="c"># also create lammps_log, although it is never used)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">:</span>
+            <span class="n">lammps_log_fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">lammps_log</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+            <span class="n">fd</span> <span class="o">=</span> <span class="n">special_tee</span><span class="p">(</span><span class="n">lmp_handle</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">lammps_log_fd</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fd</span> <span class="o">=</span> <span class="n">lmp_handle</span><span class="o">.</span><span class="n">stdout</span>
+        <span class="n">thr_read_log</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">read_lammps_log</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">fd</span><span class="p">,))</span>
+        <span class="n">thr_read_log</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+        <span class="c"># write LAMMPS input (for reference, also create the file lammps_in, </span>
+        <span class="c"># although it is never used)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">:</span>
+            <span class="n">lammps_in_fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">lammps_in</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+            <span class="n">fd</span> <span class="o">=</span> <span class="n">special_tee</span><span class="p">(</span><span class="n">lmp_handle</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="n">lammps_in_fd</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fd</span> <span class="o">=</span> <span class="n">lmp_handle</span><span class="o">.</span><span class="n">stdin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_lammps_in</span><span class="p">(</span><span class="n">lammps_in</span><span class="o">=</span><span class="n">fd</span><span class="p">,</span> <span class="n">lammps_trj</span><span class="o">=</span><span class="n">lammps_trj</span><span class="p">,</span> <span class="n">lammps_data</span><span class="o">=</span><span class="n">lammps_data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">:</span>
+            <span class="n">lammps_in_fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+        <span class="c"># Wait for log output to be read (i.e., for LAMMPS to finish)</span>
+        <span class="c"># and close the log file if there is one</span>
+        <span class="n">thr_read_log</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">:</span>
+            <span class="n">lammps_log_fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_alive</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lmp_end</span><span class="p">()</span>
+
+        <span class="n">exitcode</span> <span class="o">=</span> <span class="n">lmp_handle</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">exitcode</span> <span class="ow">and</span> <span class="n">exitcode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&#39;LAMMPS exited in </span><span class="si">%s</span><span class="s"> with exit code: </span><span class="si">%d</span><span class="s">.&#39;</span> <span class="o">%</span>\
+                                   <span class="p">(</span><span class="n">cwd</span><span class="p">,</span><span class="n">exitcode</span><span class="p">))</span>
+
+        <span class="c"># A few sanity checks</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thermo_content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&#39;Failed to retreive any thermo_style-output&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thermo_content</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;atoms&#39;</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">):</span>
+            <span class="c"># This obviously shouldn&#39;t happen, but if prism.fold_...() fails, it could</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&#39;Atoms have gone missing&#39;</span><span class="p">)</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">read_lammps_trj</span><span class="p">(</span><span class="n">lammps_trj</span><span class="o">=</span><span class="n">lammps_trj</span><span class="p">)</span>
+        <span class="n">lammps_trj_fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_data_file</span><span class="p">:</span>
+            <span class="n">lammps_data_fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">cwd</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write_lammps_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lammps_data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method which writes a LAMMPS data file with atomic structure.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lammps_data</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="n">lammps_data</span> <span class="o">=</span> <span class="s">&#39;data.&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+        <span class="n">write_lammps_data</span><span class="p">(</span><span class="n">lammps_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">specorder</span><span class="p">,</span> 
+                          <span class="n">force_skew</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">always_triclinic</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write_lammps_in</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lammps_in</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">lammps_trj</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">lammps_data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method which writes a LAMMPS in file with run parameters and settings.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lammps_in</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">paropen</span><span class="p">(</span><span class="n">lammps_in</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+            <span class="n">close_in_file</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Expect lammps_in to be a file-like object</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">lammps_in</span>
+            <span class="n">close_in_file</span> <span class="o">=</span> <span class="bp">False</span>
+            
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;# (written by ASE)</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+        <span class="c"># Write variables</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;clear</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span>
+                <span class="p">(</span><span class="s">&#39;variable dump_file string &quot;</span><span class="si">%s</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">lammps_trj</span><span class="p">)</span> <span class="o">+</span>
+                <span class="p">(</span><span class="s">&#39;variable data_file string &quot;</span><span class="si">%s</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">lammps_data</span><span class="p">))</span>
+
+        <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span>
+        <span class="n">pbc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_pbc</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;units metal </span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s">&#39;boundary&#39;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;boundary </span><span class="si">%s</span><span class="s"> </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">parameters</span><span class="p">[</span><span class="s">&#39;boundary&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;boundary </span><span class="si">%c</span><span class="s"> </span><span class="si">%c</span><span class="s"> </span><span class="si">%c</span><span class="s"> </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="s">&#39;sp&#39;</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pbc</span><span class="p">))</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;atom_modify sort 0 0.0 </span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;neighbor&#39;</span> <span class="p">,</span><span class="s">&#39;newton&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">parameters</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+
+        <span class="c"># If self.no_lammps_data, </span>
+        <span class="c"># write the simulation box and the atoms</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_data_file</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;## Original ase cell</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;# </span><span class="si">%.16f</span><span class="s"> </span><span class="si">%.16f</span><span class="s"> </span><span class="si">%.16f</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                                 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_cell</span><span class="p">()]))</span>
+
+            <span class="n">p</span> <span class="o">=</span> <span class="n">prism</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_cell</span><span class="p">())</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;lattice sc 1.0</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="n">xhi</span><span class="p">,</span> <span class="n">yhi</span><span class="p">,</span> <span class="n">zhi</span><span class="p">,</span> <span class="n">xy</span><span class="p">,</span> <span class="n">xz</span><span class="p">,</span> <span class="n">yz</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_lammps_prism_str</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">always_triclinic</span> <span class="ow">or</span> <span class="n">p</span><span class="o">.</span><span class="n">is_skewed</span><span class="p">():</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;region asecell prism 0.0 </span><span class="si">%s</span><span class="s"> 0.0 </span><span class="si">%s</span><span class="s"> 0.0 </span><span class="si">%s</span><span class="s"> &#39;</span> <span class="o">%</span> \
+                            <span class="p">(</span><span class="n">xhi</span><span class="p">,</span> <span class="n">yhi</span><span class="p">,</span> <span class="n">zhi</span><span class="p">))</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> side in units box</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> \
+                            <span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">xz</span><span class="p">,</span> <span class="n">yz</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s">&#39;region asecell block 0.0 </span><span class="si">%s</span><span class="s"> 0.0 </span><span class="si">%s</span><span class="s"> 0.0 </span><span class="si">%s</span><span class="s"> &#39;</span>
+                         <span class="s">&#39;side in units box</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">xhi</span><span class="p">,</span> <span class="n">yhi</span><span class="p">,</span> <span class="n">zhi</span><span class="p">))</span>
+                    
+            <span class="n">symbols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">specorder</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="c"># By default, atom types in alphabetic order</span>
+                <span class="n">species</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">symbols</span><span class="p">)))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># By request, specific atom type ordering</span>
+                <span class="n">species</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">specorder</span>
+
+            <span class="n">n_atom_types</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">species</span><span class="p">)</span>
+            <span class="n">species_i</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">s</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">species</span><span class="p">)])</span>
+
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;create_box </span><span class="si">%i</span><span class="s"> asecell</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n_atom_types</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_tmp_files</span><span class="p">:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;# atom pos in ase cell: </span><span class="si">%.16f</span><span class="s"> </span><span class="si">%.16f</span><span class="s"> </span><span class="si">%.16f</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;create_atoms </span><span class="si">%i</span><span class="s"> single </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> units box</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> \
+                            <span class="p">((</span><span class="n">species_i</span><span class="p">[</span><span class="n">s</span><span class="p">],)</span><span class="o">+</span><span class="n">p</span><span class="o">.</span><span class="n">pos_to_lammps_fold_str</span><span class="p">(</span><span class="n">pos</span><span class="p">)))</span>
+                
+
+        <span class="c"># if NOT self.no_lammps_data, then simply refer to the data-file</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;read_data </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">lammps_data</span><span class="p">)</span>
+
+
+        <span class="c"># Write interaction stuff</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">### interactions </span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="p">(</span><span class="s">&#39;pair_style&#39;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s">&#39;pair_coeff&#39;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="p">):</span>
+            <span class="n">pair_style</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s">&#39;pair_style&#39;</span><span class="p">]</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;pair_style </span><span class="si">%s</span><span class="s"> </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">pair_style</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">pair_coeff</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">[</span><span class="s">&#39;pair_coeff&#39;</span><span class="p">]:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;pair_coeff </span><span class="si">%s</span><span class="s"> </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">pair_coeff</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s">&#39;mass&#39;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">[</span><span class="s">&#39;mass&#39;</span><span class="p">]:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;mass </span><span class="si">%s</span><span class="s"> </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">mass</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># simple default parameters that should always make the LAMMPS </span>
+            <span class="c"># calculation run</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;pair_style lj/cut 2.5 </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span>
+                    <span class="s">&#39;pair_coeff * * 1 1 </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span>
+                    <span class="s">&#39;mass * 1.0 </span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">### run</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span>
+                <span class="s">&#39;fix fix_nve all nve</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span>
+                <span class="p">(</span><span class="s">&#39;dump dump_all all custom 1 </span><span class="si">%s</span><span class="s"> id type x y z vx vy vz fx fy fz</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">lammps_trj</span><span class="p">)</span> <span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s">&#39;thermo_style custom </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span>
+                <span class="s">&#39;thermo_modify flush yes</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span>
+                <span class="s">&#39;thermo 1</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_args</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="s">&#39;minimize&#39;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;minimize </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">parameters</span><span class="p">[</span><span class="s">&#39;minimize&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s">&#39;run&#39;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;run </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">parameters</span><span class="p">[</span><span class="s">&#39;run&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="s">&#39;minimize&#39;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="s">&#39;run&#39;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)):</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;run 0</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;print &quot;</span><span class="si">%s</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">CALCULATION_END_MARK</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;log /dev/stdout</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span> <span class="c"># Force LAMMPS to flush log</span>
+
+        <span class="k">if</span> <span class="n">close_in_file</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">read_lammps_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lammps_log</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">PotEng_first</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method which reads a LAMMPS output log file.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">lammps_log</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="n">lammps_log</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s">&#39;.log&#39;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lammps_log</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">paropen</span><span class="p">(</span><span class="n">lammps_log</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+            <span class="n">close_log_file</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Expect lammps_in to be a file-like object</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">lammps_log</span>
+            <span class="n">close_log_file</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="n">thermo_content</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="k">while</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="n">CALCULATION_END_MARK</span><span class="p">:</span>
+            <span class="c"># get thermo output</span>
+            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_mark</span><span class="p">):</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">while</span> <span class="n">m</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                    <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                        <span class="c"># create a dictionary between each of the thermo_style args</span>
+                        <span class="c"># and it&#39;s corresponding value</span>
+                        <span class="n">thermo_content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_thermo_args</span><span class="p">,</span> 
+                                                       <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()))))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">close_log_file</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">thermo_content</span> <span class="o">=</span> <span class="n">thermo_content</span>
+
+    <span class="k">def</span> <span class="nf">read_lammps_trj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lammps_trj</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">set_atoms</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method which reads a LAMMPS dump file.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lammps_trj</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="n">lammps_trj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s">&#39;.lammpstrj&#39;</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="n">paropen</span><span class="p">(</span><span class="n">lammps_trj</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="c">#TODO: extend to proper dealing with multiple steps in one trajectory file</span>
+            <span class="k">if</span> <span class="s">&#39;ITEM: TIMESTEP&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">n_atoms</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">lo</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">;</span> <span class="n">hi</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">;</span> <span class="n">tilt</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">;</span> <span class="nb">type</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">positions</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">;</span> <span class="n">velocities</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">;</span> <span class="n">forces</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">if</span> <span class="s">&#39;ITEM: NUMBER OF ATOMS&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                <span class="n">n_atoms</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+            
+            <span class="k">if</span> <span class="s">&#39;ITEM: BOX BOUNDS&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="c"># save labels behind &quot;ITEM: BOX BOUNDS&quot; in triclinic case (&gt;=lammps-7Jul09)</span>
+                <span class="n">tilt_items</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">:]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="n">lo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+                    <span class="n">hi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">):</span>
+                        <span class="n">tilt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+            
+            <span class="k">if</span> <span class="s">&#39;ITEM: ATOMS&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="c"># (reliably) identify values by labels behind &quot;ITEM: ATOMS&quot; - requires &gt;=lammps-7Jul09</span>
+                <span class="c"># create corresponding index dictionary before iterating over atoms to (hopefully) speed up lookups...</span>
+                <span class="n">atom_attributes</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">:]):</span>
+                    <span class="n">atom_attributes</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_atoms</span><span class="p">):</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="nb">id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="nb">int</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">atom_attributes</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]])</span> <span class="p">)</span>
+                    <span class="nb">type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="nb">int</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">atom_attributes</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]])</span> <span class="p">)</span>
+                    <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">[</span> <span class="nb">float</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">atom_attributes</span><span class="p">[</span><span class="n">x</span><span class="p">]])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">]</span> <span class="p">]</span> <span class="p">)</span>
+                    <span class="n">velocities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">[</span> <span class="nb">float</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">atom_attributes</span><span class="p">[</span><span class="n">x</span><span class="p">]])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;vx&#39;</span><span class="p">,</span> <span class="s">&#39;vy&#39;</span><span class="p">,</span> <span class="s">&#39;vz&#39;</span><span class="p">]</span> <span class="p">]</span> <span class="p">)</span>
+                    <span class="n">forces</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">[</span> <span class="nb">float</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">atom_attributes</span><span class="p">[</span><span class="n">x</span><span class="p">]])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;fx&#39;</span><span class="p">,</span> <span class="s">&#39;fy&#39;</span><span class="p">,</span> <span class="s">&#39;fz&#39;</span><span class="p">]</span> <span class="p">]</span> <span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="c"># determine cell tilt (triclinic case!)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tilt</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="c"># for &gt;=lammps-7Jul09 use labels behind &quot;ITEM: BOX BOUNDS&quot; to assign tilt (vector) elements ...</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tilt_items</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">):</span>
+                <span class="n">xy</span> <span class="o">=</span> <span class="n">tilt</span><span class="p">[</span><span class="n">tilt_items</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">&#39;xy&#39;</span><span class="p">)]</span>
+                <span class="n">xz</span> <span class="o">=</span> <span class="n">tilt</span><span class="p">[</span><span class="n">tilt_items</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">&#39;xz&#39;</span><span class="p">)]</span>
+                <span class="n">yz</span> <span class="o">=</span> <span class="n">tilt</span><span class="p">[</span><span class="n">tilt_items</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">&#39;yz&#39;</span><span class="p">)]</span>
+            <span class="c"># ... otherwise assume default order in 3rd column (if the latter was present)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">xy</span> <span class="o">=</span> <span class="n">tilt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">xz</span> <span class="o">=</span> <span class="n">tilt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">yz</span> <span class="o">=</span> <span class="n">tilt</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">xy</span> <span class="o">=</span> <span class="n">xz</span> <span class="o">=</span> <span class="n">yz</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">xhilo</span> <span class="o">=</span> <span class="p">(</span><span class="n">hi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">lo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">xy</span> <span class="o">-</span> <span class="n">xz</span>
+        <span class="n">yhilo</span> <span class="o">=</span> <span class="p">(</span><span class="n">hi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">lo</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">yz</span>
+        <span class="n">zhilo</span> <span class="o">=</span> <span class="p">(</span><span class="n">hi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">lo</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+	
+	<span class="c"># The simulation box bounds are included in each snapshot and if the box is triclinic (non-orthogonal), </span>
+	<span class="c"># then the tilt factors are also printed; see the region prism command for a description of tilt factors. </span>
+	<span class="c"># For triclinic boxes the box bounds themselves (first 2 quantities on each line) are a true &quot;bounding box&quot; </span>
+	<span class="c"># around the simulation domain, which means they include the effect of any tilt.</span>
+	<span class="c"># [ http://lammps.sandia.gov/doc/dump.html , lammps-7Jul09 ]</span>
+	<span class="c">#</span>
+	<span class="c"># This *should* extract the lattice vectors that LAMMPS uses from the true &quot;bounding box&quot; printed in the dump file</span>
+	<span class="c"># It might fail in some cases (negative tilts?!) due to the MIN / MAX construction of these box corners:</span>
+	<span class="c">#</span>
+	<span class="c">#	void Domain::set_global_box() </span>
+	<span class="c">#	[...]</span>
+	<span class="c">#	  if (triclinic) {</span>
+	<span class="c">#	    [...]</span>
+	<span class="c">#	    boxlo_bound[0] = MIN(boxlo[0],boxlo[0]+xy);</span>
+	<span class="c">#	    boxlo_bound[0] = MIN(boxlo_bound[0],boxlo_bound[0]+xz);</span>
+	<span class="c">#	    boxlo_bound[1] = MIN(boxlo[1],boxlo[1]+yz);</span>
+	<span class="c">#	    boxlo_bound[2] = boxlo[2];</span>
+	<span class="c">#</span>
+	<span class="c">#	    boxhi_bound[0] = MAX(boxhi[0],boxhi[0]+xy);</span>
+	<span class="c">#	    boxhi_bound[0] = MAX(boxhi_bound[0],boxhi_bound[0]+xz);</span>
+	<span class="c">#	    boxhi_bound[1] = MAX(boxhi[1],boxhi[1]+yz);</span>
+	<span class="c">#	    boxhi_bound[2] = boxhi[2];</span>
+	<span class="c">#	  }</span>
+	<span class="c"># [ lammps-7Jul09/src/domain.cpp ]</span>
+	<span class="c">#</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="n">xhilo</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">xy</span><span class="p">,</span><span class="n">yhilo</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">xz</span><span class="p">,</span><span class="n">yz</span><span class="p">,</span><span class="n">zhilo</span><span class="p">]]</span>
+
+<span class="c">#       print n_atoms</span>
+<span class="c">#       print lo</span>
+<span class="c">#       print hi</span>
+<span class="c">#       print id</span>
+<span class="c">#       print type</span>
+<span class="c">#       print positions</span>
+<span class="c">#       print velocities</span>
+<span class="c">#       print forces</span>
+
+        <span class="c"># assume that LAMMPS does not reorder atoms internally</span>
+<span class="c">#        print np.array(positions)</span>
+<span class="c">#        print self.atoms.get_positions()</span>
+<span class="c">#        print np.array(positions) - self.atoms.get_positions()</span>
+
+        <span class="n">cell_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+        <span class="n">type_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+<span class="c">#      velocities_atoms = np.array(velocities)</span>
+        <span class="n">positions_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+        <span class="n">forces_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">forces</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+            <span class="n">cell_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_cell</span><span class="p">()</span>
+
+            <span class="n">rotation_lammps2ase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cell</span><span class="p">)),</span> <span class="n">cell_atoms</span><span class="p">)</span>
+<span class="c">#           print &quot;rotation_lammps2ase:&quot;</span>
+<span class="c">#           print rotation_lammps2ase</span>
+<span class="c">#           print np.transpose(rotation_lammps2ase)</span>
+<span class="c">#           print np.linalg.det(rotation_lammps2ase)                                            # check for orthogonality of matrix &#39;rotation&#39;</span>
+<span class="c">#           print np.dot(rotation_lammps2ase, np.transpose(rotation_lammps2ase))                # check for orthogonality of matrix &#39;rotation&#39;</span>
+
+            <span class="n">type_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_atomic_numbers</span><span class="p">()</span>
+            <span class="n">positions_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">rotation_lammps2ase</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">velocities_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">rotation_lammps2ase</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">velocities</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">forces_atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="n">rotation_lammps2ase</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">forces</span><span class="p">]</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">set_atoms</span><span class="p">):</span>
+            <span class="c"># assume periodic boundary conditions here (like also below in write_lammps) &lt;- TODO:?!</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">Atoms</span><span class="p">(</span><span class="n">type_atoms</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="n">positions_atoms</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="n">cell_atoms</span><span class="p">,</span> <span class="n">pbc</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">forces</span> <span class="o">=</span> <span class="n">forces_atoms</span>
+
+
+
+<span class="k">class</span> <span class="nc">special_tee</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A special purpose, with limited applicability, tee-like thing.</span>
+
+<span class="sd">    A subset of stuff read from, or written to, orig_fd, </span>
+<span class="sd">    is also written to out_fd.</span>
+<span class="sd">    It is used by the lammps calculator for creating file-logs of stuff read from,</span>
+<span class="sd">    or written to, stdin and stdout, respectively.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orig_fd</span><span class="p">,</span> <span class="n">out_fd</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_orig_fd</span> <span class="o">=</span> <span class="n">orig_fd</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_fd</span> <span class="o">=</span> <span class="n">out_fd</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">orig_fd</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_orig_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orig_fd</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="k">def</span> <span class="nf">readline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orig_fd</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="k">def</span> <span class="nf">readlines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orig_fd</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_orig_fd</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_fd</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">prism</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cell</span><span class="p">,</span> <span class="n">pbc</span><span class="o">=</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="bp">True</span><span class="p">),</span> <span class="n">digits</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a lammps-style triclinic prism object from a cell</span>
+
+<span class="sd">        The main purpose of the prism-object is to create suitable </span>
+<span class="sd">        string representations of prism limits and atom positions</span>
+<span class="sd">        within the prism.</span>
+<span class="sd">        When creating the object, the digits parameter (default set to 10)</span>
+<span class="sd">        specify the precission to use.</span>
+<span class="sd">        lammps is picky about stuff being within semi-open intervals,</span>
+<span class="sd">        e.g. for atom positions (when using create_atom in the in-file), </span>
+<span class="sd">        x must be within [xlo, xhi).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">cell</span>
+        <span class="n">an</span><span class="p">,</span> <span class="n">bn</span><span class="p">,</span> <span class="n">cn</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cell</span><span class="p">]</span>
+        
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">bn</span><span class="o">*</span><span class="n">cn</span><span class="p">))</span>
+        <span class="n">beta</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">an</span><span class="o">*</span><span class="n">cn</span><span class="p">))</span>
+        <span class="n">gamma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">an</span><span class="o">*</span><span class="n">bn</span><span class="p">))</span>
+        
+        <span class="n">xhi</span> <span class="o">=</span> <span class="n">an</span>
+        <span class="n">xyp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span><span class="o">*</span><span class="n">bn</span>
+        <span class="n">yhi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span><span class="o">*</span><span class="n">bn</span>
+        <span class="n">xzp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">cn</span>
+        <span class="n">yzp</span> <span class="o">=</span> <span class="p">(</span><span class="n">bn</span><span class="o">*</span><span class="n">cn</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">-</span> <span class="n">xyp</span><span class="o">*</span><span class="n">xzp</span><span class="p">)</span><span class="o">/</span><span class="n">yhi</span>
+        <span class="n">zhi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cn</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">xzp</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">yzp</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+        <span class="c"># Set precision</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car_prec</span> <span class="o">=</span> <span class="n">dec</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;10.0&#39;</span><span class="p">)</span> <span class="o">**</span> \
+            <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">max</span><span class="p">((</span><span class="n">xhi</span><span class="p">,</span><span class="n">yhi</span><span class="p">,</span><span class="n">zhi</span><span class="p">))))</span><span class="o">-</span><span class="n">digits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dir_prec</span> <span class="o">=</span> <span class="n">dec</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;10.0&#39;</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="n">digits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acc</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car_prec</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">xhi</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+
+        <span class="c"># For rotating positions from ase to lammps</span>
+        <span class="n">Apre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(((</span><span class="n">xhi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">),</span>
+                         <span class="p">(</span><span class="n">xyp</span><span class="p">,</span> <span class="n">yhi</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                         <span class="p">(</span><span class="n">xzp</span><span class="p">,</span> <span class="n">yzp</span><span class="p">,</span> <span class="n">zhi</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">cell</span><span class="p">),</span> <span class="n">Apre</span><span class="p">)</span>
+
+        <span class="c"># Actual lammps cell may be different from what is used to create R</span>
+        <span class="k">def</span> <span class="nf">fold</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">pvec</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">pvec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">p</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">p</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f2qdec</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="n">vec</span> <span class="o">+</span> <span class="n">n</span><span class="o">*</span><span class="n">pvec</span><span class="p">)]</span>
+
+        <span class="n">Apre</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">Apre</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span> <span class="n">Apre</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">Apre</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">Apre</span><span class="p">[</span><span class="mi">2</span><span class="p">,:],</span> <span class="n">Apre</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">Apre</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">Apre</span><span class="p">[</span><span class="mi">2</span><span class="p">,:],</span> <span class="n">Apre</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">Apre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_skewed</span><span class="p">()</span> <span class="ow">and</span> \
+                <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">pbc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pbc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pbc</span><span class="p">[</span><span class="mi">2</span><span class="p">])):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&#39;Skewed lammps cells MUST have &#39;</span>
+                               <span class="s">&#39;PBC == True in all directions!&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">f2qdec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dec</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car_prec</span><span class="p">,</span> <span class="n">dec</span><span class="o">.</span><span class="n">ROUND_DOWN</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">f2qs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f2qdec</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">f2s</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">dec</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car_prec</span><span class="p">,</span> <span class="n">dec</span><span class="o">.</span><span class="n">ROUND_HALF_EVEN</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">dir2car</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="s">&quot;Direct to cartesian coordinates&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">car2dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="s">&quot;Cartesian to direct coordinates&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ainv</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fold_to_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
+        <span class="s">&quot;Fold a position into the lammps cell (semi open), return a tuple of str&quot;</span> 
+        <span class="c"># Two-stage fold, first into box, then into semi-open interval</span>
+        <span class="c"># (within the given precission).</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_prec</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> 
+             <span class="nb">map</span><span class="p">(</span><span class="n">dec</span><span class="o">.</span><span class="n">Decimal</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">repr</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car2dir</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)))]</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">f2qs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> 
+                      <span class="bp">self</span><span class="o">.</span><span class="n">dir2car</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">d</span><span class="p">))])</span>
+        
+    <span class="k">def</span> <span class="nf">get_lammps_prism</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">get_lammps_prism_str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">&quot;Return a tuple of strings&quot;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lammps_prism</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">f2s</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">p</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">pos_to_lammps_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="s">&quot;Rotate an ase-cell postion to the lammps cell orientation, return tuple of strs&quot;</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">f2s</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">)])</span>
+
+    <span class="k">def</span> <span class="nf">pos_to_lammps_fold_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="s">&quot;Rotate and fold an ase-cell postion into the lammps cell, return tuple of strs&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold_to_str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">is_skewed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">acc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acc</span>
+        <span class="n">prism</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lammps_prism</span><span class="p">()</span>
+        <span class="n">axy</span><span class="p">,</span> <span class="n">axz</span><span class="p">,</span> <span class="n">ayz</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">prism</span><span class="p">[</span><span class="mi">3</span><span class="p">:]]</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">axy</span> <span class="o">&gt;=</span> <span class="n">acc</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">axz</span> <span class="o">&gt;=</span> <span class="n">acc</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ayz</span> <span class="o">&gt;=</span> <span class="n">acc</span><span class="p">)</span>
+        
+
+<div class="viewcode-block" id="write_lammps_data"><a class="viewcode-back" href="../../../code.html#openkimtests.bin.kim.write_lammps_data">[docs]</a><span class="k">def</span> <span class="nf">write_lammps_data</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">atoms</span><span class="p">,</span> <span class="n">specorder</span><span class="o">=</span><span class="p">[],</span> <span class="n">force_skew</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Method which writes atomic structure data to a LAMMPS data file.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">paropen</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">close_file</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># Presume fileobj acts like a fileobj</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">fileobj</span>
+        <span class="n">close_file</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Can only write one configuration to a lammps data file!&#39;</span><span class="p">)</span>
+        <span class="n">atoms</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#39; (written by ASE) </span><span class="se">\n\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">atoms</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">()</span>
+    <span class="n">n_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s"> </span><span class="se">\t</span><span class="s"> atoms </span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n_atoms</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">specorder</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c"># This way it is assured that LAMMPS atom types are always</span>
+        <span class="c"># assigned predictively according to the alphabetic order </span>
+        <span class="n">species</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">symbols</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># To index elements in the LAMMPS data file (indices must</span>
+        <span class="c"># correspond to order in the potential file)</span>
+        <span class="n">species</span> <span class="o">=</span> <span class="n">specorder</span>
+    <span class="n">n_atom_types</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">species</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">  atom types</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n_atom_types</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">prism</span><span class="p">(</span><span class="n">atoms</span><span class="o">.</span><span class="n">get_cell</span><span class="p">())</span>
+    <span class="n">xhi</span><span class="p">,</span> <span class="n">yhi</span><span class="p">,</span> <span class="n">zhi</span><span class="p">,</span> <span class="n">xy</span><span class="p">,</span> <span class="n">xz</span><span class="p">,</span> <span class="n">yz</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_lammps_prism_str</span><span class="p">()</span>
+
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;0.0 </span><span class="si">%s</span><span class="s">  xlo xhi</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">xhi</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;0.0 </span><span class="si">%s</span><span class="s">  ylo yhi</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">yhi</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;0.0 </span><span class="si">%s</span><span class="s">  zlo zhi</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">zhi</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">force_skew</span> <span class="ow">or</span> <span class="n">p</span><span class="o">.</span><span class="n">is_skewed</span><span class="p">():</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">  xy xz yz</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">xz</span><span class="p">,</span> <span class="n">yz</span><span class="p">))</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Atoms </span><span class="se">\n\n</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">pos_to_lammps_str</span><span class="p">,</span>
+                              <span class="n">atoms</span><span class="o">.</span><span class="n">get_positions</span><span class="p">())):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">species</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">symbols</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%6d</span><span class="s"> </span><span class="si">%3d</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="nb">tuple</span><span class="p">(</span><span class="n">r</span><span class="p">)))</span>
+    
+    <span class="k">if</span> <span class="n">close_file</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+</div>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">pair_style</span> <span class="o">=</span> <span class="s">&#39;eam&#39;</span>
+    <span class="n">Pd_eam_file</span> <span class="o">=</span> <span class="s">&#39;Pd_u3.eam&#39;</span>
+    <span class="n">pair_coeff</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&#39;* * &#39;</span> <span class="o">+</span> <span class="n">Pd_eam_file</span> <span class="p">]</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;pair_style&#39;</span> <span class="p">:</span> <span class="n">pair_style</span><span class="p">,</span> <span class="s">&#39;pair_coeff&#39;</span> <span class="p">:</span> <span class="n">pair_coeff</span> <span class="p">}</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Pd_eam_file</span> <span class="p">]</span>
+    <span class="n">calc</span> <span class="o">=</span> <span class="n">LAMMPS</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">ase</span> <span class="kn">import</span> <span class="n">Atoms</span>
+    <span class="n">a0</span> <span class="o">=</span> <span class="mf">3.93</span>
+    <span class="n">b0</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="k">if</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">bulk</span> <span class="o">=</span> <span class="n">Atoms</span><span class="p">([</span><span class="s">&#39;Pd&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span>
+                     <span class="n">positions</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="n">b0</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="n">b0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">b0</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">b0</span><span class="p">)],</span>
+                     <span class="n">cell</span><span class="o">=</span><span class="p">[</span><span class="n">a0</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span>
+                     <span class="n">pbc</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="c"># test get_forces</span>
+        <span class="k">print</span> <span class="s">&#39;forces for a = </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">a0</span>
+        <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">get_forces</span><span class="p">(</span><span class="n">bulk</span><span class="p">)</span>
+        <span class="c"># single points for various lattice constants</span>
+        <span class="n">bulk</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="n">calc</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">n</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span>
+            <span class="n">bulk</span><span class="o">.</span><span class="n">set_cell</span><span class="p">([</span><span class="n">a</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s">&#39;a : </span><span class="si">%f</span><span class="s"> , total energy : </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">bulk</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">())</span>
+
+    <span class="n">calc</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">OpenKIM-Tests v0.2 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Alex Alemi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

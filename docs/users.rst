@@ -1,5 +1,4 @@
 ===========
-Pipeline
+User Guide
 ===========
 
-How it works.

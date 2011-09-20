@@ -1,5 +1,8 @@
 """
-Holds the logger for the openkimtest project 
+Holds the logger for the openkimtest project
+	in logger, to be inherited by other modules
+	and a child created
+	e.g. child_logger = logger.getChild('child_name')
 """
 
 

@@ -6,14 +6,21 @@
 Welcome to OpenKIM-Tests's documentation!
 =========================================
 
+This project is a collection of code that aims to allow
+easy test writing for eventual inclusing in the `openkim.org <http://openkim.org>`_ project.
+
+The project is on github at https://github.com/alexalemi/openkimtests
+
+
+
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
+   users
    tests
-   pipeline
-   database
+   code
    todo
 
 Indices and tables

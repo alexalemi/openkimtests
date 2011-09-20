@@ -5,15 +5,15 @@
 			EMT
 		</potential>
 		<element>
-			H
+			O
 		</element>
 	</config>
 	<results>
 		<FCCLatticeConstant type="float64">
-			1.7622070312499971
+			2.6359130859374993
 		</FCCLatticeConstant>
 		<FCCEnergyPerAtom type="float64">
-			-0.042040328596904764
+			-0.0053940840594401962
 		</FCCEnergyPerAtom>
 	</results>
 </test>
