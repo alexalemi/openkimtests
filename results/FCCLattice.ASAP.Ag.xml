@@ -5,15 +5,15 @@
 			ASAP
 		</potential>
 		<element>
-			Cu
+			Ag
 		</element>
 	</config>
 	<results>
 		<FCCLatticeConstant type="float64">
-			3.5928222656250015
+			4.0635498046875016
 		</FCCLatticeConstant>
 		<FCCEnergyPerAtom type="float64">
-			-1.5929860798793438
+			-0.36665295154662114
 		</FCCEnergyPerAtom>
 	</results>
 </test>

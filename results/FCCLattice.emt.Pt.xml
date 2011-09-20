@@ -1,1 +1,0 @@
-<?xml version="1.0" ?><test id="FCCLattice"><config><potential>emt</potential><element>Pt</element></config><results><FCCLatticeConstant type="float64">3.921826171875002</FCCLatticeConstant><FCCEnergyPerAtom type="float64">-0.00013376108772433781</FCCEnergyPerAtom></results></test>

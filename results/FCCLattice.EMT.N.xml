@@ -2,18 +2,18 @@
 <test id="FCCLattice">
 	<config>
 		<potential>
-			ASAP
+			EMT
 		</potential>
 		<element>
-			Cu
+			N
 		</element>
 	</config>
 	<results>
 		<FCCLatticeConstant type="float64">
-			3.5928222656250015
+			2.2268554687499984
 		</FCCLatticeConstant>
 		<FCCEnergyPerAtom type="float64">
-			-1.5929860798793438
+			-0.60040139587994856
 		</FCCEnergyPerAtom>
 	</results>
 </test>

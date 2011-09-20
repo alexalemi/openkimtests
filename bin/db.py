@@ -142,11 +142,11 @@ def XMLWriter(potential,element,test,results,write=False):
     if write:
         resultfile = '../results/' + test + '.' + potential + '.' + element + '.xml'
         outputfile = open(resultfile,'w')
-        outputfile.write(doc.toxml())
+        outputfile.write(doc.toprettyxml())
         outputfile.close()
         
     #return a pretty xml string.
-    return doc.toxml()
+    return doc.toprettyxml()
 
 reader = XMLReader
 writer = XMLWriter
