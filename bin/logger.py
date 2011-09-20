@@ -7,8 +7,8 @@ import logging
 import logging.handlers
 
 import os.path
-import openkimtest
-openkimtest_dir = os.path.dirname(openkimtest.__file__)
+import openkimtests
+openkimtest_dir = os.path.dirname(openkimtests.__file__)
 
 
 LOG_FILENAME = os.path.join(openkimtest_dir,'logs','openkimlog.log')
@@ -16,7 +16,7 @@ WARN_FILENAME = os.path.join(openkimtest_dir,'logs','openkimlog.warning.log')
 
 
 #create the logger
-logger = logging.getLogger('openkimtest')
+logger = logging.getLogger('openkimtests')
 logger.setLevel(logging.DEBUG)
 
 #create the file handler

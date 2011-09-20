@@ -1,1 +1,0 @@
-<?xml version="1.0" ?><test id="FCCLattice"><config><potential>asap</potential><element>Cu</element></config><results><FCCLatticeConstant type="float64">3.5928222656250015</FCCLatticeConstant><FCCEnergyPerAtom type="float64">-1.5929860798793438</FCCEnergyPerAtom></results></test>

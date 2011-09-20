@@ -7,8 +7,8 @@ I will start by using XML
 """
 
 import os.path
-import openkimtest
-openkimtest_dir = os.path.dirname(openkimtest.__file__)
+import openkimtests
+openkimtest_dir = os.path.dirname(openkimtests.__file__)
 
 results_dir = os.path.join(openkimtest_dir,'results')
 

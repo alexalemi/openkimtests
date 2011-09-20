@@ -9,13 +9,13 @@ The BaseTest handles initialization of the form
 #standard imports
 import argparse
 
-from openkimtest.bin.logger import logger
+from openkimtests.bin.logger import logger
 
-import openkimtest.bin.db as db
+import openkimtests.bin.db as db
 
 logger = logger.getChild('_BaseTest')
 
-from openkimtest.bin import potential
+from openkimtests.bin import potential
 
 
 #helpful rename

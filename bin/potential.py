@@ -9,8 +9,8 @@ import lammps
 import kim
 
 import os.path
-import openkimtest
-openkimtest_dir = os.path.dirname(openkimtest.__file__)
+import openkimtests
+openkimtest_dir = os.path.dirname(openkimtests.__file__)
 tmp_dir = os.path.join(openkimtest_dir,'tmp')
 
 from logger import logger

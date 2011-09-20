@@ -6,17 +6,17 @@ import glob, time, os, sys
 
 #get the paths
 import os.path
-import openkimtest
-openkimtest_dir = os.path.dirname(openkimtest.__file__)
+import openkimtests
+openkimtest_dir = os.path.dirname(openkimtests.__file__)
 
 test_dir = os.path.join(openkimtest_dir,'kim_tests')
 
 #import useful stuff
-import openkimtest
-from openkimtest.bin.logger import logger
-import openkimtest.bin.db as db
-from openkimtest.bin.filetools import file_list
-import openkimtest.bin.potential as potential_module
+import openkimtests
+from openkimtests.bin.logger import logger
+import openkimtests.bin.db as db
+from openkimtests.bin.filetools import file_list
+import openkimtests.bin.potential as potential_module
 import logging
 
 logger = logger.getChild('pipeline')
@@ -36,9 +36,9 @@ def run_test(test,potential,element,verbose=True):
         
         child_logger.info('Attempting to load the test')
         try:
-            testModule = __import__('openkimtest.kim_tests.'+test,None,None,fromlist=[test])
+            testModule = __import__('openkimtests.kim_tests.'+test,None,None,fromlist=[test])
         except ImportError:
-            child_logger.error('openkimtest.kim_tests.%r failed to import',test)
+            child_logger.error('openkimtests.kim_tests.%r failed to import',test)
             raise
         
         testClass = testModule.__getattribute__(test)
@@ -135,3 +135,8 @@ def run_tests(verbose=True,update=False):
 
     finally:
         child_logger.removeHandler(ch)
+        
+        
+if __name__ == "__main__":
+    #run all tests
+    run_tests()
