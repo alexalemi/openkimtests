@@ -11,9 +11,15 @@ import argparse
 
 from openkimtest.bin.logger import logger
 
+import openkimtest.bin.db as db
+
 logger = logger.getChild('_BaseTest')
 
 from openkimtest.bin import potential
+
+
+#helpful rename
+request = db.request
 
 class LackingResults(Exception):
     """ The LackingResults exception, raised if the test doesn't have a results method """
@@ -70,8 +76,15 @@ class BaseTest:
         self.logger.debug('Recieved a main method call')
         if self.verify:
             self.verify()
-        return self.results()
-        
+
+        results = self.results()
+        db.writer(potential=self.potentialname,
+                    element=self.element,
+                    test=self.__class__.__name__,
+                    results=results,
+                    write=True)
+
+        return results        
         
 #Parser specification
 
@@ -85,13 +98,6 @@ parser.add_argument('-w','--write', action='store_true', help='writes the xml fi
 args = parser.parse_args()
 
 
-
-print args
-print
-print args.potential
-
-print 
-
-print args.element
+logger.debug('Test called with arguments %r',args)
 
 #make this stuff into in logging statement.

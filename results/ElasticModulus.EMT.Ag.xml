@@ -1,1 +1,0 @@
-<?xml version="1.0" ?><test id="ElasticModulus"><config><potential>EMT</potential><element>Ag</element><testdependencies/>['FCCLattice']</config><results><BulkModulus>103.995554804</BulkModulus><PoissonRatio>0.400390625</PoissonRatio><YoungsModulus>55.3833983511</YoungsModulus></results></test>

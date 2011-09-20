@@ -116,7 +116,7 @@ def KIM_loader(name,element,slab=None,*args,**kwargs):
     spec_mass = slab.get_masses()
 
     pair_style = "pair_KIM {name} {spec}".format(name=name,spec=subspec[0])
-    mass_string = "1 {}".format(spec_mass[0])
+    mass_string = ["1 {}".format(spec_mass[0])]
 
     parameters = { "pair_style" : pair_style, 
                         'pair_coeff' : ['* *'],
