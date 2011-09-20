@@ -92,12 +92,12 @@ def ASAP_loader(name,element,slab=None,*args,**kwargs):
 
 
 
-supported_atoms = {'asap':set(['Ni','Cu','Pd','Ag','Pt','Au']),
-                   'emt': set(['Ni','C','Pt','Ag','H',
+supported_atoms = {'ASAP':set(['Ni','Cu','Pd','Ag','Pt','Au']),
+                   'EMT': set(['Ni','C','Pt','Ag','H',
                                'Al','O','N','Au','Pd','Cu']) }
 
-potentials = {'emt':EMT_loader ,
-              'asap': ASAP_loader }
+potentials = {'EMT':EMT_loader ,
+              'ASAP': ASAP_loader }
 
 
 ##################################################
