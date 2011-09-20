@@ -1,0 +1,1 @@
+<?xml version="1.0" ?><test id="FCCLattice"><config><potential>emt</potential><element>Ni</element></config><results><FCCLatticeConstant type="float64">3.4918945312500007</FCCLatticeConstant><FCCEnergyPerAtom type="float64">-0.0033956915819253197</FCCEnergyPerAtom></results></test>
