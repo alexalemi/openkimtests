@@ -54,13 +54,15 @@ def EMT_loader(name,element,slab=None,*args,**kwargs):
                             'Al','O','N','Au','Pd','Cu']
     try:
         from ase.calculators.emt import EMT
+        import ase
+        ase.EMT.disabled = False
     except ImportError:
-        child.warning("ASE doesn't seem to exist")
+        child_logger.warning("ASE doesn't seem to exist")
         raise PackageDoesNotExist('ASE:EMT')
     try:
         calc = EMT(*args,**kwargs)
     except:
-        child.warning("Calculator creation threw exception")
+        child_logger.warning("Calculator creation threw exception")
         raise PotentialLoadFailed('ASE:EMT',*args,**kwargs)
     return calc
 
@@ -71,7 +73,7 @@ def ASAP_loader(name,element,slab=None,*args,**kwargs):
     supported_elements = ['Ni','Cu','Pd','Ag','Pt','Au']
     child_logger = logger.getChild('ASAP_loader')
     try:
-        from asap3 import EMT
+        import asap3
     except ImportError:
         child_logger.warning('ASAP package could not be loaded')
         raise PackageDoesNotExist('ASAP')
@@ -82,7 +84,7 @@ def ASAP_loader(name,element,slab=None,*args,**kwargs):
             if boxes > 1:
                 child_logger.warning('Cell Size too small for ASAP')
 
-        calc = EMT(*args,**kwargs)
+        calc = asap3.EMT(*args,**kwargs)
     except:
         child_logger.warning('An error occurred in the calculator creation')
         raise PotentialLoadFailed('ASAP',*args,**kwargs)
@@ -180,10 +182,12 @@ def kim_file_atoms(model):
     return atoms
 
 
-kim_supported_atoms={model.lower():kim_file_atoms(model) for model in kim_models}
+kim_supported_atoms={model:kim_file_atoms(model) for model in kim_models}
 
-supported_atoms.update(kim_supported_atoms)
-potentials.update({model.lower():KIM_loader for model in kim_models})
+#add the kim models to the supported models
+
+#supported_atoms.update(kim_supported_atoms)
+#potentials.update({model:KIM_loader for model in kim_models})
 
 
 #########################################################
@@ -227,11 +231,11 @@ def load(name,element=None,slab=None,*args,**kwargs):
     """ Allow dictionary like access """
     logger.debug('Recieved a potential.load call')
 
-    if name.lower() in potentials:
+    if name in potentials:
         logger.debug('potentialname: %s found',name)
-        if element in supported_atoms[name.lower()]:
+        if element in supported_atoms[name]:
             logger.debug('element %r found',element)
-            return potentials[name.lower()](name,element,slab,*args,**kwargs)
+            return potentials[name](name,element,slab,*args,**kwargs)
         else:
             logger.warning('Element %r not supported by potential %r', element, name)
             raise UnsupportedAtom(name,element)

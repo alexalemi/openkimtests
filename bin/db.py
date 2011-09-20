@@ -161,6 +161,19 @@ def get_by_test(test, cands=None):
     """ Get all of the results by test name """
 
 
+
+def results_exist(potential,element,test):
+    """ See if results exist """
+    filename = test + '.' + potential + '.' + element + '.xml'
+    return os.path.isfile(os.path.join(results_dir,filename))
+
+import time
+
+def results_timestamp(potential,element,test):
+    """ Get the creation time of a results file """
+    filename = test + '.' + potential + '.' + element + '.xml'
+    return os.path.getmtime(os.path.join(results_dir,filename))
+
 def request(potential,element,test,resultentry):
     """ Get the results from a potential, element, test pair """
     try:

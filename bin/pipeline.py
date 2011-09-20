@@ -3,90 +3,135 @@
 
 import glob, time, os, sys
 
-#directory paths
-testdirectory = "../tests/"
-resultsdirectory = "../results/"
-outputdirectory = "../outputs/"
-verifydirectory = "../verify/"
 
-#ase emt support
-emtlist = ['Ni','C','Pt','Ag','H','Al','O','N','Au','Pd','Cu']
-emtfcclist = ['Ni','Pt','Ag','Al','Au','Pd','Cu']
-emtlist = emtfcclist
-potentiallist = ['EMT','ASAP']#,'GPAW']
-#potentiallist = ['EMT']
+#get the paths
+import os.path
+import openkimtest
+openkimtest_dir = os.path.dirname(openkimtest.__file__)
 
-def runTest(test,potential,el,verbose=True):
-    testname = test[len(testdirectory):-3]
-    if verbose:
-        print "=================================================="
-        print "Running %s with %s for %s" % ( testname, potential, el)
-    outputfilename = testname + '.' + potential + '.' + el + '.out'
-    outputfilepath = outputdirectory + outputfilename
-    resultfilename = testname + '.' + potential + '.' + el + '.xml'
-    resultfilepath = resultsdirectory + resultfilename
-    if verbose:
-        print 
-        print "File output... "
-    start = time.time()
-    if verbose:
-        print "EXECUTING: "
-        print 'python ' + test + ' ' + potential + ' ' + el + ' -w ' + '| tee ' + outputfilepath
-    outflag = os.system('python ' + test + ' ' + potential + ' ' + el + ' -w ' + '| tee ' + outputfilepath)
-    if outflag:
-        os.system('rm ' + outputfilepath)
-        print "Exception Occured"
-        return -1
-    end = time.time()
-    if verbose:
-        print 
-        print "Test completed successfully in %f seconds" % (end-start)
-        print "Results stored in %s" % resultfilename
-    return 0 
+test_dir = os.path.join(openkimtest_dir,'kim_tests')
 
+#import useful stuff
+import openkimtest
+from openkimtest.bin.logger import logger
+import openkimtest.bin.db as db
+from openkimtest.bin.filetools import file_list
+import openkimtest.bin.potential as potential_module
+import logging
+
+logger = logger.getChild('pipeline')
+
+def run_test(test,potential,element,verbose=True):
+    """ Run a specific test """
+    child_logger = logger.getChild('runtest')
+    try:
+        if verbose:
+            ch = logging.StreamHandler()
+            ch.setLevel(logging.DEBUG)
+            child_logger.addHandler(ch)
+
+        child_logger.info('\nAbout to run a test, test=%r,potential=%r,element=%r',
+                            test,potential,element)
+        start_time = time.time()
+        
+        child_logger.info('Attempting to load the test')
+        try:
+            testModule = __import__('openkimtest.kim_tests.'+test,None,None,fromlist=[test])
+        except ImportError:
+            child_logger.error('openkimtest.kim_tests.%r failed to import',test)
+            raise
+        
+        testClass = testModule.__getattribute__(test)
+        
+        child_logger.info('Creating a test instance')
+        testObject = testClass(potentialname=potential,element=element)
+
+        #compute results, and create results file   
+        results = testObject.main()
+        
+        child_logger.info('Computed results, obtained: %r\n', results)
+    finally:
+        #ensure we clear memory up a bit and detach handlers
+        del testObject
+        del testClass
+        del testModule
+        if verbose:
+            child_logger.removeHandler(ch)
+
+
+
+def test_timestamp(test):
+    """ Get the modified time of the test """
+    return os.path.getmtime(os.path.join(test_dir,test+'.py'))
+
+
+def new_results_needed(potential,element,test):
+    """ Do we need new test results """
+    test_time = test_timestamp(test)
+    results_time = db.results_timestamp(potential,element,test)
+    return test_time > results_time
     
-def runTests(runAll = False, DFT = False):
-    pipelinestart = time.time()
-    if runAll:
-        print "Running a full pipeline, all tests"
-    if DFT:
-        potentiallist.append('GPAW')
-    lstTests = glob.glob(testdirectory + '*.py')
-    lstTests.remove(testdirectory + 'BaseTest.py')
-    lstTests.remove(testdirectory + 'NullTest.py')
-    print lstTests
-    print "Running pipeline... "
-    print "There are a total of %d Tests" % (len(lstTests))
-    for test in lstTests:
-        testname = test[len(testdirectory):-3]
-        for potential in potentiallist:
-            for el in emtlist:
-                if runAll:
-                    runTest(test,potential,el)
-                else:
-                    resultfilename = testname + '.' + potential + '.' + el + '.xml'
-                    resultfilepath = resultsdirectory + resultfilename
-                    try:
-                        fob = open(resultfilepath)
-                        print "Test configuation for %s already exists..." % resultfilename
-                    except IOError:
-                        runTest(test,potential,el)  
-    pipelinestop = time.time()
-    
-    print "Pipeline update finished, took %f seconds " % (pipelinestop-pipelinestart)              
+test_list = file_list(test_dir)
+
+import traceback
+
+def run_tests(verbose=True,update=False):
+    """ Run all of the tests, where unless update is set,
+        only compute the results if the test has been modified since
+        the results. """
+    child_logger = logger.getChild('run_tests')
+    try:
+        if verbose:
+            ch = logging.StreamHandler()
+            ch.setLevel(logging.DEBUG)
+            child_logger.addHandler(ch)
+
+        
+        child_logger.info('\nLaunching all tests')
+        start = time.time()
+        for test in test_list:
+            child_logger.info('\nRunning tests for test=%r',test)
+            test_start =time.time()
+            for potential,element_set in potential_module.supported_atoms.iteritems():
+                child_logger.info('\nRunning potential=%r',potential)
+                potential_start = time.time()
+                for element in element_set:
+
+                    
+                    #figure out if we need to run the test
+                    test_needed = True
+                    if db.results_exist(potential=potential,
+                                            element=element,
+                                            test=test):
+                        child_logger.info('Test %r,%r,%r exists',test,potential,element)
+                        if new_results_needed(potential,element,test):
+                            child_logger.info('New test needs computing')
+                            test_needed = True
+                        else:
+                            test_needed = False
+                    if update:
+                        test_needed=True
+                     
+                        
+                    if test_needed:
+                        test_start = time.time()
+                        child_logger.info('\nRunning element=%r',element)
+                        try:
+                            run_test(test=test,
+                                    potential=potential,
+                                    element=element,
+                                    verbose=verbose)
+                        except Exception as e:
+                            child_logger.error('\nERROR on test=%r, potential=%r, element=%r, info:%r',
+                                                test,potential,element,e)
+                            child_logger.error('TRACEBACK: %s',traceback.format_exc())
             
-            
-if __name__ == '__main__':
-    runAllFlag = False
-    DFTFlag = False
-    for opt in sys.argv:
-        if opt == '--full':
-            runAllFlag = True
-        if opt == '--dft':
-            DFTFlag = True
-    runTests(runAll = runAllFlag, DFT = DFTFlag)
-            
-            
-            
-# Is there a way to do a   programtoexecute &> output.file 
-# but also have it echo to the terminal
+                        child_logger.info('Element %r Run took %r seconds',element,time.time()-test_start)
+                    else:
+                        child_logger.info('Unessesary test %r,%r,%r',test,potential,element)
+                child_logger.info('Potential %r run took %r seconds',potential,time.time()-potential_start)
+            child_logger.info('Test %r run took %r seconds',test,time.time()-test_start)
+        child_logger.info('Full Run took %r seconds',time.time()-start)            
+
+    finally:
+        child_logger.removeHandler(ch)
