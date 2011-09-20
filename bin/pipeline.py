@@ -68,6 +68,8 @@ def test_timestamp(test):
 
 def new_results_needed(potential,element,test):
     """ Do we need new test results """
+    if not db.results_exist(potential,element,test):
+        return True
     test_time = test_timestamp(test)
     results_time = db.results_timestamp(potential,element,test)
     return test_time > results_time
@@ -144,7 +146,7 @@ def request(potential,element,test,resultentry):
     """ Get the results from a potential, element, test pair
         if it doesn't exist, run it """
 
-    if not db.results_exist(potential,element,test):
+    if new_results_needed(potential,element,test):
         run_test(test,potential,element)
     
     ans = db.request(potential,element,test,resultentry)
