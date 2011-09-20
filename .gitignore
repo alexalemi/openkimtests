@@ -1,10 +1,8 @@
 *.pyc
 *~
-<<<<<<< HEAD
-=======
 tmp/*
 logs/*
 bin/legacy_code/
 bin/legacy_code/*
 outputs/*
->>>>>>> a743208a5551546b291304a35fe39908278d9316
+
