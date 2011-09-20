@@ -56,23 +56,23 @@ optional arguments:
 
 TODO:
 -----
-  O - Write the documentation
-  O - get KIM potentials working
-  O - get lammps potentials working
-  O - get GPAW potential working
-  O - write more tests
+ - O - Write the documentation
+ - O - get KIM potentials working
+ - O - get lammps potentials working
+ - O - get GPAW potential working
+ - O - write more tests
 
 TESTS:    
 ------
-    X  - FCC lattice constants
-    O  - BCC lattice constants
-    O  - verify forces are gradients
-    O  - Figure out equilibrium structure
-    O  - Vacancy formation energy
-    O  - Vacancy displacement field
-    O  - hexagonal lattice constants
-    O  - Elastic Moduli
-    O  - maybe verify the lattice constants (see that force is zero)
-    O  - unit change test.
-    O  - change potential parameters, perhaps make a LennardJones potential
+  -  X  - FCC lattice constants
+  -  O  - BCC lattice constants
+  -  O  - verify forces are gradients
+  -  O  - Figure out equilibrium structure
+  -  O  - Vacancy formation energy
+  -  O  - Vacancy displacement field
+  -  O  - hexagonal lattice constants
+  -  O  - Elastic Moduli
+  -  O  - maybe verify the lattice constants (see that force is zero)
+  -  O  - unit change test.
+  -  O  - change potential parameters, perhaps make a LennardJones potential
     
