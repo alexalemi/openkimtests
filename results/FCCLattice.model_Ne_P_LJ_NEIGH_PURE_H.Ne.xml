@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<test id="FCCLattice">
+	<config>
+		<potential>
+			model_Ne_P_LJ_NEIGH_PURE_H
+		</potential>
+		<element>
+			Ne
+		</element>
+	</config>
+	<results>
+		<FCCLatticeConstant type="float64">
+			4.2372070312500023
+		</FCCLatticeConstant>
+		<FCCEnergyPerAtom type="float64">
+			-0.024547665
+		</FCCEnergyPerAtom>
+	</results>
+</test>

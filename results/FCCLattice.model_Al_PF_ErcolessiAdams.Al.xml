@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<test id="FCCLattice">
+	<config>
+		<potential>
+			model_Al_PF_ErcolessiAdams
+		</potential>
+		<element>
+			Al
+		</element>
+	</config>
+	<results>
+		<FCCLatticeConstant type="float64">
+			3.1523437500000004
+		</FCCLatticeConstant>
+		<FCCEnergyPerAtom type="float64">
+			-12.800746999999999
+		</FCCEnergyPerAtom>
+	</results>
+</test>

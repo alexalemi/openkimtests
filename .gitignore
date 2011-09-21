@@ -1,8 +1,7 @@
+*.*~
 *.pyc
-*~
-tmp/*
 logs/*
-bin/legacy_code/
-bin/legacy_code/*
-outputs/*
+tmp/*
+*~
+
 

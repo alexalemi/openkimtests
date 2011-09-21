@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<test id="FCCLattice">
+	<config>
+		<potential>
+			model_Ar_P_MLJ_C
+		</potential>
+		<element>
+			Ar
+		</element>
+	</config>
+	<results>
+		<FCCLatticeConstant type="float64">
+			5.3475585937500059
+		</FCCLatticeConstant>
+		<FCCEnergyPerAtom type="float64">
+			-0.054854356999999999
+		</FCCEnergyPerAtom>
+	</results>
+</test>
