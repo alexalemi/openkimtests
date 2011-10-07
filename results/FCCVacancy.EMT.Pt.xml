@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<test id="FCCVacancy">
+	<config>
+		<potential>
+			EMT
+		</potential>
+		<element>
+			Pt
+		</element>
+	</config>
+	<results>
+		<NAtoms type="int">
+			2048
+		</NAtoms>
+		<VacancyFormationEnergy type="float">
+			1.0196849522903055
+		</VacancyFormationEnergy>
+	</results>
+</test>

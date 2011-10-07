@@ -1,234 +1,600 @@
-2011-10-06 21:29:02,962 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-06 21:30:15,962 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:30:16,027 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 241, in run
-    (cwd,exitcode))
-RuntimeError: LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 21:29:03,126 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.2371349334716797 seconds
-2011-10-06 21:29:03,127 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_CLUSTER_F90' run took 0.23766803741455078 seconds
-2011-10-06 21:29:03,127 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,028 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.13131117820739746 seconds
+2011-10-06 21:30:16,028 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_CLUSTER_F90' run took 0.13175201416015625 seconds
+2011-10-06 21:30:16,029 - openkimtests.pipeline.run_tests - INFO - 
 Running potential='model_Ar_P_MLJ_NEIGH_RVEC_F'
-2011-10-06 21:29:03,127 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,029 - openkimtests.pipeline.run_tests - INFO - 
 Running element='Ar'
-2011-10-06 21:29:03,128 - openkimtests.pipeline.runtest - INFO - 
-About to run a test, test='BCCLattice',potential='model_Ar_P_MLJ_NEIGH_RVEC_F',element='Ar'
-2011-10-06 21:29:03,273 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
-2011-10-06 21:29:03,273 - openkimtests.pipeline.runtest - INFO - Creating a test instance
-2011-10-06 21:29:03,274 - openkimtests.Test.BCCLattice - DEBUG - Recieved a main method call
-2011-10-06 21:29:03,274 - openkimtests.Test.BCCLattice - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:03,274 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:03,275 - openkimtests.potential - DEBUG - potentialname: model_Ar_P_MLJ_NEIGH_RVEC_F found
-2011-10-06 21:29:03,275 - openkimtests.potential - DEBUG - element 'Ar' found
-2011-10-06 21:29:03,493 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.',)
-2011-10-06 21:29:03,494 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-06 21:30:16,029 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCElasticConstants',potential='model_Ar_P_MLJ_NEIGH_RVEC_F',element='Ar'
+2011-10-06 21:30:16,030 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,030 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,031 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCLattice',potential='model_Ar_P_MLJ_NEIGH_RVEC_F',element='Ar'
+2011-10-06 21:30:16,031 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,031 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,032 - openkimtests.Test.FCCLattice - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,032 - openkimtests.Test.FCCLattice - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,032 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,033 - openkimtests.potential - DEBUG - potentialname: model_Ar_P_MLJ_NEIGH_RVEC_F found
+2011-10-06 21:30:16,033 - openkimtests.potential - DEBUG - element 'Ar' found
+2011-10-06 21:30:16,128 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:30:16,129 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 241, in run
-    (cwd,exitcode))
-RuntimeError: LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 21:29:03,495 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.36771488189697266 seconds
-2011-10-06 21:29:03,496 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_NEIGH_RVEC_F' run took 0.368257999420166 seconds
-2011-10-06 21:29:03,496 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,129 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.10044598579406738 seconds
+2011-10-06 21:30:16,130 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_NEIGH_RVEC_F' run took 0.10085916519165039 seconds
+2011-10-06 21:30:16,130 - openkimtests.pipeline.run_tests - INFO - 
 Running potential='model_ArNe_P_MLJ_NEIGH_RVEC_F'
-2011-10-06 21:29:03,496 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,130 - openkimtests.pipeline.run_tests - INFO - 
 Running element='Ar'
-2011-10-06 21:29:03,497 - openkimtests.pipeline.runtest - INFO - 
-About to run a test, test='BCCLattice',potential='model_ArNe_P_MLJ_NEIGH_RVEC_F',element='Ar'
-2011-10-06 21:29:03,497 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
-2011-10-06 21:29:03,497 - openkimtests.pipeline.runtest - INFO - Creating a test instance
-2011-10-06 21:29:03,498 - openkimtests.Test.BCCLattice - DEBUG - Recieved a main method call
-2011-10-06 21:29:03,498 - openkimtests.Test.BCCLattice - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:03,499 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:03,499 - openkimtests.potential - DEBUG - potentialname: model_ArNe_P_MLJ_NEIGH_RVEC_F found
-2011-10-06 21:29:03,499 - openkimtests.potential - DEBUG - element 'Ar' found
-2011-10-06 21:29:03,680 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCLattice', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.',)
-2011-10-06 21:29:03,682 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-06 21:30:16,131 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCElasticConstants',potential='model_ArNe_P_MLJ_NEIGH_RVEC_F',element='Ar'
+2011-10-06 21:30:16,131 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,132 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,132 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCLattice',potential='model_ArNe_P_MLJ_NEIGH_RVEC_F',element='Ar'
+2011-10-06 21:30:16,133 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,133 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,133 - openkimtests.Test.FCCLattice - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,134 - openkimtests.Test.FCCLattice - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,134 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,134 - openkimtests.potential - DEBUG - potentialname: model_ArNe_P_MLJ_NEIGH_RVEC_F found
+2011-10-06 21:30:16,135 - openkimtests.potential - DEBUG - element 'Ar' found
+2011-10-06 21:30:16,184 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:30:16,185 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 241, in run
-    (cwd,exitcode))
-RuntimeError: LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 21:29:03,682 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.18608903884887695 seconds
-2011-10-06 21:29:03,683 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,185 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.055008888244628906 seconds
+2011-10-06 21:30:16,186 - openkimtests.pipeline.run_tests - INFO - 
 Running element='Ne'
-2011-10-06 21:29:03,683 - openkimtests.pipeline.runtest - INFO - 
-About to run a test, test='BCCLattice',potential='model_ArNe_P_MLJ_NEIGH_RVEC_F',element='Ne'
-2011-10-06 21:29:03,684 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
-2011-10-06 21:29:03,684 - openkimtests.pipeline.runtest - INFO - Creating a test instance
-2011-10-06 21:29:03,684 - openkimtests.Test.BCCLattice - DEBUG - Recieved a main method call
-2011-10-06 21:29:03,685 - openkimtests.Test.BCCLattice - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:03,685 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:03,685 - openkimtests.potential - DEBUG - potentialname: model_ArNe_P_MLJ_NEIGH_RVEC_F found
-2011-10-06 21:29:03,686 - openkimtests.potential - DEBUG - element 'Ne' found
-2011-10-06 21:29:03,741 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCLattice', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:RuntimeError('LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.',)
-2011-10-06 21:29:03,743 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-06 21:30:16,186 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCElasticConstants',potential='model_ArNe_P_MLJ_NEIGH_RVEC_F',element='Ne'
+2011-10-06 21:30:16,187 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,187 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,188 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCLattice',potential='model_ArNe_P_MLJ_NEIGH_RVEC_F',element='Ne'
+2011-10-06 21:30:16,188 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,188 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,189 - openkimtests.Test.FCCLattice - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,189 - openkimtests.Test.FCCLattice - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,189 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,190 - openkimtests.potential - DEBUG - potentialname: model_ArNe_P_MLJ_NEIGH_RVEC_F found
+2011-10-06 21:30:16,190 - openkimtests.potential - DEBUG - element 'Ne' found
+2011-10-06 21:30:16,245 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:30:16,246 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 241, in run
-    (cwd,exitcode))
-RuntimeError: LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 21:29:03,744 - openkimtests.pipeline.run_tests - INFO - Element 'Ne' Run took 0.06104707717895508 seconds
-2011-10-06 21:29:03,744 - openkimtests.pipeline.run_tests - INFO - Potential 'model_ArNe_P_MLJ_NEIGH_RVEC_F' run took 0.24808192253112793 seconds
-2011-10-06 21:29:03,745 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,246 - openkimtests.pipeline.run_tests - INFO - Element 'Ne' Run took 0.06066703796386719 seconds
+2011-10-06 21:30:16,247 - openkimtests.pipeline.run_tests - INFO - Potential 'model_ArNe_P_MLJ_NEIGH_RVEC_F' run took 0.11649680137634277 seconds
+2011-10-06 21:30:16,247 - openkimtests.pipeline.run_tests - INFO - 
 Running potential='model_Ar_P_MLJ_CLUSTER_C'
-2011-10-06 21:29:03,745 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,248 - openkimtests.pipeline.run_tests - INFO - 
 Running element='Ar'
-2011-10-06 21:29:03,746 - openkimtests.pipeline.runtest - INFO - 
-About to run a test, test='BCCLattice',potential='model_Ar_P_MLJ_CLUSTER_C',element='Ar'
-2011-10-06 21:29:03,746 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
-2011-10-06 21:29:03,746 - openkimtests.pipeline.runtest - INFO - Creating a test instance
-2011-10-06 21:29:03,747 - openkimtests.Test.BCCLattice - DEBUG - Recieved a main method call
-2011-10-06 21:29:03,747 - openkimtests.Test.BCCLattice - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:03,747 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:03,748 - openkimtests.potential - DEBUG - potentialname: model_Ar_P_MLJ_CLUSTER_C found
-2011-10-06 21:29:03,748 - openkimtests.potential - DEBUG - element 'Ar' found
-2011-10-06 21:29:03,799 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:RuntimeError('LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.',)
-2011-10-06 21:29:03,801 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-06 21:30:16,248 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCElasticConstants',potential='model_Ar_P_MLJ_CLUSTER_C',element='Ar'
+2011-10-06 21:30:16,248 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,249 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,249 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCLattice',potential='model_Ar_P_MLJ_CLUSTER_C',element='Ar'
+2011-10-06 21:30:16,250 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,250 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,251 - openkimtests.Test.FCCLattice - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,251 - openkimtests.Test.FCCLattice - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,251 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,252 - openkimtests.potential - DEBUG - potentialname: model_Ar_P_MLJ_CLUSTER_C found
+2011-10-06 21:30:16,252 - openkimtests.potential - DEBUG - element 'Ar' found
+2011-10-06 21:30:16,313 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:30:16,313 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 241, in run
-    (cwd,exitcode))
-RuntimeError: LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 21:29:03,802 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.057008981704711914 seconds
-2011-10-06 21:29:03,802 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_CLUSTER_C' run took 0.05754804611206055 seconds
-2011-10-06 21:29:03,803 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,314 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.06653904914855957 seconds
+2011-10-06 21:30:16,314 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_CLUSTER_C' run took 0.06697487831115723 seconds
+2011-10-06 21:30:16,315 - openkimtests.pipeline.run_tests - INFO - 
 Running potential='model_Ar_P_MLJ_NEIGH_PURE_H_F'
-2011-10-06 21:29:03,803 - openkimtests.pipeline.run_tests - INFO - 
+2011-10-06 21:30:16,315 - openkimtests.pipeline.run_tests - INFO - 
 Running element='Ar'
-2011-10-06 21:29:03,804 - openkimtests.pipeline.runtest - INFO - 
-About to run a test, test='BCCLattice',potential='model_Ar_P_MLJ_NEIGH_PURE_H_F',element='Ar'
-2011-10-06 21:29:03,804 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
-2011-10-06 21:29:03,804 - openkimtests.pipeline.runtest - INFO - Creating a test instance
-2011-10-06 21:29:03,805 - openkimtests.Test.BCCLattice - DEBUG - Recieved a main method call
-2011-10-06 21:29:03,805 - openkimtests.Test.BCCLattice - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:03,806 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:03,806 - openkimtests.potential - DEBUG - potentialname: model_Ar_P_MLJ_NEIGH_PURE_H_F found
-2011-10-06 21:29:03,806 - openkimtests.potential - DEBUG - element 'Ar' found
-2011-10-06 21:29:03,862 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.',)
-2011-10-06 21:29:04,037 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-06 21:30:16,315 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCElasticConstants',potential='model_Ar_P_MLJ_NEIGH_PURE_H_F',element='Ar'
+2011-10-06 21:30:16,316 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,316 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,317 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCLattice',potential='model_Ar_P_MLJ_NEIGH_PURE_H_F',element='Ar'
+2011-10-06 21:30:16,318 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,318 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,319 - openkimtests.Test.FCCLattice - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,319 - openkimtests.Test.FCCLattice - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,319 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,319 - openkimtests.potential - DEBUG - potentialname: model_Ar_P_MLJ_NEIGH_PURE_H_F found
+2011-10-06 21:30:16,320 - openkimtests.potential - DEBUG - element 'Ar' found
+2011-10-06 21:30:16,349 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:30:16,350 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:30:16,350 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.03507089614868164 seconds
+2011-10-06 21:30:16,351 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_NEIGH_PURE_H_F' run took 0.035508155822753906 seconds
+2011-10-06 21:30:16,351 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='model_Ar_P_MMorse'
+2011-10-06 21:30:16,351 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ar'
+2011-10-06 21:30:16,352 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCElasticConstants',potential='model_Ar_P_MMorse',element='Ar'
+2011-10-06 21:30:16,352 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,353 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,353 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:16,392 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,393 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,393 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,394 - openkimtests.potential - DEBUG - potentialname: model_Ar_P_MMorse found
+2011-10-06 21:30:16,394 - openkimtests.potential - DEBUG - element 'Ar' found
+2011-10-06 21:30:16,428 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MMorse', element='Ar', info:OSError(24, 'Too many open files')
+2011-10-06 21:30:16,430 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 51, in run_test
     results = testObject.main()
   File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
     results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:30:16,431 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.07978510856628418 seconds
+2011-10-06 21:30:16,431 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MMorse' run took 0.08023285865783691 seconds
+2011-10-06 21:30:16,432 - openkimtests.pipeline.run_tests - INFO - Test 'FCCElasticConstants' run took 0.08040118217468262 seconds
+2011-10-06 21:30:16,432 - openkimtests.pipeline.run_tests - INFO - 
+Running tests for test='FCCVacancy'
+2011-10-06 21:30:16,432 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='model_Al_PF_ErcolessiAdams'
+2011-10-06 21:30:16,433 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Al'
+2011-10-06 21:30:16,433 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='model_Al_PF_ErcolessiAdams',element='Al'
+2011-10-06 21:30:16,433 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,434 - openkimtests.pipeline.runtest - ERROR - openkimtests.kim_tests.'FCCVacancy' failed to import
+2011-10-06 21:30:16,438 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Al_PF_ErcolessiAdams', element='Al', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:30:16,438 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:30:16,439 - openkimtests.pipeline.run_tests - INFO - Element 'Al' Run took 0.006518125534057617 seconds
+2011-10-06 21:30:16,439 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Al_PF_ErcolessiAdams' run took 0.007007122039794922 seconds
+2011-10-06 21:30:16,440 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='ASAP'
+2011-10-06 21:30:16,440 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ni'
+2011-10-06 21:30:16,440 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='ASAP',element='Ni'
+2011-10-06 21:30:16,441 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,480 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,481 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,482 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:16,529 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,530 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,530 - openkimtests.potential - DEBUG - potentialname: ASAP found
+2011-10-06 21:30:16,530 - openkimtests.potential - DEBUG - element 'Ni' found
+2011-10-06 21:30:16,681 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:30:16,681 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Ni', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:30:16,696 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:30:16,697 - openkimtests.pipeline.run_tests - INFO - Element 'Ni' Run took 0.25685691833496094 seconds
+2011-10-06 21:30:16,697 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ag'
+2011-10-06 21:30:16,698 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='ASAP',element='Ag'
+2011-10-06 21:30:16,698 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,699 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,700 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,700 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:16,717 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,718 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,718 - openkimtests.potential - DEBUG - potentialname: ASAP found
+2011-10-06 21:30:16,718 - openkimtests.potential - DEBUG - element 'Ag' found
+2011-10-06 21:30:16,729 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:30:16,729 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Ag', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:30:16,731 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:30:16,731 - openkimtests.pipeline.run_tests - INFO - Element 'Ag' Run took 0.03404498100280762 seconds
+2011-10-06 21:30:16,732 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Pt'
+2011-10-06 21:30:16,732 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='ASAP',element='Pt'
+2011-10-06 21:30:16,733 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,733 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,733 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,734 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:16,752 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,753 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,753 - openkimtests.potential - DEBUG - potentialname: ASAP found
+2011-10-06 21:30:16,753 - openkimtests.potential - DEBUG - element 'Pt' found
+2011-10-06 21:30:16,760 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:30:16,760 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Pt', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:30:16,761 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:30:16,762 - openkimtests.pipeline.run_tests - INFO - Element 'Pt' Run took 0.029752016067504883 seconds
+2011-10-06 21:30:16,762 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Au'
+2011-10-06 21:30:16,762 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='ASAP',element='Au'
+2011-10-06 21:30:16,763 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,763 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,763 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,764 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:16,781 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,781 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,781 - openkimtests.potential - DEBUG - potentialname: ASAP found
+2011-10-06 21:30:16,781 - openkimtests.potential - DEBUG - element 'Au' found
+2011-10-06 21:30:16,792 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:30:16,792 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Au', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:30:16,793 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:30:16,794 - openkimtests.pipeline.run_tests - INFO - Element 'Au' Run took 0.03186392784118652 seconds
+2011-10-06 21:30:16,794 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Pd'
+2011-10-06 21:30:16,794 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='ASAP',element='Pd'
+2011-10-06 21:30:16,795 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,795 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,796 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,796 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:16,815 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,815 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,816 - openkimtests.potential - DEBUG - potentialname: ASAP found
+2011-10-06 21:30:16,816 - openkimtests.potential - DEBUG - element 'Pd' found
+2011-10-06 21:30:16,826 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:30:16,827 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Pd', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:30:16,828 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:30:16,829 - openkimtests.pipeline.run_tests - INFO - Element 'Pd' Run took 0.03461599349975586 seconds
+2011-10-06 21:30:16,829 - openkimtests.pipeline.run_tests - INFO - Test 'FCCVacancy','ASAP','Cu' exists
+2011-10-06 21:30:16,830 - openkimtests.pipeline.run_tests - INFO - Unessesary test 'FCCVacancy','ASAP','Cu'
+2011-10-06 21:30:16,830 - openkimtests.pipeline.run_tests - INFO - Potential 'ASAP' run took 0.38999104499816895 seconds
+2011-10-06 21:30:16,830 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='model_Ne_P_LJ_NEIGH_PURE_H'
+2011-10-06 21:30:16,831 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ne'
+2011-10-06 21:30:16,831 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='model_Ne_P_LJ_NEIGH_PURE_H',element='Ne'
+2011-10-06 21:30:16,832 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:16,832 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:16,833 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:16,833 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:16,850 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:16,850 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:16,850 - openkimtests.potential - DEBUG - potentialname: model_Ne_P_LJ_NEIGH_PURE_H found
+2011-10-06 21:30:16,850 - openkimtests.potential - DEBUG - element 'Ne' found
+2011-10-06 21:30:17,244 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ne_P_LJ_NEIGH_PURE_H', element='Ne', info:OSError(24, 'Too many open files')
+2011-10-06 21:30:17,246 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:30:17,246 - openkimtests.pipeline.run_tests - INFO - Element 'Ne' Run took 0.41520190238952637 seconds
+2011-10-06 21:30:17,246 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ne_P_LJ_NEIGH_PURE_H' run took 0.41553592681884766 seconds
+2011-10-06 21:30:17,246 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='model_Ar_P_MLJ_C'
+2011-10-06 21:30:17,247 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ar'
+2011-10-06 21:30:17,247 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='model_Ar_P_MLJ_C',element='Ar'
+2011-10-06 21:30:17,247 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:17,248 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:17,248 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:17,248 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:17,249 - openkimtests.db - WARNING - Request 'FCCLattice.model_Ar_P_MLJ_C.Ar.xml' doesn't exist
+2011-10-06 21:30:17,290 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_C', element='Ar', info:IOError(24, 'Too many open files')
+2011-10-06 21:30:17,363 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
+    ans = db.request(potential,element,test,resultentry)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
+    test=test)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
+    tree = etree.parse(os.path.join(results_dir,filename))
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
+    tree.parse(source, parser)
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
+    source = open(source, "rb")
+IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.model_Ar_P_MLJ_C.Ar.xml'
+
+2011-10-06 21:30:17,363 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.11663103103637695 seconds
+2011-10-06 21:30:17,364 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_C' run took 0.11700797080993652 seconds
+2011-10-06 21:30:17,364 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='model_Ne_P_MLJ_NEIGH_RVEC_F'
+2011-10-06 21:30:17,364 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ne'
+2011-10-06 21:30:17,365 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='model_Ne_P_MLJ_NEIGH_RVEC_F',element='Ne'
+2011-10-06 21:30:17,365 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:17,366 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:17,366 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:17,367 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:17,383 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:17,383 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:17,384 - openkimtests.potential - DEBUG - potentialname: model_Ne_P_MLJ_NEIGH_RVEC_F found
+2011-10-06 21:30:17,384 - openkimtests.potential - DEBUG - element 'Ne' found
+2011-10-06 21:30:17,708 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:OSError(24, 'Too many open files')
+2011-10-06 21:30:17,710 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:30:17,710 - openkimtests.pipeline.run_tests - INFO - Element 'Ne' Run took 0.3459970951080322 seconds
+2011-10-06 21:30:17,710 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ne_P_MLJ_NEIGH_RVEC_F' run took 0.34632396697998047 seconds
+2011-10-06 21:30:17,711 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='model_Ar_P_MLJ_F90'
+2011-10-06 21:30:17,711 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ar'
+2011-10-06 21:30:17,711 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='model_Ar_P_MLJ_F90',element='Ar'
+2011-10-06 21:30:17,712 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:17,712 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:17,712 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:17,713 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:17,713 - openkimtests.db - WARNING - Request 'FCCLattice.model_Ar_P_MLJ_F90.Ar.xml' doesn't exist
+2011-10-06 21:30:17,742 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_F90', element='Ar', info:IOError(24, 'Too many open files')
+2011-10-06 21:30:17,743 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
+    ans = db.request(potential,element,test,resultentry)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
+    test=test)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
+    tree = etree.parse(os.path.join(results_dir,filename))
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
+    tree.parse(source, parser)
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
+    source = open(source, "rb")
+IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.model_Ar_P_MLJ_F90.Ar.xml'
+
+2011-10-06 21:30:17,744 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.03316187858581543 seconds
+2011-10-06 21:30:17,745 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_F90' run took 0.03366899490356445 seconds
+2011-10-06 21:30:17,745 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='model_Ar_P_MLJ_MI_OPBC_H_F'
+2011-10-06 21:30:17,745 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ar'
+2011-10-06 21:30:17,746 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='model_Ar_P_MLJ_MI_OPBC_H_F',element='Ar'
+2011-10-06 21:30:17,746 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:17,747 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:17,747 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:17,748 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCLattice',potential='model_Ar_P_MLJ_MI_OPBC_H_F',element='Ar'
+2011-10-06 21:30:17,748 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:17,749 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:17,749 - openkimtests.Test.FCCLattice - DEBUG - Recieved a main method call
+2011-10-06 21:30:17,750 - openkimtests.Test.FCCLattice - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:17,750 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:17,750 - openkimtests.potential - DEBUG - potentialname: model_Ar_P_MLJ_MI_OPBC_H_F found
+2011-10-06 21:30:17,750 - openkimtests.potential - DEBUG - element 'Ar' found
+2011-10-06 21:30:17,809 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:OSError(24, 'Too many open files')
+2011-10-06 21:30:17,811 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
   File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
     fsim[0] = func(x0)
   File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
     return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
     return self.slab.get_potential_energy()
   File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
     return self._calc.get_potential_energy(self)
@@ -238,279 +604,64 @@ ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='
     self.calculate(atoms)
   File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
     self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 241, in run
-    (cwd,exitcode))
-RuntimeError: LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
 
-2011-10-06 21:29:04,038 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.2346179485321045 seconds
-2011-10-06 21:29:04,038 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_NEIGH_PURE_H_F' run took 0.23530793190002441 seconds
-2011-10-06 21:29:04,039 - openkimtests.pipeline.run_tests - INFO - 
-Running potential='model_Ar_P_MMorse'
-2011-10-06 21:29:04,039 - openkimtests.pipeline.run_tests - INFO - Test 'BCCLattice','model_Ar_P_MMorse','Ar' exists
-2011-10-06 21:29:04,040 - openkimtests.pipeline.run_tests - INFO - Unessesary test 'BCCLattice','model_Ar_P_MMorse','Ar'
-2011-10-06 21:29:04,040 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MMorse' run took 0.0009739398956298828 seconds
-2011-10-06 21:29:04,040 - openkimtests.pipeline.run_tests - INFO - Test 'BCCLattice' run took 0.23709702491760254 seconds
-2011-10-06 21:29:04,041 - openkimtests.pipeline.run_tests - INFO - 
-Running tests for test='FCCElasticConstants'
-2011-10-06 21:29:04,041 - openkimtests.pipeline.run_tests - INFO - 
-Running potential='model_Al_PF_ErcolessiAdams'
-2011-10-06 21:29:04,041 - openkimtests.pipeline.run_tests - INFO - 
-Running element='Al'
-2011-10-06 21:29:04,042 - openkimtests.pipeline.runtest - INFO - 
-About to run a test, test='FCCElasticConstants',potential='model_Al_PF_ErcolessiAdams',element='Al'
-2011-10-06 21:29:04,042 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
-2011-10-06 21:29:04,076 - openkimtests.pipeline.runtest - INFO - Creating a test instance
-2011-10-06 21:29:04,077 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
-2011-10-06 21:29:04,154 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a main method call
-2011-10-06 21:29:04,156 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:04,156 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:04,156 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:04,157 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:04,378 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:04,379 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:04,379 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:04,380 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:04,519 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:04,520 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:04,520 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:04,520 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:04,592 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:04,592 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:04,592 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:04,593 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:04,651 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:04,652 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:04,652 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:04,652 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:04,729 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:04,730 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:04,730 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:04,730 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:04,870 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:04,871 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:04,871 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:04,871 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:04,943 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:04,944 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:04,944 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:04,944 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:05,067 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:05,068 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:05,068 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:05,068 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:05,194 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:05,195 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:05,195 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:05,195 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:05,275 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:05,276 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:05,276 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:05,276 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:05,369 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:05,370 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:05,370 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:05,370 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:05,472 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:05,473 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:05,473 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:05,473 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:05,594 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:05,595 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:05,595 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:05,595 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:05,756 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:05,757 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:05,757 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:05,757 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:05,911 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:05,912 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:05,912 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:05,912 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:06,102 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:06,103 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:06,103 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:06,103 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:06,625 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:06,625 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:06,625 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:06,626 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:06,779 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:06,780 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:06,780 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:06,780 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:06,900 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:06,900 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:06,901 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:06,901 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,061 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,062 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,062 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,062 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,118 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,118 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,118 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,119 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,238 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,239 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,239 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,239 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,356 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,356 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,357 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,357 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,525 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,526 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,526 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,526 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,610 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,610 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,610 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,611 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,745 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,746 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,746 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,746 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,829 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,829 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,829 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,830 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:07,964 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:07,964 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:07,964 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:07,965 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,117 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,117 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,118 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,118 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,243 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,244 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,244 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,244 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,370 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,371 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,371 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,371 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,471 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,471 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,471 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,472 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,523 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,524 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,524 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,524 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,609 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,610 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,610 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,610 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,749 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,749 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,750 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,750 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,846 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,847 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,847 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,847 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:08,928 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:08,929 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:08,929 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:08,929 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,029 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,029 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,030 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,030 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,154 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,155 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,155 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,155 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,309 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,310 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,310 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,310 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,387 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,388 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,388 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,388 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,479 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,479 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,480 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,480 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,560 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,560 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,560 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,561 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,629 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,630 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,630 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,630 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,686 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,686 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,686 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,687 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,805 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,805 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,805 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,806 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,866 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,867 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,867 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,867 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:09,994 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:09,994 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:09,995 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:09,995 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,135 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,135 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,136 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,136 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,230 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,230 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,230 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,231 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,305 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,305 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,305 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,306 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,400 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,400 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,400 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,401 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,462 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,463 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,463 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,463 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,532 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,533 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,533 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,533 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,605 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,605 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,606 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,606 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,657 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,658 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,658 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,658 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,709 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,709 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,709 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,710 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,779 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,779 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,779 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,780 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,837 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,837 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,838 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,838 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,894 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,895 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,895 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,895 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:10,974 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:10,974 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:10,975 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:10,975 - openkimtests.potential - DEBUG - element 'Al' found
-2011-10-06 21:29:11,665 - openkimtests.Test.FCCElasticConstants - DEBUG - Recieved a calculator access call
-2011-10-06 21:29:11,666 - openkimtests.potential - DEBUG - Recieved a potential.load call
-2011-10-06 21:29:11,666 - openkimtests.potential - DEBUG - potentialname: model_Al_PF_ErcolessiAdams found
-2011-10-06 21:29:11,666 - openkimtests.potential - DEBUG - element 'Al' found
+2011-10-06 21:30:17,812 - openkimtests.pipeline.run_tests - INFO - Element 'Ar' Run took 0.06668686866760254 seconds
+2011-10-06 21:30:17,812 - openkimtests.pipeline.run_tests - INFO - Potential 'model_Ar_P_MLJ_MI_OPBC_H_F' run took 0.0671229362487793 seconds
+2011-10-06 21:30:17,813 - openkimtests.pipeline.run_tests - INFO - 
+Running potential='EMT'
+2011-10-06 21:30:17,813 - openkimtests.pipeline.run_tests - INFO - 
+Running element='Ni'
+2011-10-06 21:30:17,813 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='EMT',element='Ni'
+2011-10-06 21:30:17,814 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:17,814 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:17,815 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:17,815 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:17,816 - openkimtests.db - WARNING - Request 'FCCLattice.EMT.Ni.xml' doesn't exist
+2011-10-06 21:30:17,819 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='EMT', element='Ni', info:IOError(24, 'Too many open files')
+2011-10-06 21:30:17,820 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
+    ans = db.request(potential,element,test,resultentry)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
+    test=test)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
+    tree = etree.parse(os.path.join(results_dir,filename))
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
+    tree.parse(source, parser)
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
+    source = open(source, "rb")
+IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.EMT.Ni.xml'
+
+2011-10-06 21:30:17,821 - openkimtests.pipeline.run_tests - INFO - Element 'Ni' Run took 0.008044004440307617 seconds
+2011-10-06 21:30:17,821 - openkimtests.pipeline.run_tests - INFO - 
+Running element='C'
+2011-10-06 21:30:17,822 - openkimtests.pipeline.runtest - INFO - 
+About to run a test, test='FCCVacancy',potential='EMT',element='C'
+2011-10-06 21:30:17,822 - openkimtests.pipeline.runtest - INFO - Attempting to load the test
+2011-10-06 21:30:17,823 - openkimtests.pipeline.runtest - INFO - Creating a test instance
+2011-10-06 21:30:17,823 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a main method call
+2011-10-06 21:30:17,824 - openkimtests.db.XMLReader - DEBUG - XMLReader called...
+2011-10-06 21:30:17,855 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:17,856 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:17,856 - openkimtests.potential - DEBUG - potentialname: EMT found
+2011-10-06 21:30:17,856 - openkimtests.potential - DEBUG - element 'C' found
+2011-10-06 21:30:43,028 - openkimtests.Test.FCCVacancy - DEBUG - Recieved a calculator access call
+2011-10-06 21:30:43,028 - openkimtests.potential - DEBUG - Recieved a potential.load call
+2011-10-06 21:30:43,028 - openkimtests.potential - DEBUG - potentialname: EMT found
+2011-10-06 21:30:43,029 - openkimtests.potential - DEBUG - element 'C' found

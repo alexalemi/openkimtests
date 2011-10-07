@@ -1,19 +1,464 @@
-2011-10-06 21:29:03,862 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.',)
-2011-10-06 21:29:04,037 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-06 21:36:38,729 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 51, in run_test
     results = testObject.main()
   File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
     results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:36:38,832 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:OSError(24, 'Too many open files')
+2011-10-06 21:36:38,834 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:36:38,948 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_F90', element='Ar', info:OSError(24, 'Too many open files')
+2011-10-06 21:36:38,950 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:36:39,028 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:36:39,029 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:36:39,170 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:36:39,171 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:36:39,243 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:36:39,244 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:36:39,297 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:36:39,298 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:36:39,357 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:36:39,358 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:36:39,392 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:36:39,393 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:36:39,439 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:36:39,440 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:36:39,484 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MMorse', element='Ar', info:OSError(24, 'Too many open files')
+2011-10-06 21:36:39,486 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:36:39,490 - openkimtests.pipeline.runtest - ERROR - openkimtests.kim_tests.'FCCVacancy' failed to import
+2011-10-06 21:36:39,493 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Al_PF_ErcolessiAdams', element='Al', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-06 21:36:39,494 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-06 21:36:39,528 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:36:39,529 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Ni', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:36:39,530 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:36:39,555 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:36:39,555 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Ag', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:36:39,556 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:36:39,586 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:36:39,587 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Pt', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:36:39,588 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:36:39,617 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:36:39,617 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Au', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:36:39,618 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:36:39,648 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
+2011-10-06 21:36:39,649 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='ASAP', element='Pd', info:PackageDoesNotExist('ASAP',)
+2011-10-06 21:36:39,650 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
+    self.slab.set_calculator(self.calculator)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
+    raise PackageDoesNotExist('ASAP')
+PackageDoesNotExist: ASAP
+
+2011-10-06 21:36:40,068 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ne_P_LJ_NEIGH_PURE_H', element='Ne', info:OSError(24, 'Too many open files')
+2011-10-06 21:36:40,069 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:36:40,072 - openkimtests.db - WARNING - Request 'FCCLattice.model_Ar_P_MLJ_C.Ar.xml' doesn't exist
+2011-10-06 21:36:40,117 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_C', element='Ar', info:IOError(24, 'Too many open files')
+2011-10-06 21:36:40,119 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
+    ans = db.request(potential,element,test,resultentry)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
+    test=test)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
+    tree = etree.parse(os.path.join(results_dir,filename))
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
+    tree.parse(source, parser)
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
+    source = open(source, "rb")
+IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.model_Ar_P_MLJ_C.Ar.xml'
+
+2011-10-06 21:36:40,452 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:OSError(24, 'Too many open files')
+2011-10-06 21:36:40,454 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:36:40,457 - openkimtests.db - WARNING - Request 'FCCLattice.model_Ar_P_MLJ_F90.Ar.xml' doesn't exist
+2011-10-06 21:36:40,515 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_F90', element='Ar', info:IOError(24, 'Too many open files')
+2011-10-06 21:36:40,516 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
+    ans = db.request(potential,element,test,resultentry)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
+    test=test)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
+    tree = etree.parse(os.path.join(results_dir,filename))
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
+    tree.parse(source, parser)
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
+    source = open(source, "rb")
+IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.model_Ar_P_MLJ_F90.Ar.xml'
+
+2011-10-06 21:36:40,590 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:OSError(24, 'Too many open files')
+2011-10-06 21:36:40,592 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
   File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
     fsim[0] = func(x0)
   File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
     return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
     return self.slab.get_potential_energy()
   File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
     return self._calc.get_potential_energy(self)
@@ -23,7 +468,35 @@ ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='
     self.calculate(atoms)
   File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
     self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 241, in run
-    (cwd,exitcode))
-RuntimeError: LAMMPS exited in /afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp with exit code: 101.
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
+    stdin=PIPE, stdout=PIPE)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
+    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
+    p2cread, p2cwrite = os.pipe()
+OSError: [Errno 24] Too many open files
+
+2011-10-06 21:36:40,597 - openkimtests.db - WARNING - Request 'FCCLattice.EMT.Ni.xml' doesn't exist
+2011-10-06 21:36:40,600 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='EMT', element='Ni', info:IOError(24, 'Too many open files')
+2011-10-06 21:36:40,601 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
+    ans = db.request(potential,element,test,resultentry)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
+    test=test)
+  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
+    tree = etree.parse(os.path.join(results_dir,filename))
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
+    tree.parse(source, parser)
+  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
+    source = open(source, "rb")
+IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.EMT.Ni.xml'
 

@@ -7,3 +7,7 @@ O - integrate an easy to use LAMMPS calculator
 O - integrate KIM
 O - make the test result access easy. (maybe compute if not done? )
 
+
+Still have copies of the STREAM handlers
+blacklist the errorfull tests
+implement Woosongs thing
