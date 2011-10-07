@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<test id="FCCElasticConstants">
+	<config>
+		<potential>
+			EMT
+		</potential>
+		<element>
+			Ag
+		</element>
+	</config>
+	<results>
+		<C44 type="float64">
+			216.78994698872467
+		</C44>
+		<B type="float64">
+			100.15564153436158
+		</B>
+		<excess_sig type="float64">
+			3.9926149697373873e-08
+		</excess_sig>
+		<C44_sig type="float64">
+			3.1612868827874317e-06
+		</C44_sig>
+		<excess type="float64">
+			-1.573747958596938e-08
+		</excess>
+		<C12 type="float64">
+			87.299859077538628
+		</C12>
+		<C11 type="float64">
+			125.86720644800752
+		</C11>
+		<C12_sig type="float64">
+			5.2889653651772778e-07
+		</C12_sig>
+		<B_sig type="float64">
+			1.1630351497252866e-06
+		</B_sig>
+		<C11_sig type="float64">
+			3.3248955848427616e-06
+		</C11_sig>
+		<units type="str">
+			&quot;GPa&quot;
+		</units>
+	</results>
+</test>

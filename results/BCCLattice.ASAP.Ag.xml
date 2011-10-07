@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<test id="BCCLattice">
+	<config>
+		<potential>
+			ASAP
+		</potential>
+		<element>
+			Ag
+		</element>
+	</config>
+	<results>
+		<BCCLatticeConstant type="float64">
+			3.2294677734375004
+		</BCCLatticeConstant>
+		<BCCEnergyPerAtom type="float64">
+			39.162434903867776
+		</BCCEnergyPerAtom>
+	</results>
+</test>

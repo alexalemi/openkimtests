@@ -30,7 +30,7 @@ class LackingResults(Exception):
 class LackingVerify(Exception):
     """ The LackingVerify method, to be raised if the test doesn't override the verify method """
 
-class BaseTest:
+class BaseTest(object):
     """This is the Base Test from which all other Tests inherit."""
     
     def __init__(self,potentialname,element,verified=False,verify=False,write=False,*args,**kwargs):
