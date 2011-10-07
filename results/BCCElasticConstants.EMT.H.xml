@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<test id="BCCElasticConstants">
+	<config>
+		<potential>
+			EMT
+		</potential>
+		<element>
+			H
+		</element>
+	</config>
+	<results>
+		<C44 type="float64">
+			334.80923147319709
+		</C44>
+		<B type="float64">
+			1145.4948992704853
+		</B>
+		<excess_sig type="float64">
+			6.2684800263202394e-07
+		</excess_sig>
+		<C44_sig type="float64">
+			9.2864378692611731e-06
+		</C44_sig>
+		<excess type="float64">
+			-4.7364589103865199e-09
+		</excess>
+		<C12 type="float64">
+			1143.7544368682497
+		</C12>
+		<C11 type="float64">
+			1148.975824074957
+		</C11>
+		<C12_sig type="float64">
+			1.0891103948320025e-05
+		</C12_sig>
+		<B_sig type="float64">
+			7.5372971016991522e-06
+		</B_sig>
+		<C11_sig type="float64">
+			6.0690236068987072e-06
+		</C11_sig>
+		<units type="str">
+			&quot;GPa&quot;
+		</units>
+	</results>
+</test>
