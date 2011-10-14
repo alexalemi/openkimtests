@@ -1,11 +1,848 @@
-2011-10-06 21:36:38,729 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:26:53,750 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 51, in run_test
     results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
     results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,774 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCLattice', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,775 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,790 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCLattice', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,792 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,806 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCLattice', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,807 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,822 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCLattice', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,823 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,838 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCLattice', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,839 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,855 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCLattice', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,856 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,885 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,886 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,908 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,910 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,926 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,927 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,944 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCLattice', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,945 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,961 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCLattice', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,962 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,979 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,980 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:53,996 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCLattice', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:53,997 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.BCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCLattice.py", line 30, in BCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:26:54,023 - openkimtests.potential.KIM_loader - WARNING - KIM Potential needs slab information
+2011-10-14 14:26:54,024 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Al_PF_ErcolessiAdams', element='Al', info:PotentialLoadFailed()
+2011-10-14 14:26:54,025 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 137, in results
+    gradE = self.gradE(positions)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 91, in gradE
+    pe_x1 = self.getPotential(atoms_list, positions+perturb)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 63, in getPotential
+    atoms.set_calculator(self.calculator)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 115, in KIM_loader
+    raise PotentialLoadFailed('KIM',*args,**kwargs)
+PotentialLoadFailed: KIM)
+
+2011-10-14 14:26:55,301 - openkimtests.potential.KIM_loader - WARNING - KIM Potential needs slab information
+2011-10-14 14:26:55,301 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ne_P_LJ_NEIGH_PURE_H', element='Ne', info:PotentialLoadFailed()
+2011-10-14 14:26:55,302 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 137, in results
+    gradE = self.gradE(positions)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 91, in gradE
+    pe_x1 = self.getPotential(atoms_list, positions+perturb)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 63, in getPotential
+    atoms.set_calculator(self.calculator)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 115, in KIM_loader
+    raise PotentialLoadFailed('KIM',*args,**kwargs)
+PotentialLoadFailed: KIM)
+
+2011-10-14 14:26:55,310 - openkimtests.potential.KIM_loader - WARNING - KIM Potential needs slab information
+2011-10-14 14:26:55,310 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ar_P_MLJ_C', element='Ar', info:PotentialLoadFailed()
+2011-10-14 14:26:55,311 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 137, in results
+    gradE = self.gradE(positions)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 91, in gradE
+    pe_x1 = self.getPotential(atoms_list, positions+perturb)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 63, in getPotential
+    atoms.set_calculator(self.calculator)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 115, in KIM_loader
+    raise PotentialLoadFailed('KIM',*args,**kwargs)
+PotentialLoadFailed: KIM)
+
+2011-10-14 14:26:55,319 - openkimtests.potential.KIM_loader - WARNING - KIM Potential needs slab information
+2011-10-14 14:26:55,319 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:PotentialLoadFailed()
+2011-10-14 14:26:55,320 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 137, in results
+    gradE = self.gradE(positions)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 91, in gradE
+    pe_x1 = self.getPotential(atoms_list, positions+perturb)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 63, in getPotential
+    atoms.set_calculator(self.calculator)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 115, in KIM_loader
+    raise PotentialLoadFailed('KIM',*args,**kwargs)
+PotentialLoadFailed: KIM)
+
+2011-10-14 14:26:55,328 - openkimtests.potential.KIM_loader - WARNING - KIM Potential needs slab information
+2011-10-14 14:26:55,328 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ar_P_MLJ_F90', element='Ar', info:PotentialLoadFailed()
+2011-10-14 14:26:55,329 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 137, in results
+    gradE = self.gradE(positions)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 91, in gradE
+    pe_x1 = self.getPotential(atoms_list, positions+perturb)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 63, in getPotential
+    atoms.set_calculator(self.calculator)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 115, in KIM_loader
+    raise PotentialLoadFailed('KIM',*args,**kwargs)
+PotentialLoadFailed: KIM)
+
+2011-10-14 14:26:55,341 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:26:55,342 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 135, in results
+    positions = self.makePerturbedLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 47, in makePerturbedLattice
+    a = self.getFCCLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 23, in getFCCLattice
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:27:59,050 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:27:59,051 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 135, in results
+    positions = self.makePerturbedLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 47, in makePerturbedLattice
+    a = self.getFCCLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 23, in getFCCLattice
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:27:59,062 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:27:59,063 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 135, in results
+    positions = self.makePerturbedLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 47, in makePerturbedLattice
+    a = self.getFCCLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 23, in getFCCLattice
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:27:59,078 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:27:59,079 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 135, in results
+    positions = self.makePerturbedLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 47, in makePerturbedLattice
+    a = self.getFCCLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 23, in getFCCLattice
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:27:59,095 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:27:59,097 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 135, in results
+    positions = self.makePerturbedLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 47, in makePerturbedLattice
+    a = self.getFCCLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 23, in getFCCLattice
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:27:59,114 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:27:59,115 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 135, in results
+    positions = self.makePerturbedLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 47, in makePerturbedLattice
+    a = self.getFCCLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 23, in getFCCLattice
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:27:59,132 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:27:59,133 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 135, in results
+    positions = self.makePerturbedLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 47, in makePerturbedLattice
+    a = self.getFCCLattice()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 23, in getFCCLattice
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:27:59,146 - openkimtests.potential.KIM_loader - WARNING - KIM Potential needs slab information
+2011-10-14 14:27:59,147 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='ForceTest', potential='model_Ar_P_MMorse', element='Ar', info:PotentialLoadFailed()
+2011-10-14 14:27:59,148 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 137, in results
+    gradE = self.gradE(positions)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 91, in gradE
+    pe_x1 = self.getPotential(atoms_list, positions+perturb)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/ForceTest.py", line 63, in getPotential
+    atoms.set_calculator(self.calculator)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
+    self.slab)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 238, in load
+    return potentials[name](name,element,slab,*args,**kwargs)
+  File "/a/yjchen/openkimtest/openkimtests/bin/potential.py", line 115, in KIM_loader
+    raise PotentialLoadFailed('KIM',*args,**kwargs)
+PotentialLoadFailed: KIM)
+
+2011-10-14 14:27:59,185 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCElasticConstants', potential='model_Al_PF_ErcolessiAdams', element='Al', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:27:59,188 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
     elastic_constants = hess(sp.zeros(6))
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
     return self._hessian(x00)
@@ -19,34 +856,30 @@
     f_x0[j] = self.fun(x0j)
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
     return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
     energy = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
     return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
     self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
     self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
     self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
 
-2011-10-06 21:36:38,832 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:OSError(24, 'Too many open files')
-2011-10-06 21:36:38,834 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,619 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCElasticConstants', potential='model_Ne_P_LJ_NEIGH_PURE_H', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,620 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 51, in run_test
     results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
     results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
     elastic_constants = hess(sp.zeros(6))
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
     return self._hessian(x00)
@@ -60,34 +893,30 @@ ERROR on test='FCCElasticConstants', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', el
     f_x0[j] = self.fun(x0j)
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
     return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
     energy = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
     return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
     self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
     self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
     self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
 
-2011-10-06 21:36:38,948 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_F90', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 21:36:38,950 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,635 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_C', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,636 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 51, in run_test
     results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
     results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
     elastic_constants = hess(sp.zeros(6))
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
     return self._hessian(x00)
@@ -101,97 +930,30 @@ ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_F90', element='Ar
     f_x0[j] = self.fun(x0j)
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
     return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
     energy = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
     return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
     self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
     self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
     self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
 
-2011-10-06 21:36:39,028 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 21:36:39,029 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 21:36:39,170 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 21:36:39,171 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 21:36:39,243 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 21:36:39,244 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 21:36:39,297 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 21:36:39,298 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 21:36:39,357 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 21:36:39,358 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 21:36:39,392 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 21:36:39,393 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 21:36:39,439 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 21:36:39,440 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 21:36:39,484 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCElasticConstants', potential='model_Ar_P_MMorse', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 21:36:39,486 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,654 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCElasticConstants', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,656 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 51, in run_test
     results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
     results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
     elastic_constants = hess(sp.zeros(6))
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
     return self._hessian(x00)
@@ -205,595 +967,30 @@ ERROR on test='FCCElasticConstants', potential='model_Ar_P_MMorse', element='Ar'
     f_x0[j] = self.fun(x0j)
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
     return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
     energy = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
     return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
     self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
     self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
     self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
 
-2011-10-06 21:36:39,490 - openkimtests.pipeline.runtest - ERROR - openkimtests.kim_tests.'FCCVacancy' failed to import
-2011-10-06 21:36:39,493 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Al_PF_ErcolessiAdams', element='Al', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 21:36:39,494 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 21:36:39,528 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 21:36:39,529 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='ASAP', element='Ni', info:PackageDoesNotExist('ASAP',)
-2011-10-06 21:36:39,530 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,673 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_F90', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,675 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 51, in run_test
     results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
     results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 21:36:39,555 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 21:36:39,555 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='ASAP', element='Ag', info:PackageDoesNotExist('ASAP',)
-2011-10-06 21:36:39,556 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 21:36:39,586 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 21:36:39,587 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='ASAP', element='Pt', info:PackageDoesNotExist('ASAP',)
-2011-10-06 21:36:39,588 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 21:36:39,617 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 21:36:39,617 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='ASAP', element='Au', info:PackageDoesNotExist('ASAP',)
-2011-10-06 21:36:39,618 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 21:36:39,648 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 21:36:39,649 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='ASAP', element='Pd', info:PackageDoesNotExist('ASAP',)
-2011-10-06 21:36:39,650 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 22, in results
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 21:36:40,068 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ne_P_LJ_NEIGH_PURE_H', element='Ne', info:OSError(24, 'Too many open files')
-2011-10-06 21:36:40,069 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
-    energy1 = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
-
-2011-10-06 21:36:40,072 - openkimtests.db - WARNING - Request 'FCCLattice.model_Ar_P_MLJ_C.Ar.xml' doesn't exist
-2011-10-06 21:36:40,117 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_C', element='Ar', info:IOError(24, 'Too many open files')
-2011-10-06 21:36:40,119 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
-    ans = db.request(potential,element,test,resultentry)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
-    test=test)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
-    tree = etree.parse(os.path.join(results_dir,filename))
-  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
-    tree.parse(source, parser)
-  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
-    source = open(source, "rb")
-IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.model_Ar_P_MLJ_C.Ar.xml'
-
-2011-10-06 21:36:40,452 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:OSError(24, 'Too many open files')
-2011-10-06 21:36:40,454 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
-    energy1 = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
-
-2011-10-06 21:36:40,457 - openkimtests.db - WARNING - Request 'FCCLattice.model_Ar_P_MLJ_F90.Ar.xml' doesn't exist
-2011-10-06 21:36:40,515 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_F90', element='Ar', info:IOError(24, 'Too many open files')
-2011-10-06 21:36:40,516 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
-    ans = db.request(potential,element,test,resultentry)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
-    test=test)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
-    tree = etree.parse(os.path.join(results_dir,filename))
-  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
-    tree.parse(source, parser)
-  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
-    source = open(source, "rb")
-IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.model_Ar_P_MLJ_F90.Ar.xml'
-
-2011-10-06 21:36:40,590 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 21:36:40,592 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
-    run_test(test,potential,element)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
-
-2011-10-06 21:36:40,597 - openkimtests.db - WARNING - Request 'FCCLattice.EMT.Ni.xml' doesn't exist
-2011-10-06 21:36:40,600 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='EMT', element='Ni', info:IOError(24, 'Too many open files')
-2011-10-06 21:36:40,601 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 152, in request
-    ans = db.request(potential,element,test,resultentry)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 187, in request
-    test=test)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/db.py", line 42, in XMLReader
-    tree = etree.parse(os.path.join(results_dir,filename))
-  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 1177, in parse
-    tree.parse(source, parser)
-  File "/usr/local/pub/lib/python2.7/xml/etree/ElementTree.py", line 646, in parse
-    source = open(source, "rb")
-IOError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/results/FCCLattice.EMT.Ni.xml'
-
-2011-10-06 22:40:00,730 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:00,746 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
-    run_test(test,potential,element)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
-
-2011-10-06 22:40:00,766 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:00,772 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
-    run_test(test,potential,element)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 184, in run
-    delete=(not self.keep_tmp_files))
-  File "/usr/local/pub/lib/python2.7/tempfile.py", line 447, in NamedTemporaryFile
-    (fd, name) = _mkstemp_inner(dir, prefix, suffix, flags)
-  File "/usr/local/pub/lib/python2.7/tempfile.py", line 228, in _mkstemp_inner
-    fd = _os.open(file, flags, 0600)
-OSError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp/trj_lammps000001idFWz8'
-
-2011-10-06 22:40:00,835 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:00,837 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
-    run_test(test,potential,element)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
-
-2011-10-06 22:40:00,857 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:00,859 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
-    run_test(test,potential,element)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 184, in run
-    delete=(not self.keep_tmp_files))
-  File "/usr/local/pub/lib/python2.7/tempfile.py", line 447, in NamedTemporaryFile
-    (fd, name) = _mkstemp_inner(dir, prefix, suffix, flags)
-  File "/usr/local/pub/lib/python2.7/tempfile.py", line 228, in _mkstemp_inner
-    fd = _os.open(file, flags, 0600)
-OSError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp/trj_lammps0000011GRypL'
-
-2011-10-06 22:40:00,915 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:00,917 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
-    run_test(test,potential,element)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
-
-2011-10-06 22:40:00,934 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:00,936 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
-    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 150, in request
-    run_test(test,potential,element)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 43, in results
-    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
-    fsim[0] = func(x0)
-  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
-    return function(x, *args)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
-    return self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 184, in run
-    delete=(not self.keep_tmp_files))
-  File "/usr/local/pub/lib/python2.7/tempfile.py", line 447, in NamedTemporaryFile
-    (fd, name) = _mkstemp_inner(dir, prefix, suffix, flags)
-  File "/usr/local/pub/lib/python2.7/tempfile.py", line 228, in _mkstemp_inner
-    fd = _os.open(file, flags, 0600)
-OSError: [Errno 24] Too many open files: '/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/tmp/trj_lammps000001NqgB9v'
-
-2011-10-06 22:40:01,348 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='FCCVacancy', potential='model_Ar_P_MMorse', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:01,349 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
-    energy1 = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
-
-2011-10-06 22:40:01,352 - openkimtests.pipeline.runtest - ERROR - openkimtests.kim_tests.'BCCElasticConstants' failed to import
-2011-10-06 22:40:01,396 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='model_Al_PF_ErcolessiAdams', element='Al', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:40:01,397 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 22:40:02,049 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 22:40:02,049 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='ASAP', element='Ni', info:PackageDoesNotExist('ASAP',)
-2011-10-06 22:40:02,053 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
     elastic_constants = hess(sp.zeros(6))
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
     return self._hessian(x00)
@@ -807,361 +1004,93 @@ ERROR on test='BCCElasticConstants', potential='ASAP', element='Ni', info:Packag
     f_x0[j] = self.fun(x0j)
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
     return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 52, in strain
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 22:40:02,087 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 22:40:02,088 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='ASAP', element='Ag', info:PackageDoesNotExist('ASAP',)
-2011-10-06 22:40:02,090 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
-    elastic_constants = hess(sp.zeros(6))
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
-    return self._hessian(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
-    hess = self._hessdiag(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
-    return self._partial_der(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
-    PD[ind] = self._derivative(x0[ind], stepNom[ind])
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
-    f_x0[j] = self.fun(x0j)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
-    return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 52, in strain
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 22:40:02,119 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 22:40:02,120 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='ASAP', element='Pt', info:PackageDoesNotExist('ASAP',)
-2011-10-06 22:40:02,122 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
-    elastic_constants = hess(sp.zeros(6))
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
-    return self._hessian(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
-    hess = self._hessdiag(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
-    return self._partial_der(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
-    PD[ind] = self._derivative(x0[ind], stepNom[ind])
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
-    f_x0[j] = self.fun(x0j)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
-    return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 52, in strain
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 22:40:02,157 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 22:40:02,158 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='ASAP', element='Au', info:PackageDoesNotExist('ASAP',)
-2011-10-06 22:40:02,159 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
-    elastic_constants = hess(sp.zeros(6))
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
-    return self._hessian(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
-    hess = self._hessdiag(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
-    return self._partial_der(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
-    PD[ind] = self._derivative(x0[ind], stepNom[ind])
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
-    f_x0[j] = self.fun(x0j)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
-    return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 52, in strain
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 22:40:02,184 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 22:40:02,185 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='ASAP', element='Pd', info:PackageDoesNotExist('ASAP',)
-2011-10-06 22:40:02,186 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
-    elastic_constants = hess(sp.zeros(6))
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
-    return self._hessian(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
-    hess = self._hessdiag(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
-    return self._partial_der(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
-    PD[ind] = self._derivative(x0[ind], stepNom[ind])
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
-    f_x0[j] = self.fun(x0j)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
-    return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 52, in strain
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 22:40:02,217 - openkimtests.potential.ASAP_loader - WARNING - ASAP package could not be loaded
-2011-10-06 22:40:02,218 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='ASAP', element='Cu', info:PackageDoesNotExist('ASAP',)
-2011-10-06 22:40:02,219 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
-    elastic_constants = hess(sp.zeros(6))
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
-    return self._hessian(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
-    hess = self._hessdiag(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
-    return self._partial_der(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
-    PD[ind] = self._derivative(x0[ind], stepNom[ind])
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
-    f_x0[j] = self.fun(x0j)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
-    return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 52, in strain
-    self.slab.set_calculator(self.calculator)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 59, in calculator
-    self.slab)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 238, in load
-    return potentials[name](name,element,slab,*args,**kwargs)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/potential.py", line 79, in ASAP_loader
-    raise PackageDoesNotExist('ASAP')
-PackageDoesNotExist: ASAP
-
-2011-10-06 22:40:02,315 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='model_Ne_P_LJ_NEIGH_PURE_H', element='Ne', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:02,317 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
-    elastic_constants = hess(sp.zeros(6))
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
-    return self._hessian(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
-    hess = self._hessdiag(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
-    return self._partial_der(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
-    PD[ind] = self._derivative(x0[ind], stepNom[ind])
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
-    f_x0[j] = self.fun(x0j)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
-    return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
     energy = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
     return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
     self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
     self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
     self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
 
-2011-10-06 22:40:02,345 - openkimtests.db - WARNING - Request 'BCCLattice.model_Ar_P_MLJ_C.Ar.xml' doesn't exist
-2011-10-06 22:40:02,367 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_C', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:40:02,368 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 22:40:02,467 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:OSError(24, 'Too many open files')
-2011-10-06 22:40:02,469 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 51, in run_test
-    results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
-    results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
-    elastic_constants = hess(sp.zeros(6))
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
-    return self._hessian(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
-    hess = self._hessdiag(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
-    return self._partial_der(x00)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
-    PD[ind] = self._derivative(x0[ind], stepNom[ind])
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
-    f_x0[j] = self.fun(x0j)
-  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
-    return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
-    energy = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
-    return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
-    self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
-    self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
-    self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
-
-2011-10-06 22:40:02,475 - openkimtests.db - WARNING - Request 'BCCLattice.model_Ar_P_MLJ_F90.Ar.xml' doesn't exist
-2011-10-06 22:40:02,483 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_F90', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:40:02,484 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
-  File "pipeline.py", line 126, in run_tests
-    verbose=verbose)
-  File "pipeline.py", line 56, in run_test
-    del testObject
-UnboundLocalError: local variable 'testObject' referenced before assignment
-
-2011-10-06 22:40:02,542 - openkimtests.pipeline.run_tests - ERROR - 
+2011-10-14 14:28:35,694 - openkimtests.pipeline.run_tests - ERROR - 
 ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:40:02,543 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,695 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 56, in run_test
     del testObject
 UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 22:50:33,307 - openkimtests.pipeline.run_tests - ERROR - 
+2011-10-14 14:28:35,721 - openkimtests.pipeline.run_tests - ERROR - 
 ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:50:33,308 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,722 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 56, in run_test
     del testObject
 UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 22:50:33,395 - openkimtests.pipeline.run_tests - ERROR - 
+2011-10-14 14:28:35,739 - openkimtests.pipeline.run_tests - ERROR - 
 ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:50:33,396 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,740 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 56, in run_test
     del testObject
 UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 22:50:33,444 - openkimtests.pipeline.run_tests - ERROR - 
+2011-10-14 14:28:35,757 - openkimtests.pipeline.run_tests - ERROR - 
 ERROR on test='BCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:50:33,445 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,758 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 56, in run_test
     del testObject
 UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 22:50:33,503 - openkimtests.pipeline.run_tests - ERROR - 
+2011-10-14 14:28:35,775 - openkimtests.pipeline.run_tests - ERROR - 
 ERROR on test='BCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:50:33,504 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,776 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 56, in run_test
     del testObject
 UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 22:50:33,571 - openkimtests.pipeline.run_tests - ERROR - 
+2011-10-14 14:28:35,793 - openkimtests.pipeline.run_tests - ERROR - 
 ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:50:33,572 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,794 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 56, in run_test
     del testObject
 UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 22:50:33,608 - openkimtests.pipeline.run_tests - ERROR - 
+2011-10-14 14:28:35,812 - openkimtests.pipeline.run_tests - ERROR - 
 ERROR on test='BCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
-2011-10-06 22:50:33,609 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,813 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 56, in run_test
     del testObject
 UnboundLocalError: local variable 'testObject' referenced before assignment
 
-2011-10-06 22:50:33,744 - openkimtests.pipeline.run_tests - ERROR - 
-ERROR on test='BCCElasticConstants', potential='model_Ar_P_MMorse', element='Ar', info:OSError(24, 'Too many open files')
-2011-10-06 22:50:33,753 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+2011-10-14 14:28:35,832 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='BCCElasticConstants', potential='model_Ar_P_MMorse', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,834 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
   File "pipeline.py", line 126, in run_tests
     verbose=verbose)
   File "pipeline.py", line 51, in run_test
     results = testObject.main()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
     results = self.results()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 63, in results
     elastic_constants = hess(sp.zeros(6))
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
     return self._hessian(x00)
@@ -1175,21 +1104,699 @@ ERROR on test='BCCElasticConstants', potential='model_Ar_P_MMorse', element='Ar'
     f_x0[j] = self.fun(x0j)
   File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
     return  self.fun_org(x)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/BCCElasticConstants.py", line 54, in strain
     energy = self.slab.get_potential_energy()
-  File "/usr/local/pub/lib/python2.7/site-packages/ase/atoms.py", line 548, in get_potential_energy
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
     return self._calc.get_potential_energy(self)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 118, in get_potential_energy
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
     self.update(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 134, in update
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
     self.calculate(atoms)
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 138, in calculate
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
     self.run()
-  File "/afs/msc.cornell.edu/home/jsethna/alemi/openkimtests/bin/kim.py", line 200, in run
-    stdin=PIPE, stdout=PIPE)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 672, in __init__
-    errread, errwrite) = self._get_handles(stdin, stdout, stderr)
-  File "/usr/local/pub/lib/python2.7/subprocess.py", line 1035, in _get_handles
-    p2cread, p2cwrite = os.pipe()
-OSError: [Errno 24] Too many open files
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:35,858 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Al_PF_ErcolessiAdams', element='Al', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,859 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:35,882 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ne_P_LJ_NEIGH_PURE_H', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,883 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:35,897 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_C', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,899 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:35,918 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,919 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:35,938 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_F90', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:35,940 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:35,958 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-14 14:28:35,959 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-14 14:28:35,982 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-14 14:28:35,982 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-14 14:28:35,996 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-14 14:28:35,996 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-14 14:28:36,013 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-14 14:28:36,014 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-14 14:28:36,031 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-14 14:28:36,031 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-14 14:28:36,051 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-14 14:28:36,052 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-14 14:28:36,072 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:UnboundLocalError("local variable 'testObject' referenced before assignment",)
+2011-10-14 14:28:36,073 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 56, in run_test
+    del testObject
+UnboundLocalError: local variable 'testObject' referenced before assignment
+
+2011-10-14 14:28:36,095 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCElasticConstants', potential='model_Ar_P_MMorse', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:36,097 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 63, in results
+    elastic_constants = hess(sp.zeros(6))
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 1202, in __call__
+    return self._hessian(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 819, in _hessian
+    hess = self._hessdiag(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 807, in _hessdiag
+    return self._partial_der(x00)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 780, in _partial_der
+    PD[ind] = self._derivative(x0[ind], stepNom[ind])
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 708, in _derivative
+    f_x0[j] = self.fun(x0j)
+  File "/usr/local/pub/lib/python2.7/site-packages/Numdifftools-0.3.5-py2.7.egg/numdifftools/core.py", line 792, in _fun
+    return  self.fun_org(x)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCElasticConstants.py", line 54, in strain
+    energy = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:36,476 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Al_PF_ErcolessiAdams', element='Al', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:36,477 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:38,518 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ne_P_LJ_NEIGH_PURE_H', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:38,519 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:38,901 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_C', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:38,902 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:39,196 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ne_P_MLJ_NEIGH_RVEC_F', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:39,197 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:39,634 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_F90', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:39,636 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:28:39,655 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_MI_OPBC_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:28:39,656 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:29:51,732 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_CLUSTER_F90', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:29:51,733 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:29:51,748 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:29:51,749 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:29:51,765 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:29:51,766 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:29:51,786 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_ArNe_P_MLJ_NEIGH_RVEC_F', element='Ne', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:29:51,787 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:29:51,807 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_CLUSTER_C', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:29:51,808 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:29:51,829 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MLJ_NEIGH_PURE_H_F', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:29:51,830 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 16, in results
+    a = request(self.potentialname,self.element,'FCCLattice','FCCLatticeConstant')
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 150, in request
+    run_test(test,potential,element)
+  File "/a/yjchen/openkimtest/openkimtests/bin/pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 43, in results
+    minimum, energyminimum, iterations, funcalls, warnflag = fmin(self.FCCEnergy,x0,full_output=1,disp=0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 278, in fmin
+    fsim[0] = func(x0)
+  File "/usr/local/pub/lib/python2.7/site-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCLattice.py", line 30, in FCCEnergy
+    return self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
+
+2011-10-14 14:29:52,218 - openkimtests.pipeline.run_tests - ERROR - 
+ERROR on test='FCCVacancy', potential='model_Ar_P_MMorse', element='Ar', info:RuntimeError('LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.',)
+2011-10-14 14:29:52,220 - openkimtests.pipeline.run_tests - ERROR - TRACEBACK: Traceback (most recent call last):
+  File "pipeline.py", line 126, in run_tests
+    verbose=verbose)
+  File "pipeline.py", line 51, in run_test
+    results = testObject.main()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/_BaseTest.py", line 83, in main
+    results = self.results()
+  File "/a/yjchen/openkimtest/openkimtests/kim_tests/FCCVacancy.py", line 24, in results
+    energy1 = self.slab.get_potential_energy()
+  File "/a/yjchen/ase/ase/atoms.py", line 526, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 118, in get_potential_energy
+    self.update(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 134, in update
+    self.calculate(atoms)
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 138, in calculate
+    self.run()
+  File "/a/yjchen/openkimtest/openkimtests/bin/kim.py", line 241, in run
+    (cwd,exitcode))
+RuntimeError: LAMMPS exited in /a/yjchen/openkimtest/openkimtests/tmp with exit code: 71.
 
