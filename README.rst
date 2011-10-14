@@ -68,10 +68,33 @@ positional arguments:
 optional arguments:
   -h, --help        show this help message and exit
 
+
+Pipeline:
+---------
+
+in bin there is a pipeline.py script that will run the pipeline,
+you can either run it without arguments to have it run all of the necessary tests, or give it a test name to
+run that particular test
+
+usage: pipeline.py [-h] [-f] [TestName]
+
+Runs the openkimtests pipeline. If called with a TestName, will run for that
+particular test, otherwise will run for all. Use the -f flag to force
+recomputation of results.
+
+positional arguments:
+  TestName     The test you want to run if you're being specific
+
+optional arguments:
+  -h, --help   show this help message and exit
+  -f, --force  force recomputation of results
+
+
 TESTS
 -------
   -  X  - FCC lattice constants
   -  X  - BCC lattice constants
+  -  X  - ForceTest
   -  O  - verify forces are gradients
   -  O  - Figure out equilibrium structure
   -  X  - Vacancy formation energy
