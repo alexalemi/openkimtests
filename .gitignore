@@ -3,5 +3,5 @@
 logs/*
 tmp/*
 *~
-
+*.log
 
