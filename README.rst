@@ -1,6 +1,19 @@
 Openkimtests
 ============
 
+Welcome to the Openkimtests project.  
+
+This aims to serve as a pipeline example and test development framework for my group.  In particular, the goal is to develop some useful tests for the openkim project.
+
+The general workflow here is to write the tests using the ASE (Atomic Simulation Environment) Package in python, and have some code glue to enable these short tests to be run with all different interatomic potentials and elements, and for the results to be collected in a human readable format.
+
+Eventually, the tests should be able to work with any ASE calculator (including EMT, and various DFT codes) as well as LAMMPS and the KIM potentials.
+
+Currently the results are stored as human readable XML files.
+
+The pipeline script tries to pair each test with all of the available models and elements.
+
+
 Directory Structure
 -------------------
 
@@ -30,48 +43,41 @@ Tests
 
 As for the tests:
 
-So, the Tests will inherit from the BaseTest, which should be able to do most of
+So, the Tests will inherit from the _BaseTest, which should be able to do most of
 what is required of tests.
 
-In order to write your own tests, just copy the NullTest.py file, rename the
-file and the class name as desired, and write the TestResult method.
+There are some example tests in the directory, including _MinimalTest which serves as a minimal example.
 
+Basically, a test is a class inheriting from _BaseTest that needs to supply a result method, wherein when called, the results method returns a python dictionary of results to be stored.
+
+Other test conventions:
+	* Each test should store the atomic configuration it is working with as self.slab
+	* Each test should use the dynamically created calculator at self.calculator
+	* Each test has access to a require(PotentialName,Element,TestName,TestResultName) method that will fetch other test results, to allow tests to build on other tests.
 
 Test Usage:
 -----------
 
-usage: python NullTest.py [-h] [-v] [-w]
+usage: python ExampleTestName.py [-h] [-v] [-w]
                    [potential] [element]
 
 positional arguments:
   potential         The first argument is the potential
   element           The second argument is the element
-  optional arguments    The remaining are optional
 
 optional arguments:
   -h, --help        show this help message and exit
-  -v, --verify      runs the verify method
-  -w, --write       writes the xml file to the results directory
 
-
-TODO:
------
- - O - Write the documentation
- - O - get KIM potentials working
- - O - get lammps potentials working
- - O - get GPAW potential working
- - O - write more tests
-
-TESTS:    
-------
+TESTS
+-------
   -  X  - FCC lattice constants
-  -  O  - BCC lattice constants
+  -  X  - BCC lattice constants
   -  O  - verify forces are gradients
   -  O  - Figure out equilibrium structure
-  -  O  - Vacancy formation energy
+  -  X  - Vacancy formation energy
   -  O  - Vacancy displacement field
   -  O  - hexagonal lattice constants
-  -  O  - Elastic Moduli
+  -  X  - Elastic Moduli
   -  O  - maybe verify the lattice constants (see that force is zero)
   -  O  - unit change test.
   -  O  - change potential parameters, perhaps make a LennardJones potential
