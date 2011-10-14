@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<test id="BCCLattice">
+	<config>
+		<potential>
+			model_Ar_P_MMorse
+		</potential>
+		<element>
+			Ar
+		</element>
+	</config>
+	<results>
+		<BCCLatticeConstant type="float64">
+			4.2121582031250036
+		</BCCLatticeConstant>
+		<BCCEnergyPerAtom type="float64">
+			-0.079680015000000007
+		</BCCEnergyPerAtom>
+	</results>
+</test>

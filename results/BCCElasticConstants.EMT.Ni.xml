@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<test id="BCCElasticConstants">
+	<config>
+		<potential>
+			EMT
+		</potential>
+		<element>
+			Ni
+		</element>
+	</config>
+	<results>
+		<C44 type="float64">
+			708.70045873447509
+		</C44>
+		<B type="float64">
+			176.39591006703168
+		</B>
+		<excess_sig type="float64">
+			4.0630710737027852e-07
+		</excess_sig>
+		<C44_sig type="float64">
+			3.1818184627495192e-06
+		</C44_sig>
+		<excess type="float64">
+			-1.1114921758057367e-08
+		</excess>
+		<C12 type="float64">
+			180.56403311227609
+		</C12>
+		<C11 type="float64">
+			168.05966397654282
+		</C11>
+		<C12_sig type="float64">
+			2.0258129031487213e-06
+		</C12_sig>
+		<B_sig type="float64">
+			3.1076908942788307e-06
+		</B_sig>
+		<C11_sig type="float64">
+			8.3966667538492102e-06
+		</C11_sig>
+		<units type="str">
+			&quot;GPa&quot;
+		</units>
+	</results>
+</test>

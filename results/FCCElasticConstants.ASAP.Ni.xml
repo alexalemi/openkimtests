@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<test id="FCCElasticConstants">
+	<config>
+		<potential>
+			ASAP
+		</potential>
+		<element>
+			Ni
+		</element>
+	</config>
+	<results>
+		<C44 type="float64">
+			589.07334894939299
+		</C44>
+		<B type="float64">
+			181.23994592966415
+		</B>
+		<excess_sig type="float64">
+			6.1997844952017202e-08
+		</excess_sig>
+		<C44_sig type="float64">
+			8.5901291066520291e-07
+		</C44_sig>
+		<excess type="float64">
+			5.0811189766878135e-08
+		</excess>
+		<C12 type="float64">
+			150.41765598481982
+		</C12>
+		<C11 type="float64">
+			242.88452581935283
+		</C11>
+		<C12_sig type="float64">
+			1.7159595748038322e-06
+		</C12_sig>
+		<B_sig type="float64">
+			1.1825176657825796e-06
+		</B_sig>
+		<C11_sig type="float64">
+			8.983669737624674e-07
+		</C11_sig>
+		<units type="str">
+			&quot;GPa&quot;
+		</units>
+	</results>
+</test>

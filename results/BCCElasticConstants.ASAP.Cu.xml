@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<test id="BCCElasticConstants">
+	<config>
+		<potential>
+			ASAP
+		</potential>
+		<element>
+			Cu
+		</element>
+	</config>
+	<results>
+		<C44 type="float64">
+			551.05849133718789
+		</C44>
+		<B type="float64">
+			185.19935846356225
+		</B>
+		<excess_sig type="float64">
+			4.4907178588589418e-07
+		</excess_sig>
+		<C44_sig type="float64">
+			5.7561397769042595e-06
+		</C44_sig>
+		<excess type="float64">
+			-5.5081486030434481e-08
+		</excess>
+		<C12 type="float64">
+			161.65819645919183
+		</C12>
+		<C11 type="float64">
+			232.28168247230315
+		</C11>
+		<C12_sig type="float64">
+			3.7009196971423382e-06
+		</C12_sig>
+		<B_sig type="float64">
+			4.6133719701693248e-06
+		</B_sig>
+		<C11_sig type="float64">
+			1.1694510763495472e-05
+		</C11_sig>
+		<units type="str">
+			&quot;GPa&quot;
+		</units>
+	</results>
+</test>
