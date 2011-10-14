@@ -3,6 +3,8 @@
 
 import glob, time, os, sys
 
+import argparse
+
 
 #get the paths
 import os.path
@@ -19,7 +21,6 @@ from filetools import file_list
 import potential as potential_module
 
 import logging
-
 logger = logger.getChild('pipeline')
 
 def run_test(test,potential,element,verbose=True):
@@ -51,11 +52,13 @@ def run_test(test,potential,element,verbose=True):
         results = testObject.main()
         
         child_logger.info('Computed results, obtained: %r\n', results)
-    finally:
-        #ensure we clear memory up a bit and detach handlers
+
         del testObject
         del testClass
         del testModule
+    finally:
+        #ensure we clear memory up a bit and detach handlers
+
         if verbose:
             child_logger.removeHandler(ch)
 
@@ -78,6 +81,69 @@ test_list = file_list(test_dir)
 
 import traceback
 
+
+def run_one_test(test,verbose=True,update=False):
+    """ Run a given test name """
+    child_logger = logger.getChild('run_one_test')
+    try:
+        if verbose:
+            ch = logging.StreamHandler()
+            ch.setLevel(logging.DEBUG)
+            child_logger.addHandler(ch)
+
+        child_logger.info('\nLaunching all tests')
+        start = time.time()
+
+        test_start =time.time()
+        for potential,element_set in potential_module.supported_atoms.iteritems():
+            child_logger.info('\nRunning potential=%r',potential)
+            potential_start = time.time()
+            for element in element_set:
+
+                
+                #figure out if we need to run the test
+                test_needed = True
+                if db.results_exist(potential=potential,
+                                        element=element,
+                                        test=test):
+                    child_logger.info('Test %r,%r,%r exists',test,potential,element)
+                    if new_results_needed(potential,element,test):
+                        child_logger.info('New test needs computing')
+                        test_needed = True
+                    else:
+                        test_needed = False
+                if update:
+                    test_needed=True
+                 
+                    
+                if test_needed:
+                    test_start = time.time()
+                    child_logger.info('\nRunning element=%r',element)
+                    try:
+                        run_test(test=test,
+                                potential=potential,
+                                element=element,
+                                verbose=verbose)
+                    except ImportError as e:
+                        child_logger.error('TRACEBACK: %s',traceback.format_exc())
+                        child_logger.error("test=%r doesn't seem to exist",test)
+                        raise
+                    except Exception as e:
+                        #Some other Error, log it.
+                        child_logger.error('\nERROR on test=%r, potential=%r, element=%r, info:%r',
+                                            test,potential,element,e)
+                        child_logger.error('TRACEBACK: %s',traceback.format_exc())
+        
+                    child_logger.info('Element %r Run took %r seconds',element,time.time()-test_start)
+                else:
+                    child_logger.info('Unessesary test %r,%r,%r',test,potential,element)
+            child_logger.info('Potential %r run took %r seconds',potential,time.time()-potential_start)
+        child_logger.info('Test %r run took %r seconds',test,time.time()-test_start)
+
+    finally:
+        child_logger.removeHandler(ch)
+
+
 def run_tests(verbose=True,update=False):
     """ Run all of the tests, where unless update is set,
         only compute the results if the test has been modified since
@@ -95,51 +161,16 @@ def run_tests(verbose=True,update=False):
         for test in test_list:
             child_logger.info('\nRunning tests for test=%r',test)
             test_start =time.time()
-            for potential,element_set in potential_module.supported_atoms.iteritems():
-                child_logger.info('\nRunning potential=%r',potential)
-                potential_start = time.time()
-                for element in element_set:
-
-                    
-                    #figure out if we need to run the test
-                    test_needed = True
-                    if db.results_exist(potential=potential,
-                                            element=element,
-                                            test=test):
-                        child_logger.info('Test %r,%r,%r exists',test,potential,element)
-                        if new_results_needed(potential,element,test):
-                            child_logger.info('New test needs computing')
-                            test_needed = True
-                        else:
-                            test_needed = False
-                    if update:
-                        test_needed=True
-                     
-                        
-                    if test_needed:
-                        test_start = time.time()
-                        child_logger.info('\nRunning element=%r',element)
-                        try:
-                            run_test(test=test,
-                                    potential=potential,
-                                    element=element,
-                                    verbose=verbose)
-                        except Exception as e:
-                            child_logger.error('\nERROR on test=%r, potential=%r, element=%r, info:%r',
-                                                test,potential,element,e)
-                            child_logger.error('TRACEBACK: %s',traceback.format_exc())
             
-                        child_logger.info('Element %r Run took %r seconds',element,time.time()-test_start)
-                    else:
-                        child_logger.info('Unessesary test %r,%r,%r',test,potential,element)
-                child_logger.info('Potential %r run took %r seconds',potential,time.time()-potential_start)
+            #Run all of one test
+            run_one_test(test,verbose=verbose,update=update)
+
             child_logger.info('Test %r run took %r seconds',test,time.time()-test_start)
         child_logger.info('Full Run took %r seconds',time.time()-start)            
 
     finally:
         child_logger.removeHandler(ch)
         
-
 
 
 def request(potential,element,test,resultentry):
@@ -156,5 +187,15 @@ def request(potential,element,test,resultentry):
 
         
 if __name__ == "__main__":
-    #run all tests
-    run_tests()
+
+    pipeline_parser = argparse.ArgumentParser(description="""Runs the openkimtests pipeline.  If called with a TestName, will run for that particular test, otherwise will run for all.  Use the -f flag to force recomputation of results.""")
+    pipeline_parser.add_argument('TestName',nargs='?', help="The test you want to run if you're being specific")
+    pipeline_parser.add_argument('-f','--force', dest='force', action='store_true', help='force recomputation of results')
+
+    pipeline_args = pipeline_parser.parse_args()
+
+    if pipeline_args.TestName:
+        run_one_test(pipeline_args.TestName,update=pipeline_args.force)
+    else:
+        run_tests(update=pipeline_args.force)
+

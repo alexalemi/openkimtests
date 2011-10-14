@@ -91,16 +91,20 @@ class BaseTest:
         
 #Parser specification
 
-parser = argparse.ArgumentParser()
-parser.add_argument('potential',nargs='?', help='The first argument is the potential')
-parser.add_argument('element',nargs='?', help='The second argument is the element')
-parser.add_argument('optionalargs',nargs='*', help='Remaining nontagged arguments')
-parser.add_argument('-v','--verify', action='store_true', help='runs the verify method')
-parser.add_argument('-w','--write', action='store_true', help='writes the xml file to the results directory')
 
-args = parser.parse_args()
+if __name__ == "__main__" or __name__ == "_BaseTest":
+    # If we are run directly, or imported, catch the command line arguments.
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('potential',nargs='?', help='The first argument is the potential')
+    parser.add_argument('element',nargs='?', help='The second argument is the element')
+    parser.add_argument('optionalargs',nargs='*', help='Remaining nontagged arguments')
+    parser.add_argument('-v','--verify', action='store_true', help='runs the verify method')
+    parser.add_argument('-w','--write', action='store_true', help='writes the xml file to the results directory')
+
+    args = parser.parse_args()
 
 
-logger.debug('Test called with arguments %r',args)
+    logger.debug('Test called with arguments %r',args)
 
 #make this stuff into in logging statement.
