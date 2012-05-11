@@ -143,12 +143,20 @@ class ForceTest(BaseTest):
         # what should the error tolerance be on this?
         error = abs((gradE+force)/force)
 
+	max_error = error.max()
+	
+	# this is to identify where the max error is
+	index1 = error.argmax()/scipy.shape(error)[1]  
+	index2 = error.argmax()-scipy.shape(error)[1]*(index1)
+
         if (error > 10**(-8)).any(): # expected error according to numerical recipes
                 result['Equal'] = False
         else:
                 result['Equal'] = True
 
         result['errors'] = error
+	result['max error'] = max_error
+	result['max error location']=scipy.array([index1,index2])
 
         return result
 
