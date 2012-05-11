@@ -156,7 +156,7 @@ folders = glob.glob(os.path.join(kim_models_dir,'*'))
 
 for folder in folders:
     basename = os.path.basename(folder)
-    if basename.startswith('model'):
+    if basename.startswith('ex_model'):
         kim_models.append(basename)
 
 
